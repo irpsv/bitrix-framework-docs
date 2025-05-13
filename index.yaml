@@ -1,0 +1,32 @@
+blocks:
+  - type: 'header-block'
+    width: 's'
+    offset: 'default'
+    title: 'Bitrix Framework'
+    resetPaddings: false
+    verticalOffset: 'l'
+    description: 'Фреймворк для работы с "1С-Битрикс:Управление сайтом" и "Битрикс24"'
+    background:
+      light:
+        image:
+          mobile: '_images/cover.png'
+          desktop: '_images/cover.png'
+          disableCompress: true
+        color: '#E8E4FF'
+        fullWidth: false
+      dark:
+        image:
+          mobile: '_images/img_restapi_main.png'
+          desktop: '_images/img_restapi_main.png'
+          disableCompress: true
+        color: '#E8E4FF'
+        fullWidth: false
+    buttons:
+      - text: 'Начать'
+        theme: 'outlined'
+        size: 'promo'
+        url: '#'
+      - text: 'GitHub'
+        theme: 'outlined'
+        size: 'promo'
+        url: '#'

@@ -1,0 +1,170 @@
+title: BitrixFramework
+href: index.yaml
+
+navigation:
+  logo:
+    url: '/'
+    dark:
+      icon: '/_images/bus-logo.png'
+    light:
+      icon: '/_images/bus-logo.png'
+  header:
+    leftItems:
+      - text: 'С чего начать'
+        type: 'link'
+        url: '/pages/get-started/ustanovka-okruzheniya.html'
+
+      - text: 'Основы фреймворка'
+        type: 'link'
+        url: '/pages/framework/arkhitektura.html'
+
+      #- text: 'Основы CMS'
+      #  type: 'link'
+      #  url: '#'
+
+      #- text: 'Модули'
+      #  type: 'link'
+      #  url: '#'
+
+      #- text: 'Справочник API'
+      #  type: 'link'
+      #  url: '#'
+    rightItems:
+      - type: controls
+
+items:
+  - name: С чего начать
+    items:
+      - name: Установка окружения
+        href: /pages/get-started/ustanovka-okruzheniya.md
+      - name: Установка дистрибутива
+        href: /pages/get-started/ustanovka-sayta.md
+      - name: Установка решения
+        href: /pages/get-started/ustanovka-resheniya.md
+      - name: Структура директорий
+        href: /pages/get-started/struktura-direktoriy.md
+      - name: Создание страницы
+        href: /pages/get-started/sozdanie-stranicy.md
+      - name: Создание компонента
+        href: /pages/get-started/sozdanie-komponenta.md
+      - name: Создание модуля
+        href: /pages/get-started/sozdanie-modulya.md
+      - name: Создание контроллера
+        href: /pages/get-started/sozdanie-kontrollera.md
+      - name: Что дальше
+        href: /pages/get-started/chto-dalshe.md
+
+  - name: Основы фреймворка
+    items:
+      - name: Архитектура
+        href: /pages/framework/arkhitektura.md
+      - name: Автозагрузка классов
+        href: /pages/framework/avtoloading.md
+      - name: Жизненный цикл запроса
+        href: /pages/framework/zhiznennyy-cikl-zaprosa.md
+      - name: Роутинг
+        href: /pages/framework/routing.md
+      - name: Контроллеры
+        href: /pages/framework/kontrollery.md
+      - name: Пре- и постфильтры
+        href: /pages/framework/pre-i-post-filtry.md
+      - name: Request и Response
+        href: /pages/framework/request-response-2.md
+      - name: Service Locator
+        href: /pages/framework/di-i-servicelocator.md
+      - name: Сессии
+        href: /pages/framework/sessii-2.md
+      - name: Cookie-файлы
+        href: /pages/framework/kuki.md
+      - name: Валидация
+        href: /pages/framework/validaciya.md
+      - name: Результат работы и ошибки
+        href: /pages/framework/rezultat-raboty-i-oshibki.md
+      - name: Компоненты
+        href: /pages/framework/komponenty.md
+      - name: Расширения
+        href: /pages/framework/rasshireniya.md
+      - name: Объект приложения и контекст
+        href: /pages/framework/obekt-prilozheniya.md
+      - name: Агенты и фоновые задачи
+        href: /pages/framework/agenty-i-fonovye-zadachi.md
+      - name: События
+        href: /pages/framework/sobytiya.md
+
+  - name: База данных
+    items:
+      - name: Конфигурация
+        href: /pages/baza-dannykh-2/konfiguraciya.md
+      - name: Выполнение запросов
+        href: /pages/baza-dannykh-2/obekt-podklyucheniya-connection.md
+      - name: Формирование запросов
+        href: /pages/baza-dannykh-2/sqlhelper.md
+      - name: Построитель запросов
+        href: /pages/baza-dannykh-2/postroitel-zaprosov.md
+      - name: Отладка запросов
+        href: /pages/baza-dannykh-2/otladka-zaprosov.md
+      - name: Транзакции
+        href: /pages/baza-dannykh-2/tranzakcii.md
+      - name: NoSQL
+        href: /pages/baza-dannykh-2/nosql.md
+      - name: HandlerSocket
+        href: /pages/baza-dannykh-2/handlersocket.md
+
+  - name: ORM
+    items:
+      - name: Концепция ORM
+        href: /pages/orm/koncepciya.md
+      - name: Операции с сущностями
+        href: /pages/orm/suschnosti.md
+      - name: Объекты
+        href: /pages/orm/obekty.md
+      - name: Коллекции
+        href: /pages/orm/kollekcii.md
+      - name: Отношения между сущностями
+        href: /pages/orm/otnosheniya.md
+      - name: Выборка данных
+        href: /pages/orm/vyborka.md
+      - name: Построитель запросов
+        href: /pages/orm/postroitel-zaprosov.md
+
+  - name: Безопасность
+    items:
+      - name: Права доступа
+        href: /pages/bezopasnost/prava-polzovateley.md
+      - name: XSS
+        href: /pages/bezopasnost/xss.md
+      - name: CSRF и SSRF
+        href: /pages/bezopasnost/csrf.md
+      - name: SQL-инъекции
+        href: /pages/bezopasnost/sql-injection.md
+      - name: Защищенные cookie
+        href: /pages/bezopasnost/zaschischennye-kuki.md
+      - name: JWT
+        href: /pages/bezopasnost/jwt.md
+      - name: Санитайзер
+        href: /pages/bezopasnost/sanitayzer.md
+      - name: Firewall
+        href: /pages/bezopasnost/firewall1.md
+      - name: Защита от фреймов
+        href: /pages/bezopasnost/zaschita-ot-freymov-2.md
+      - name: CAPTCHA
+        href: /pages/bezopasnost/kapcha.md
+      - name: Проактивная защита
+        href: /pages/bezopasnost/proaktivnaya-zaschita.md
+      - name: Двухэтапная авторизация
+        href: /pages/bezopasnost/dvukhetapnaya-avtorizaciya.md
+
+  - name: Производительность
+    items:
+      - name: Кеширование
+        href: /pages/proizvoditelnost/keshirovanie.md
+      - name: Композитный сайт
+        href: /pages/proizvoditelnost/kompozitnyy-sayt.md
+      - name: Шардинг
+        href: /pages/proizvoditelnost/shardirovanie.md
+      - name: Репликация и кластер
+        href: /pages/proizvoditelnost/replikaciya-i-klaster.md
+      - name: Сессия в разделенном режиме
+        href: /pages/proizvoditelnost/sessii.md
+      - name: Как оптимизировать запросы к базе данных
+        href: /pages/proizvoditelnost/optimizaciya-zaprosov-k-bd-2.md
