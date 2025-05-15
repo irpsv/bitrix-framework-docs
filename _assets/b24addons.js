@@ -1,4 +1,4 @@
-const GITHUB_REPO_BASE_URL = "https://github.com/bitrix-tools/b24-rest-docs/";
+const GITHUB_REPO_BASE_URL = "https://github.com/bitrix24/framework-docs";
 var dynamicObserver = null;
 
 // functions to add buttons to the right panel
@@ -85,13 +85,13 @@ function addB24Buttons () {
             dcControlsDiv.appendChild(createSeparator());
             dcControlsDiv.appendChild(createLink(
                 convertToGitHubProjectLink(),
-                'Edit in GitHub', 
+                'Edit in GitHub',
                 '<path fill="currentColor" fill-rule="evenodd" d="M11.423 1A3.577 3.577 0 0 1 15 4.577c0 .27-.108.53-.3.722l-.528.529-1.971 1.971-5.059 5.059a3 3 0 0 1-1.533.82l-2.638.528a1 1 0 0 1-1.177-1.177l.528-2.638a3 3 0 0 1 .82-1.533l5.059-5.059 2.5-2.5c.191-.191.451-.299.722-.299Zm-2.31 4.009-4.91 4.91a1.5 1.5 0 0 0-.41.766l-.38 1.903 1.902-.38a1.5 1.5 0 0 0 .767-.41l4.91-4.91a2.077 2.077 0 0 0-1.88-1.88Zm3.098.658a3.59 3.59 0 0 0-1.878-1.879l1.28-1.28c.995.09 1.788.884 1.878 1.88l-1.28 1.28Z" clip-rule="evenodd"></path>',
                 ''
             ));
 
-            const TITLE = document.title; 
-            const currentUrl = window.location.href; 
+            const TITLE = document.title;
+            const currentUrl = window.location.href;
 
             const issue_url = `${GITHUB_REPO_BASE_URL}issues/new` +
                 `?title=${encodeURIComponent(`Page ${TITLE}`)}` +
@@ -100,7 +100,7 @@ function addB24Buttons () {
             dcControlsDiv.appendChild(createSeparator());
             dcControlsDiv.appendChild(createLink(
                 issue_url,
-                'Report an issue or ask a question', 
+                'Report an issue or ask a question',
                 '<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>',
                 ''
             ));
@@ -110,13 +110,13 @@ function addB24Buttons () {
             dcControlsDiv.appendChild(createSeparator());
             dcControlsDiv.appendChild(createLink(
                 '',
-                'Article is helpful', 
+                'Article is helpful',
                 '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="m4 7 2.94-5.041a1.932 1.932 0 0 1 3.56 1.378L10.25 4.5 9.93 6h2.94a2 2 0 0 1 1.927 2.535l-.879 3.162A4 4 0 0 1 9.596 14.6L4.5 14 4 7Zm5.771 6.11-3.863-.455-.379-5.3 2.708-4.64a.432.432 0 0 1 .796.308l-.571 2.663L8.073 7.5h4.796a.5.5 0 0 1 .482.634l-.879 3.162a2.5 2.5 0 0 1-2.7 1.814ZM2.748 7.447a.75.75 0 1 0-1.496.106l.5 7a.75.75 0 0 0 1.496-.106l-.5-7Z" clip-rule="evenodd"></path>',
                 'dc-feedback__control dc-feedback__control_view_regular'
             ));
             dcControlsDiv.appendChild(createLink(
                 '',
-                'Article isn't helpful', 
+                'Article isn't helpful',
                 '<path fill="currentColor" fill-rule="evenodd" d="m12 9-2.94 5.041a1.932 1.932 0 0 1-3.56-1.378l.25-1.163.321-1.5h-2.94a2 2 0 0 1-1.927-2.535l.879-3.162A4 4 0 0 1 6.404 1.4L11.5 2l.5 7ZM6.229 2.89l3.863.455.379 5.3-2.708 4.64a.432.432 0 0 1-.796-.308l.571-2.663.389-1.814H3.13a.5.5 0 0 1-.482-.634l.879-3.162a2.5 2.5 0 0 1 2.7-1.814Zm7.023 5.663a.75.75 0 1 0 1.496-.106l-.5-7a.75.75 0 0 0-1.496.106l.5 7Z" clip-rule="evenodd"></path>',
                 'dc-feedback__control dc-feedback__control_view_regular'
             ));
@@ -217,7 +217,7 @@ function addCopyIconsToCodeElements() {
     const codeElements = document.querySelectorAll('code');
 
     codeElements.forEach(codeElement => {
-        
+
         if (codeElement.closest('pre')) {
             return;
         }
@@ -228,8 +228,8 @@ function addCopyIconsToCodeElements() {
 
         const copyIconWrapper = document.createElement('div');
         const bodyBackgroundColor = window.getComputedStyle(document.body).backgroundColor;
-        copyIconWrapper.style.backgroundColor = bodyBackgroundColor; 
-        
+        copyIconWrapper.style.backgroundColor = bodyBackgroundColor;
+
         copyIconWrapper.style.position = 'absolute';
         copyIconWrapper.style.right = '0';
         copyIconWrapper.style.top = '50%';
@@ -269,7 +269,7 @@ function addCopyIconsToCodeElements() {
         wrapper.appendChild(codeElement.cloneNode(true));
         wrapper.appendChild(copyIconWrapper);
         wrapper.appendChild(tooltip);
-        codeElement.replaceWith(wrapper);   
+        codeElement.replaceWith(wrapper);
 
         wrapper.addEventListener('mouseenter', () => {
             copyIconWrapper.style.display = 'inline';
@@ -325,7 +325,7 @@ function processCodeBlocks() {
     if (container) {
 
         if (container.querySelector('.debug-button-container')) {
-            return; 
+            return;
         }
 
         const codeBlocks = container.querySelectorAll('code.hljs.js, code.hljs.javascript');
@@ -366,25 +366,25 @@ function processCodeBlocks() {
 
 function addAPILibraries() {
     if (isInsideIframe()) {
-        
+
         const script = document.createElement('script');
-        
+
         script.src = '//api.bitrix24.com/api/v1/';
         script.onload = function() {
             try {
-                
+
                 BX24.ready(() => {
 
                     if (!document.querySelector('script[src="https://cdn.jsdelivr.net/npm/eruda"]')) {
-                        
+
                         const erudaScript = document.createElement('script');
                         erudaScript.src = 'https://cdn.jsdelivr.net/npm/eruda';
                         erudaScript.onload = function() {
-                            
+
                             const erudaContainer = document.createElement('div');
                             erudaContainer.className = 'eruda-container';
                             document.body.appendChild(erudaContainer);
-                            
+
                             eruda.init({
                                 container: erudaContainer,
                                 tool: ['console', 'network'],
@@ -399,7 +399,7 @@ function addAPILibraries() {
                             const erudaElement = document.querySelector('#eruda');
                             if (erudaElement) {
                                 const shadowRoot = erudaElement.shadowRoot;
-                                
+
                                 if (shadowRoot) {
                                     const devToolsElement = shadowRoot.querySelector('.eruda-dev-tools');
                                     if (devToolsElement) {
@@ -411,16 +411,16 @@ function addAPILibraries() {
                                     const erudaContainer = shadowRoot.querySelector('.eruda-container');
 
                                     if (erudaContainer) {
-                                        
+
                                         const entryButton = erudaContainer.querySelector('.eruda-entry-btn');
 
                                         if (entryButton) {
-                                            
+
                                             entryButton.style.position = 'absolute';
-                                            entryButton.style.bottom = '10px'; 
-                                            entryButton.style.right = '10px'; 
-                                            entryButton.style.top = ''; 
-                                            entryButton.style.left = ''; 
+                                            entryButton.style.bottom = '10px';
+                                            entryButton.style.right = '10px';
+                                            entryButton.style.top = '';
+                                            entryButton.style.left = '';
                                         } else {
                                             console.error('Element with class eruda-entry-btn not found.');
                                         }
@@ -443,7 +443,7 @@ function addAPILibraries() {
                         };
 
                         document.head.appendChild(erudaScript);
-    
+
                         processCodeBlocks();
                     }
 
@@ -461,7 +461,7 @@ function addAPILibraries() {
     }
 }
 
-function initB24items() {   
+function initB24items() {
     if (dynamicObserver) {
         dynamicObserver.disconnect();
     }
@@ -488,7 +488,7 @@ function createDynamicObserver() {
 const mainObserver = new MutationObserver(function(mutationsList, observer) {
     for (let mutation of mutationsList) {
         if (mutation.type === 'childList' && document.readyState === 'complete') {
-            mainObserver.disconnect(); 
+            mainObserver.disconnect();
 
             initB24items();
 
@@ -530,8 +530,8 @@ window.onload = function() {
             };
             m[i].l=1*new Date();
             for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) { 
-                    return; 
+                if (document.scripts[j].src === r) {
+                    return;
                 }
             }
             k = e.createElement(t),
@@ -540,7 +540,7 @@ window.onload = function() {
             k.src = r;
             a.parentNode.insertBefore(k,a);
         })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    
+
         ym(98117665, "init", {
             clickmap: true,
             trackLinks: true,
