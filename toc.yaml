@@ -12,11 +12,11 @@ navigation:
     leftItems:
       - text: 'С чего начать'
         type: 'link'
-        url: '/pages/get-started/ustanovka-okruzheniya.html'
+        url: '/pages/get-started/install-env.html'
 
       - text: 'Основы фреймворка'
         type: 'link'
-        url: '/pages/framework/arkhitektura.html'
+        url: '/pages/framework/architecture.html'
 
       #- text: 'Основы CMS'
       #  type: 'link'
@@ -36,135 +36,135 @@ items:
   - name: С чего начать
     items:
       - name: Установка окружения
-        href: /pages/get-started/ustanovka-okruzheniya.md
+        href: /pages/get-started/install-env.md
       - name: Установка дистрибутива
-        href: /pages/get-started/ustanovka-sayta.md
+        href: /pages/get-started/install-distr.md
       - name: Установка решения
-        href: /pages/get-started/ustanovka-resheniya.md
+        href: /pages/get-started/install-solution.md
       - name: Структура директорий
-        href: /pages/get-started/struktura-direktoriy.md
+        href: /pages/get-started/directory-structure.md
       - name: Создание страницы
-        href: /pages/get-started/sozdanie-stranicy.md
+        href: /pages/get-started/create-page.md
       - name: Создание компонента
-        href: /pages/get-started/sozdanie-komponenta.md
+        href: /pages/get-started/create-component.md
       - name: Создание модуля
-        href: /pages/get-started/sozdanie-modulya.md
+        href: /pages/get-started/create-module.md
       - name: Создание контроллера
-        href: /pages/get-started/sozdanie-kontrollera.md
+        href: /pages/get-started/create-controller.md
       - name: Что дальше
-        href: /pages/get-started/chto-dalshe.md
+        href: /pages/get-started/next-steps.md
 
   - name: Основы фреймворка
     items:
       - name: Архитектура
-        href: /pages/framework/arkhitektura.md
+        href: /pages/framework/architecture.md
       - name: Автозагрузка классов
-        href: /pages/framework/avtoloading.md
+        href: /pages/framework/autoloading.md
       - name: Жизненный цикл запроса
-        href: /pages/framework/zhiznennyy-cikl-zaprosa.md
+        href: /pages/framework/request-lifecycle.md
       - name: Роутинг
         href: /pages/framework/routing.md
       - name: Контроллеры
-        href: /pages/framework/kontrollery.md
+        href: /pages/framework/controllers.md
       - name: Пре- и постфильтры
-        href: /pages/framework/pre-i-post-filtry.md
+        href: /pages/framework/pre-post-filters.md
       - name: Request и Response
-        href: /pages/framework/request-response-2.md
+        href: /pages/framework/request-response.md
       - name: Service Locator
-        href: /pages/framework/di-i-servicelocator.md
+        href: /pages/framework/service-locator.md
       - name: Сессии
-        href: /pages/framework/sessii-2.md
+        href: /pages/framework/sessions.md
       - name: Cookie-файлы
-        href: /pages/framework/kuki.md
+        href: /pages/framework/cookies.md
       - name: Валидация
-        href: /pages/framework/validaciya.md
+        href: /pages/framework/validation.md
       - name: Результат работы и ошибки
-        href: /pages/framework/rezultat-raboty-i-oshibki.md
+        href: /pages/framework/results-and-errors.md
       - name: Компоненты
-        href: /pages/framework/komponenty.md
+        href: /pages/framework/components.md
       - name: Расширения
-        href: /pages/framework/rasshireniya.md
+        href: /pages/framework/extensions.md
       - name: Объект приложения и контекст
-        href: /pages/framework/obekt-prilozheniya.md
+        href: /pages/framework/app-and-context.md
       - name: Агенты и фоновые задачи
-        href: /pages/framework/agenty-i-fonovye-zadachi.md
+        href: /pages/framework/background-jobs.md
       - name: События
-        href: /pages/framework/sobytiya.md
+        href: /pages/framework/events.md
 
   - name: База данных
     items:
       - name: Конфигурация
-        href: /pages/baza-dannykh-2/konfiguraciya.md
+        href: /pages/database/configuration.md
       - name: Выполнение запросов
-        href: /pages/baza-dannykh-2/obekt-podklyucheniya-connection.md
+        href: /pages/database/query-execution.md
       - name: Формирование запросов
-        href: /pages/baza-dannykh-2/sqlhelper.md
+        href: /pages/database/sql-helper-and-expression.md
       - name: Построитель запросов
-        href: /pages/baza-dannykh-2/postroitel-zaprosov.md
+        href: /pages/database/query-builder.md
       - name: Отладка запросов
-        href: /pages/baza-dannykh-2/otladka-zaprosov.md
+        href: /pages/database/sql-tracker.md
       - name: Транзакции
-        href: /pages/baza-dannykh-2/tranzakcii.md
+        href: /pages/database/transactions.md
       - name: NoSQL
-        href: /pages/baza-dannykh-2/nosql.md
+        href: /pages/database/nosql.md
       - name: HandlerSocket
-        href: /pages/baza-dannykh-2/handlersocket.md
+        href: /pages/database/handlersocket.md
 
   - name: ORM
     items:
       - name: Концепция ORM
-        href: /pages/orm/koncepciya.md
+        href: /pages/orm/orm-concepts.md
       - name: Операции с сущностями
-        href: /pages/orm/suschnosti.md
+        href: /pages/orm/entity-operations.md
       - name: Объекты
-        href: /pages/orm/obekty.md
+        href: /pages/orm/objects.md
       - name: Коллекции
-        href: /pages/orm/kollekcii.md
+        href: /pages/orm/collections.md
       - name: Отношения между сущностями
-        href: /pages/orm/otnosheniya.md
+        href: /pages/orm/entity-relations.md
       - name: Выборка данных
-        href: /pages/orm/vyborka.md
+        href: /pages/orm/querying-data.md
       - name: Построитель запросов
-        href: /pages/orm/postroitel-zaprosov.md
+        href: /pages/orm/query-builder.md
 
   - name: Безопасность
     items:
       - name: Права доступа
-        href: /pages/bezopasnost/prava-polzovateley.md
+        href: /pages/security/access-control.md
       - name: XSS
-        href: /pages/bezopasnost/xss.md
+        href: /pages/security/xss.md
       - name: CSRF и SSRF
-        href: /pages/bezopasnost/csrf.md
+        href: /pages/security/csrf-ssrf.md
       - name: SQL-инъекции
-        href: /pages/bezopasnost/sql-injection.md
+        href: /pages/security/sql-injection.md
       - name: Защищенные cookie
-        href: /pages/bezopasnost/zaschischennye-kuki.md
+        href: /pages/security/secure-cookies.md
       - name: JWT
-        href: /pages/bezopasnost/jwt.md
+        href: /pages/security/jwt.md
       - name: Санитайзер
-        href: /pages/bezopasnost/sanitayzer.md
+        href: /pages/security/sanitizer.md
       - name: Firewall
-        href: /pages/bezopasnost/firewall1.md
+        href: /pages/security/firewall.md
       - name: Защита от фреймов
-        href: /pages/bezopasnost/zaschita-ot-freymov-2.md
+        href: /pages/security/frame-protection.md
       - name: CAPTCHA
-        href: /pages/bezopasnost/kapcha.md
+        href: /pages/security/captcha.md
       - name: Проактивная защита
-        href: /pages/bezopasnost/proaktivnaya-zaschita.md
+        href: /pages/security/proactive-security.md
       - name: Двухэтапная авторизация
-        href: /pages/bezopasnost/dvukhetapnaya-avtorizaciya.md
+        href: /pages/security/two-factor-auth.md
 
   - name: Производительность
     items:
       - name: Кеширование
-        href: /pages/proizvoditelnost/keshirovanie.md
+        href: /pages/performance/caching.md
       - name: Композитный сайт
-        href: /pages/proizvoditelnost/kompozitnyy-sayt.md
+        href: /pages/performance/composite-site.md
       - name: Шардинг
-        href: /pages/proizvoditelnost/shardirovanie.md
+        href: /pages/performance/sharding.md
       - name: Репликация и кластер
-        href: /pages/proizvoditelnost/replikaciya-i-klaster.md
+        href: /pages/performance/replication-and-clustering.md
       - name: Сессия в разделенном режиме
-        href: /pages/proizvoditelnost/sessii.md
+        href: /pages/performance/hot-and-cold-session.md
       - name: Как оптимизировать запросы к базе данных
-        href: /pages/proizvoditelnost/optimizaciya-zaprosov-k-bd-2.md
+        href: /pages/performance/query-optimization.md

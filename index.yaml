@@ -5,7 +5,7 @@ blocks:
     title: 'Bitrix Framework'
     resetPaddings: false
     verticalOffset: 'l'
-    description: 'Фреймворк для работы с "1С-Битрикс:Управление сайтом" и "Битрикс24"'
+    description: 'Фреймворк для работы с «1С-Битрикс:Управление сайтом» и «Битрикс24»'
     background:
       light:
         image:
@@ -25,8 +25,8 @@ blocks:
       - text: 'Начать'
         theme: 'outlined'
         size: 'promo'
-        url: '/pages/get-started/ustanovka-okruzheniya.html'
+        url: '/pages/get-started/install-env.html'
       - text: 'GitHub'
         theme: 'outlined'
         size: 'promo'
-        url: 'https://github.com/bitrix24/framework-docs'
+        url: 'https://github.com/bitrix-tools/framework-docs'
