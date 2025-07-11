@@ -16,8 +16,8 @@ blocks:
         fullWidth: false
       dark:
         image:
-          mobile: '_images/img_restapi_main.png'
-          desktop: '_images/img_restapi_main.png'
+          mobile: '_images/cover.png'
+          desktop: '_images/cover.png'
           disableCompress: true
         color: '#E8E4FF'
         fullWidth: false
@@ -30,3 +30,150 @@ blocks:
         theme: 'outlined'
         size: 'promo'
         url: 'https://github.com/bitrix-tools/framework-docs'
+
+  - type: 'card-layout-block'
+    title: Продукты
+    description: Текст про то что на базе фреймворка много чего делается
+    #colSizes:
+    #  sm: 1
+    #  md: 2
+    #  lg: 3
+    children:
+      - image: '/page-constructor/story-assets/img_8-12_light.png'
+        text: 'We are all storytellers. Stories are a powerful way to communicate ideas and share information. The right story can lead to a better understanding of a situation  make us laugh  or even inspire us to do something in the future.'
+        title: 'Tell a story and build a narrative'
+        type: 'image-card'
+
+      - image: '/page-constructor/story-assets/img_8-12_light.png'
+        text: 'We are all storytellers. Stories are a powerful way to communicate ideas and share information. The right story can lead to a better understanding of a situation, make us laugh, or even inspire us to do something in the future.'
+        title: 'Tell a story and build a narrative'
+        type: 'image-card'
+
+      - image: '/page-constructor/story-assets/img_8-12_light.png'
+        text: 'We are all storytellers. Stories are a powerful way to communicate ideas and share information. The right story can lead to a better understanding of a situation, make us laugh, or even inspire us to do something in the future.'
+        title: 'Tell a story and build a narrative'
+        type: 'image-card'
+
+  - type: 'tabs-block'
+    title: Преимущества
+    description: пока что какой-то жиденький блок получается, если не получиться выделить хотя бы 5 преимуществ блок либо убрать, либо сразу отправить в возможности
+    colSizes:
+      sm: 1
+      md: 2
+      lg: 3
+    items:
+      - tabName: CMS из коробки
+        text: Текст про то что мы насколько крутой фреймворк, что сразу же с ним получаем CMS :)
+
+      - tabName: PSR
+        text: описать какие стандарты мы поддерживаем и что это хорошо и привычно
+
+      - tabName: Безопасность
+        text: Текст про встроенные инструменты защиты, WWL и наш анализ решений партнерский для срочных апдейтов (но это преимущество CMS)
+
+      - tabName: Модульность
+        text: Текст про то, что БУС это модульная система, что очень легко позволяет расширять функционал. Добавить ссылки на стандартные модули и на маркетплейсы БУСа и Б24
+
+  - type: 'tabs-block'
+    title: Фреймворк в котором есть всё что нужно
+    description: Кратенький текст на тему насколько у нас всё хорошо продумано и как удобно работать с фреймворком
+    items:
+      - tabName: Контроллеры
+        text: |
+          Привычные и удобные контроллеры с широкими возможностями:
+          ```php
+          Тут пример кода с контроллером, валидаторами атрибутов, инъекцией сервиса и рендерингом экстеншена
+          ```
+
+      - tabName: Роутинг
+        text: |
+          Простая и понятная настройка:
+          ```php
+          Тут пример кода, с группировкой и переменными в роутах
+          ```
+
+          Именованные роуты и параметры для легкой генерации:
+          ```php
+          Тут пример кода, с генерацией роута из имени
+          ```
+
+      - tabName: ActionFilters
+        text: |
+          Удобная и гибкая работа с запросами на уровне контроллеров:
+          ```php
+          Тут пример кода, пре и пост фильтров
+          ```
+
+      - tabName: ORM
+        text: |
+          Мощная работы с объектами:
+          ```php
+          Тут пример кода, работы с объектом
+          ```
+
+          Поддержка связей:
+          ```php
+          Тут пример кода, со связями внутри объекта
+          ```
+
+          Генерация напрямую из БД: ```php
+          Тут вызов CLI команды для генерации
+          ```
+
+      - tabName: Рассылки и SMS
+        text: Какой-то текст
+
+      - tabName: Файлы и S3
+        text: Какой-то текст
+
+      - tabName: Очереди
+        text: Какой-то текст
+
+      - tabName: Агенты
+        text: Какой-то текст
+
+      - tabName: События
+        text: Какой-то текст
+
+  - type: 'tabs-block'
+    title: Безопасность превыше всего
+    description: |
+      Битрикс очень популярная система в рамках СНГ сегмента, приоритетом нашей компании всегда была и будет безопасность проектов.
+      Для этого мы реализовали весь необходимый функционал для реализации безопасных проектов
+    items:
+      - tabName: Работа с пользователями
+        text: Какой-то текст
+
+      - tabName: Группы пользователей и политики безопасности
+        text: |
+          Простая и надёжная система работы с группами и правами:
+          ```php
+          Тут пример работы с группами
+          ```
+          Гибкие политики '
+
+      - tabName: Ролевая система прав доступа
+        text: |
+          Тут про AccessController, про подход ABAC и куски кода
+
+  - type: 'content-layout-block'
+    textContent:
+      title: Легко начать!
+      text: |
+        Поднять окружение и начать разработку очень просто, достаточно выполнить 3 простых шага:
+
+        1. Скачиваем тестовое окружение для Docker:
+        ```bash
+        git clone https://github.com/bitrix-tools/env-docker.git my-project
+        cd my-project
+        ```
+
+        2. Запускаем Docker Compose:
+        ```php
+        docker compose up
+        ```
+
+        3. Переходим в браузер по адресу [localhost:8588](http://localhost:8588) и любуемся стартовой страницей :)
+
+        Далее вам необходимо выполнить установку нужной для реализации вашего проекта редакцию.
+        Подробнее об этом можете узнать [в разделе "Установка продукта"](/pages/get-started/install-distr.html).
