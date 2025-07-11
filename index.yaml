@@ -25,7 +25,7 @@ blocks:
       - text: 'Начать'
         theme: 'outlined'
         size: 'promo'
-        url: '/pages/get-started/install-env.html'
+        url: 'https://docs.1c-bitrix.ru/pages/get-started/install-env.html'
       - text: 'GitHub'
         theme: 'outlined'
         size: 'promo'
@@ -34,24 +34,17 @@ blocks:
   - type: 'card-layout-block'
     title: Продукты
     description: Текст про то что на базе фреймворка много чего делается
-    #colSizes:
-    #  sm: 1
-    #  md: 2
-    #  lg: 3
     children:
-      - image: '/page-constructor/story-assets/img_8-12_light.png'
-        text: 'We are all storytellers. Stories are a powerful way to communicate ideas and share information. The right story can lead to a better understanding of a situation  make us laugh  or even inspire us to do something in the future.'
-        title: 'Tell a story and build a narrative'
+      - text: 'CMS для реализации самых разнообразных проектов'
+        title: '1C-Битрикс: Управление сайтом'
         type: 'image-card'
 
-      - image: '/page-constructor/story-assets/img_8-12_light.png'
-        text: 'We are all storytellers. Stories are a powerful way to communicate ideas and share information. The right story can lead to a better understanding of a situation, make us laugh, or even inspire us to do something in the future.'
-        title: 'Tell a story and build a narrative'
+      - text: 'Корпоративный портал с широкой функциональностью'
+        title: 'Битрикс24'
         type: 'image-card'
 
-      - image: '/page-constructor/story-assets/img_8-12_light.png'
-        text: 'We are all storytellers. Stories are a powerful way to communicate ideas and share information. The right story can lead to a better understanding of a situation, make us laugh, or even inspire us to do something in the future.'
-        title: 'Tell a story and build a narrative'
+      - text: 'Виртуальная машина для развертывания БУС-а и Б24'
+        title: 'BitrixVM'
         type: 'image-card'
 
   - type: 'tabs-block'
