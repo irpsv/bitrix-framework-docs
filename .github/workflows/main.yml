@@ -1,13 +1,8 @@
 name: Deploy to server
 
 on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to deploy'
-        required: true
-        default: 'main'
-        type: string
+  push:
+    branches: [ main ]
     
 jobs:
   deploy:
