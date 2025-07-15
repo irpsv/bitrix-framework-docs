@@ -5,7 +5,7 @@ blocks:
     title: 'Bitrix Framework'
     resetPaddings: false
     verticalOffset: 'l'
-    description: 'Фреймворк для работы с «1С-Битрикс:Управление сайтом» и «Битрикс24»'
+    description: 'Фреймворк для работы с «1С-Битрикс: Управление сайтом» и Битрикс24'
     background:
       light:
         image:
@@ -33,19 +33,50 @@ blocks:
 
   - type: 'card-layout-block'
     title: Продукты
-    description: Текст про то что на базе фреймворка много чего делается
+    description: | 
+      Bitrix Framework — PHP-платформа для разработки веб-приложений. Она служит основой для двух продуктов: «1C-Битрикс: Управление сайтом» и Битрикс24.
     children:
-      - text: 'CMS для реализации самых разнообразных проектов'
-        title: '1C-Битрикс: Управление сайтом'
+      - text: '«1C-Битрикс: Управление сайтом» — профессиональная CMS для разработки сайтов и интернет-магазинов. Предоставляет готовые модули для управления контентом, SEO и маркетингом, сохраняя возможность глубокой кастомизации.'
+        title: 'Управление сайтом'
         type: 'image-card'
-
-      - text: 'Корпоративный портал с широкой функциональностью'
+        media:
+          image: '_images/img_restapi_banner_s_01.png'
+          disableCompress: true
+        links:
+          - text: 'Установить продукт'
+            url: './pages/get-started/install-solution.html'
+            theme: 'normal'
+            arrow: true
+            color: #54BA7E
+        buttons:
+          - text: 'Попробовать'
+            theme: 'outlined'
+            size: 'promo'
+            url: './pages/get-started/install-solution.html'
+      - text: 'Помогает управлять бизнесом и организовывать совместную работу: выполнять задачи, взаимодействовать с клиентами в CRM, общаться с сотрудниками в чатах и автоматизировать рабочие процессы.'
         title: 'Битрикс24'
         type: 'image-card'
-
-      - text: 'Виртуальная машина для развертывания БУС-а и Б24'
+        media:
+          image: '_images/img_restapi_banner_s_02.png'
+          disableCompress: true
+        links:
+          - text: 'Установить продукт'
+            url: './pages/get-started/install-solution.html'
+            theme: 'normal'
+            arrow: true
+            color: #54BA7E
+      - text: 'Виртуальная машина для быстрого запуска проектов на 1С-Битрикс. Готова к работе через несколько минут после развертывания. Поддерживает демо-версии продуктов и перенос существующих проектов.'
         title: 'BitrixVM'
         type: 'image-card'
+        media:
+          image: '_images/img_restapi_banner_s_03.png'
+          disableCompress: true
+        links:
+          - text: 'Установить окружение'
+            url: './pages/get-started/install-env.html'
+            theme: 'normal'
+            arrow: true
+            color: #54BA7E
 
   - type: 'tabs-block'
     title: Преимущества
@@ -56,16 +87,17 @@ blocks:
       lg: 3
     items:
       - tabName: CMS из коробки
-        text: Текст про то что мы насколько крутой фреймворк, что сразу же с ним получаем CMS :)
+        text: Bitrix Framework включает готовую CMS-платформу с полным набором функций для управления контентом. Вы получаете не просто фреймворк, а сразу работающую систему с визуальным редактором, управлением пользователями и SEO-инструментами.
 
       - tabName: PSR
-        text: описать какие стандарты мы поддерживаем и что это хорошо и привычно
+        text: Фреймворк поддерживает ключевые стандарты PSR (PSR-1, PSR-4, PSR-7), что обеспечивает привычный рабочий процесс для разработчиков. Совместимость с Composer и современными PHP-библиотеками упрощает интеграцию сторонних решений.
 
       - tabName: Безопасность
-        text: Текст про встроенные инструменты защиты, WWL и наш анализ решений партнерский для срочных апдейтов (но это преимущество CMS)
+        text: | 
+        Встроенные механизмы защиты: WWL (White Widget List), CSRF-токены, защита от XSS и SQL-инъекций. Система оперативных обновлений безопасности и партнерский аудит кода обеспечивают дополнительную защиту.
 
       - tabName: Модульность
-        text: Текст про то, что БУС это модульная система, что очень легко позволяет расширять функционал. Добавить ссылки на стандартные модули и на маркетплейсы БУСа и Б24
+        text: Гибкая модульная архитектура позволяет расширять функционал без изменения ядра. Доступны cтандартные модули, маркетплейс решений и возможность создания собственных модулей
 
   - type: 'tabs-block'
     title: Фреймворк в котором есть всё что нужно
@@ -73,48 +105,137 @@ blocks:
     items:
       - tabName: Контроллеры
         text: |
-          Привычные и удобные контроллеры с широкими возможностями:
+          Контроллеры с автоматической валидацией и DI-инъекцией.
+          
           ```php
-          Тут пример кода с контроллером, валидаторами атрибутов, инъекцией сервиса и рендерингом экстеншена
+          use Bitrix\Main\Engine\Controller;
+          use Bitrix\Main\Engine\ActionFilter;
+
+          class OrderController extends Controller
+          {
+              // Автоматическая валидация параметров
+              public function configureActions()
+              {
+                  return [
+                      'create' => [
+                          'prefilters' => [
+                              new ActionFilter\Authentication(), // Только для авторизованных
+                              new ActionFilter\HttpMethod(['POST']) // Разрешён только POST
+                          ],
+                          'params' => [
+                              'productId' => [
+                                  'type' => 'integer', // Автоматическая проверка типа
+                                  'required' => true
+                              ]
+                          ]
+                      ]
+                  ];
+              }
+
+              // Сервис автоматически внедряется
+              public function createAction(int $productId, OrderService $service)
+              {
+                  $order = $service->createFromProduct($productId);
+                  return $this->renderJson($order);
+              }
+          }
           ```
 
       - tabName: Роутинг
         text: |
-          Простая и понятная настройка:
+          Гибкая система маршрутизации с именованными маршрутами.
+          
           ```php
-          Тут пример кода, с группировкой и переменными в роутах
+          // Регистрация маршрута с параметром
+          \Bitrix\Main\Routing\Route::register('/news/{id}', function($id) {
+              $news = NewsTable::getById($id)->fetch();
+              return new \Bitrix\Main\Engine\Response\Html($news['TEXT']);
+          })->where('id', '\d+'); // Ограничение по формату
+
+          // Группировка маршрутов API
+          \Bitrix\Main\Routing\Route::group('/api/v1', function() {
+              \Bitrix\Main\Routing\Route::resource('products', ProductController::class);
+          });
           ```
 
-          Именованные роуты и параметры для легкой генерации:
+          Генерация URL по имени маршрута:
           ```php
-          Тут пример кода, с генерацией роута из имени
+          $url = \Bitrix\Main\Routing\Router::getInstance()->generate('products.show', ['id' => 42]);
+          // Вернёт: '/api/v1/products/42'
           ```
 
       - tabName: ActionFilters
         text: |
-          Удобная и гибкая работа с запросами на уровне контроллеров:
+          Фильтры для обработки входящих и исходящих данных:
+          
           ```php
-          Тут пример кода, пре и пост фильтров
+          class ApiController extends Controller
+          {
+              public function configureActions()
+              {
+                  return [
+                      'payment' => [
+                          'prefilters' => [
+                              new ActionFilter\Csrf(), // Защита от CSRF
+                              new ActionFilter\ContentType(['application/json']), // Проверка заголовка
+                          ],
+                          'postfilters' => [
+                              new ActionFilter\JsonRenderer(), // Автоматический JSON
+                              new ActionFilter\Log('API Payment') // Логирование
+                          ]
+                      ]
+                  ];
+              }
+          }
           ```
+
+          Фильтры можно создавать как глобальные для всех действий.
 
       - tabName: ORM
         text: |
-          Мощная работы с объектами:
+          Полноценная ORM с поддержкой связей и событий:
+
           ```php
-          Тут пример кода, работы с объектом
+          // Создание объекта
+          $user = UserTable::createObject();
+          $user->setName('Иван');
+          $user->setEmail('ivan@example.com');
+          $user->save(); // Автоматическая валидация
+
+          // Работа со связями
+          $order = OrderTable::getById(1)->fetchObject();
+          $user = $order->getUser(); // Автоматическая загрузка связи
+          $items = $order->getItems(); // Связь один-ко-многим
           ```
 
-          Поддержка связей:
+          Генерация классов по структуре БД: 
+          
           ```php
-          Тут пример кода, со связями внутри объекта
-          ```
-
-          Генерация напрямую из БД: ```php
-          Тут вызов CLI команды для генерации
+          php vendor/bin/bitrix entity:generate --module=main --table=b_user
           ```
 
       - tabName: Рассылки и SMS
-        text: Какой-то текст
+        text: | 
+          Унифицированный API для коммуникаций
+
+          ```php
+          // Email с шаблоном
+          \Bitrix\Main\Mail\Event::send([
+              'EVENT_NAME' => 'WELCOME_EMAIL',
+              'LID' => SITE_ID,
+              'FIELDS' => [
+                  'NAME' => $userName,
+                  'CONFIRM_LINK' => $confirmUrl
+              ],
+          ]);
+
+          // SMS через шлюз
+          \Bitrix\Main\Sms\Sender::send([
+              'to' => '+79001234567',
+              'text' => 'Ваш код: 1234',
+              'provider' => 'sms.ru'
+          ]);
+          ```
 
       - tabName: Файлы и S3
         text: Какой-то текст
