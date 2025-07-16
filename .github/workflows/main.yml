@@ -21,6 +21,7 @@ jobs:
         port: 22
         script: |
           cd /home/diplodoc/src
+          git reset --hard
           git pull
           cd /home/diplodoc
           docker compose down
