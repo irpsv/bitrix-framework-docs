@@ -25,7 +25,7 @@ blocks:
       - text: 'Начать'
         theme: 'outlined'
         size: 'promo'
-        url: 'https://docs.1c-bitrix.ru/pages/get-started/install-env.html'
+        url: 'pages/get-started/install-env.html'
       - text: 'GitHub'
         theme: 'outlined'
         size: 'promo'
@@ -44,7 +44,7 @@ blocks:
           disableCompress: true
         links:
           - text: 'Установить продукт'
-            url: './pages/get-started/install-solution.html'
+            url: 'pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
             color: #54BA7E
@@ -52,7 +52,7 @@ blocks:
           - text: 'Попробовать'
             theme: 'outlined'
             size: 'promo'
-            url: './pages/get-started/install-solution.html'
+            url: 'pages/get-started/install-solution.html'
       - text: 'Помогает управлять бизнесом и организовывать совместную работу: выполнять задачи, взаимодействовать с клиентами в CRM, общаться с сотрудниками в чатах и автоматизировать рабочие процессы.'
         title: 'Битрикс24'
         type: 'image-card'
@@ -73,7 +73,7 @@ blocks:
           disableCompress: true
         links:
           - text: 'Установить окружение'
-            url: './pages/get-started/install-env.html'
+            url: 'pages/get-started/install-env.html'
             theme: 'normal'
             arrow: true
             color: #54BA7E
