@@ -130,8 +130,8 @@ blocks:
         text: Проекты работают под высокой нагрузкой благодаря кешированию и кластеризации. Готовые инструменты для распределенных систем и облачных хранилищ.
 
   - type: 'tabs-block'
-    title: Фреймворк в котором есть всё что нужно
-    description: Кратенький текст на тему насколько у нас всё хорошо продумано и как удобно работать с фреймворком
+    title: Полный стек технологий для разработки
+    description: Получайте готовые решения для всех слоёв приложения — от работы с базой до фоновых задач. Пишите меньше кода, запускайте проекты быстрее.
     items:
       - tabName: Контроллеры
         text: |
@@ -306,10 +306,23 @@ blocks:
           ```
 
       - tabName: Файлы и S3
-        text: Какой-то текст
+        text: |
+          Храните файлы в облаке:
+
+          ```php
+          $file = new \Bitrix\Main\IO\File("/path/to/file");
+          $file->copyTo("s3://bucket-name/path/");
+          ```
 
       - tabName: Очереди
-        text: Какой-то текст
+        text: |
+          Обрабатывайте задачи в фоне:
+
+          ```php
+          \Bitrix\Main\Application::getInstance()->getQueue()->push(
+              new \Bitrix\Main\Queue\Message(['task_id' => 42])
+          );
+          ```
 
       - tabName: Агенты
         text: |
@@ -333,11 +346,12 @@ blocks:
 
       - tabName: События
         text: |
-          События уведомляют части приложения об изменениях, что позволяет системе реагировать на них.
+          Реагируйте на системные изменения:
           
           ```php
-          $event = new Bitrix\Main\Event("main", "OnPageStart");
-          $event->send();
+          AddEventHandler("main", "OnAfterUserAdd", function($userId) {
+              // Отправка welcome-email
+          });
           ``` 
 
   - type: 'tabs-block'
