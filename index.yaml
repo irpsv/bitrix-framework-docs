@@ -25,7 +25,7 @@ blocks:
       - text: 'Начать'
         theme: 'outlined'
         size: 'promo'
-        url: 'https://docs.1c-bitrix.ru/pages/get-started/install-env.html'
+        url: 'pages/get-started/install-env.html'
       - text: 'GitHub'
         theme: 'outlined'
         size: 'promo'
@@ -45,7 +45,7 @@ blocks:
         }
         links:
           - text: 'Установить продукт'
-            url: './pages/get-started/install-solution.html'
+            url: 'pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
             color: #54BA7E
@@ -59,7 +59,7 @@ blocks:
         }
         links:
           - text: 'Установить продукт'
-            url: './pages/get-started/install-solution.html'
+            url: 'pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
             color: #54BA7E
@@ -72,7 +72,7 @@ blocks:
         }
         links:
           - text: 'Установить окружение'
-            url: './pages/get-started/install-env.html'
+            url: 'pages/get-started/install-env.html'
             theme: 'normal'
             arrow: true
             color: #54BA7E
@@ -405,7 +405,7 @@ blocks:
 
         Подробнее про установку:
         - [Документация на GitHub](https://github.com/bitrix-tools/env-docker)
-        - [Инструкция по установке продуктов Битрикс](./pages/get-started/install-solution.html)
+        - [Инструкция по установке продуктов Битрикс](pages/get-started/install-solution.html)
         
 
         
