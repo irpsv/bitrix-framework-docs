@@ -34,43 +34,42 @@ blocks:
   - type: 'card-layout-block'
     title: Продукты
     description: | 
-      Bitrix Framework — PHP-платформа для разработки веб-приложений. Она служит основой для двух продуктов: «1C-Битрикс: Управление сайтом» и Битрикс24.
+      Bitrix Framework — основа для бизнес-решений на PHP. На ней работают «1C-Битрикс: Управление сайтом» и Битрикс24 — не нужно писать систему с нуля. Виртуальная машина BitrixVM ускоряет запуск продуктов.
     children:
-      - text: '«1C-Битрикс: Управление сайтом» — профессиональная CMS для разработки сайтов и интернет-магазинов. Предоставляет готовые модули для управления контентом, SEO и маркетингом, сохраняя возможность глубокой кастомизации.'
-        title: 'Управление сайтом'
+      - text: 'CMS для интернет-магазинов и корпоративных сайтов. Подходит для крупных проектов: многопоточная обработка заказов, API для интеграций и встроенное кеширование.'
+        title: Управление сайтом
         type: 'image-card'
-        media:
-          image: '_images/img_restapi_banner_s_01.png'
-          disableCompress: true
+        image: {
+           dark : "_images/img_restapi_banner_s_01.png",
+           light : "_images/img_restapi_banner_s_01.png"
+        }
         links:
           - text: 'Установить продукт'
             url: './pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
             color: #54BA7E
-        buttons:
-          - text: 'Попробовать'
-            theme: 'outlined'
-            size: 'promo'
-            url: './pages/get-started/install-solution.html'
-      - text: 'Помогает управлять бизнесом и организовывать совместную работу: выполнять задачи, взаимодействовать с клиентами в CRM, общаться с сотрудниками в чатах и автоматизировать рабочие процессы.'
+      - text: 'Платформа для автоматизации бизнеса и командной работы. Включает CRM, задачи, документы и видеозвонки в одном месте.'
         title: 'Битрикс24'
         type: 'image-card'
         media:
-          image: '_images/img_restapi_banner_s_02.png'
-          disableCompress: true
+        image: {
+           dark : "_images/img_restapi_banner_s_02.png",
+           light : "_images/img_restapi_banner_s_02.png"
+        }
         links:
           - text: 'Установить продукт'
             url: './pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
             color: #54BA7E
-      - text: 'Виртуальная машина для быстрого запуска проектов на 1С-Битрикс. Готова к работе через несколько минут после развертывания. Поддерживает демо-версии продуктов и перенос существующих проектов.'
+      - text: 'Готовая виртуальная машина для быстрого развертывания проектов. Упрощает настройку сервера и снижает риски ошибок при установке.'
         title: 'BitrixVM'
         type: 'image-card'
-        media:
-          image: '_images/img_restapi_banner_s_03.png'
-          disableCompress: true
+        image: {
+           dark : "_images/img_restapi_banner_s_03.png",
+           light : "_images/img_restapi_banner_s_03.png"
+        }
         links:
           - text: 'Установить окружение'
             url: './pages/get-started/install-env.html'
@@ -80,24 +79,55 @@ blocks:
 
   - type: 'tabs-block'
     title: Преимущества
-    description: пока что какой-то жиденький блок получается, если не получиться выделить хотя бы 5 преимуществ блок либо убрать, либо сразу отправить в возможности
+    description: Используйте проверенные инструменты для разработки, безопасности и масштабирования.
     colSizes:
       sm: 1
       md: 2
       lg: 3
     items:
       - tabName: CMS из коробки
-        text: Bitrix Framework включает готовую CMS-платформу с полным набором функций для управления контентом. Вы получаете не просто фреймворк, а сразу работающую систему с визуальным редактором, управлением пользователями и SEO-инструментами.
+        text: Bitrix Framework включает готовую CMS. Редактируйте контент, настраивайте SEO и управляйте пользователями без разработки. Система подходит для магазинов и корпоративных сайтов.
+        links:
+          - text: 'О продукте на официальном сайте 1С-Битрикс'
+            url: 'https://www.1c-bitrix.ru/products/cms/'
+            theme: 'normal'
+            arrow: true
+            color: #54BA7E
 
-      - tabName: PSR
-        text: Фреймворк поддерживает ключевые стандарты PSR (PSR-1, PSR-4, PSR-7), что обеспечивает привычный рабочий процесс для разработчиков. Совместимость с Composer и современными PHP-библиотеками упрощает интеграцию сторонних решений.
+      - tabName: Маркетплейс решений
+        text: Более 5000 готовых решений для типовых задач. Внедряйте функционал в 1 клик — от платежных систем до интеграции с соцсетями. Все решения проверены на безопасность.
+        links:
+          - text: 'Маркетплейс'
+            url: 'https://marketplace.1c-bitrix.ru/'
+            theme: 'normal'
+            arrow: true
+            color: #54BA7E
+          - text: 'Маркет Битрикс24'
+            url: 'https://www.bitrix24.ru/apps/'
+            theme: 'normal'
+            arrow: true
+            color: #54BA7E
+
+      - tabName: Стандарты PSR
+        text: Работайте по PSR-1, PSR-4 и PSR-7. Подключайте библиотеки через Composer. Знакомые стандарты ускоряют разработку.
 
       - tabName: Безопасность
-        text: | 
-        Встроенные механизмы защиты: WWL (White Widget List), CSRF-токены, защита от XSS и SQL-инъекций. Система оперативных обновлений безопасности и партнерский аудит кода обеспечивают дополнительную защиту.
+        text: Защита от XSS, SQL-инъекций и CSRF-атак. Регулярные обновления закрывают уязвимости.
 
       - tabName: Модульность
-        text: Гибкая модульная архитектура позволяет расширять функционал без изменения ядра. Доступны cтандартные модули, маркетплейс решений и возможность создания собственных модулей
+        text: Расширяйте функционал без правки ядра. Добавляйте решения из Маркетплейса или создавайте свои. Ядро системы остается неизменным.
+
+      - tabName: Интеграции
+        text: REST API и вебхуки для подключения сервисов. Обменивайтесь данными с 1С, почтой и CRM.
+        links:
+          - text: 'Документация REST API'
+            url: 'https://apidocs.bitrix24.ru/'
+            theme: 'normal'
+            arrow: true
+            color: #54BA7E
+
+      - tabName: Масштабируемость
+        text: Проекты работают под высокой нагрузкой благодаря кешированию и кластеризации. Готовые инструменты для распределенных систем и облачных хранилищ.
 
   - type: 'tabs-block'
     title: Фреймворк в котором есть всё что нужно
@@ -108,35 +138,39 @@ blocks:
           Контроллеры с автоматической валидацией и DI-инъекцией.
           
           ```php
+          <?php
+
+          namespace Bitrix\Demo\Controllers;
+
           use Bitrix\Main\Engine\Controller;
           use Bitrix\Main\Engine\ActionFilter;
+          use Bitrix\Main\Engine\Response\AjaxJson;
+          use Bitrix\Demo\Services\PageService;
 
-          class OrderController extends Controller
+          class MainController extends Controller
           {
-              // Автоматическая валидация параметров
-              public function configureActions()
+              public function __construct(private PageService $pageService) 
               {
-                  return [
-                      'create' => [
-                          'prefilters' => [
-                              new ActionFilter\Authentication(), // Только для авторизованных
-                              new ActionFilter\HttpMethod(['POST']) // Разрешён только POST
-                          ],
-                          'params' => [
-                              'productId' => [
-                                  'type' => 'integer', // Автоматическая проверка типа
-                                  'required' => true
-                              ]
-                          ]
-                      ]
-                  ];
+                  parent::__construct();
               }
 
-              // Сервис автоматически внедряется
-              public function createAction(int $productId, OrderService $service)
+              protected function getDefaultPreFilters()
               {
-                  $order = $service->createFromProduct($productId);
-                  return $this->renderJson($order);
+                  return [new ActionFilter\Authentication()];
+              }
+
+              public function showAction(
+                  #[ActionFilter\Parameter\Required]
+                  #[ActionFilter\Parameter\Cast("int")]
+                  int $pageId
+              ): AjaxJson {
+                  $content = $this->pageService->getContent($pageId);
+                  
+                  return AjaxJson::createSuccess([
+                      'html' => $this->renderPartial('demo:main.page', [
+                          'content' => $content
+                      ])
+                  ]);
               }
           }
           ```
@@ -146,51 +180,85 @@ blocks:
           Гибкая система маршрутизации с именованными маршрутами.
           
           ```php
-          // Регистрация маршрута с параметром
-          \Bitrix\Main\Routing\Route::register('/news/{id}', function($id) {
-              $news = NewsTable::getById($id)->fetch();
-              return new \Bitrix\Main\Engine\Response\Html($news['TEXT']);
-          })->where('id', '\d+'); // Ограничение по формату
+          use Bitrix\Main\Routing\RoutingConfigurator;
 
-          // Группировка маршрутов API
-          \Bitrix\Main\Routing\Route::group('/api/v1', function() {
-              \Bitrix\Main\Routing\Route::resource('products', ProductController::class);
-          });
+          return function (RoutingConfigurator $routes) {
+              $routes->group('/shop', function(RoutingConfigurator $routes) {
+                  // Страница категории с переменной {categoryId}
+                  $routes->get('/category/{categoryId}/', [
+                      'controller' => 'Bitrix\\Shop\\Controllers\\CategoryController',
+                      'action' => 'view'
+                  ])->where('categoryId', '\d+'); // Ограничение: только цифры
+                  
+                  // Страница товара с несколькими переменными
+                  $routes->get('/product/{categoryId}/{productSlug}/', [
+                      'controller' => 'Bitrix\\Shop\\Controllers\\ProductController',
+                      'action' => 'detail'
+                  ]);
+              });
+          };
           ```
 
           Генерация URL по имени маршрута:
           ```php
-          $url = \Bitrix\Main\Routing\Router::getInstance()->generate('products.show', ['id' => 42]);
-          // Вернёт: '/api/v1/products/42'
+          use Bitrix\Main\Routing\RoutingConfigurator;
+
+          return function (RoutingConfigurator $routes) {
+              // Именованный роут для страницы контактов
+              $routes->get('/contacts/', [
+                  'controller' => 'Bitrix\\Main\\Controllers\\PageController',
+                  'action' => 'contacts'
+              ])->name('company.contacts');
+              
+              // Именованный роут с параметрами
+              $routes->get('/news/{newsSlug}/', [
+                  'controller' => 'Bitrix\\News\\Controllers\\NewsController',
+                  'action' => 'detail'
+              ])->name('news.detail');
+          };
+
+          // Пример генерации URL в коде:
+          $url = \Bitrix\Main\Routing\Router::getInstance()->generate('news.detail', [
+              'newsSlug' => 'latest-updates'
+          ]);
+          // Вернет: /news/latest-updates/
           ```
 
       - tabName: ActionFilters
         text: |
-          Фильтры для обработки входящих и исходящих данных:
+          Удобная и гибкая работа с запросами на уровне контроллеров. Фильтры для обработки входящих и исходящих данных:
           
           ```php
+          use Bitrix\Main\Engine\Controller;
+          use Bitrix\Main\Engine\ActionFilter;
+
           class ApiController extends Controller
           {
               public function configureActions()
               {
                   return [
-                      'payment' => [
+                      'saveData' => [
+                          // Префильтры
                           'prefilters' => [
-                              new ActionFilter\Csrf(), // Защита от CSRF
-                              new ActionFilter\ContentType(['application/json']), // Проверка заголовка
+                              new ActionFilter\Authentication(), // Проверка авторизации
+                              new ActionFilter\HttpMethod(['POST']) // Разрешаем только POST
                           ],
+                          
+                          // Постфильтры
                           'postfilters' => [
-                              new ActionFilter\JsonRenderer(), // Автоматический JSON
-                              new ActionFilter\Log('API Payment') // Логирование
+                              new ActionFilter\Cors() // Добавляем CORS-заголовки
                           ]
                       ]
                   ];
               }
+              
+              public function saveDataAction()
+              {
+                  $this->setJsonResponse(); // Форсируем JSON-ответ
+                  return ['status' => 'success'];
+              }
           }
           ```
-
-          Фильтры можно создавать как глобальные для всех действий.
-
       - tabName: ORM
         text: |
           Полноценная ORM с поддержкой связей и событий:
@@ -244,50 +312,100 @@ blocks:
         text: Какой-то текст
 
       - tabName: Агенты
-        text: Какой-то текст
+        text: |
+          Агенты и фоновые задачи помогают выполнять PHP-код автоматически.
+          - Агенты — запускают код по расписанию.
+          - Фоновые задачи — после отправки ответа пользователю.
+          
+          Для сложных сценариев можно комбинировать оба подхода.
+          
+          ```php
+          // Фоновая задача запускает агента для поэтапной обработки
+          $app->addBackgroundJob(function() {
+              CAgent::AddAgent(
+                  "MyLongProcess::start();",
+                  "mymodule",
+                  "N",
+                  0
+              );
+          });
+          ```
 
       - tabName: События
-        text: Какой-то текст
+        text: |
+          События уведомляют части приложения об изменениях, что позволяет системе реагировать на них.
+          
+          ```php
+          $event = new Bitrix\Main\Event("main", "OnPageStart");
+          $event->send();
+          ``` 
 
   - type: 'tabs-block'
-    title: Безопасность превыше всего
+    title: Встроенные инструменты безопасности
     description: |
-      Битрикс очень популярная система в рамках СНГ сегмента, приоритетом нашей компании всегда была и будет безопасность проектов.
-      Для этого мы реализовали весь необходимый функционал для реализации безопасных проектов
+      Контролируйте доступ к данным и функциям системы. Предотвращайте утечки и нарушения законов.
     items:
       - tabName: Работа с пользователями
-        text: Какой-то текст
+        text: | 
+          Регистрируйте сотрудников с подтверждением email или через корпоративный портал. Настраивайте двухфакторную аутентификацию для доступа к критичным разделам.
+          Просматривайте историю входов и подозрительную активность. 
+
+          ```php
+          // Включить 2FA для пользователя
+          $user = new CUser;
+          $user->Update($USER->GetID(), ["SECURE_AUTH" => "Y"]);
+          ```
 
       - tabName: Группы пользователей и политики безопасности
         text: |
-          Простая и надёжная система работы с группами и правами:
+          Создавайте отдельные группы для отделов (бухгалтерия, маркетинг, IT). Ограничивайте доступ к финансовым данным и персональной информации.
+
           ```php
-          Тут пример работы с группами
+          // Создание группы с ограниченными правами
+          $group = new CGroup;
+          $group->Add([
+              "NAME" => "Финансовый отдел",
+              "SECURITY_POLICY" => ["PASSWORD_LENGTH" => 12]
+          ]);
           ```
-          Гибкие политики '
+          Настраивайте политики паролей для разных групп.
 
-      - tabName: Ролевая система прав доступа
+      - tabName: Ролевая модель (ABAC)
         text: |
-          Тут про AccessController, про подход ABAC и куски кода
+          Назначайте права по принципу «минимальных привилегий». Контролируйте доступ к модулям через атрибуты (отдел, должность, локация). Аудит всех изменений прав доступа.
 
+          ```php
+          // Проверка доступа через AccessController
+          if (\Bitrix\Main\Engine\CurrentUser::get()->canDoOperation('edit_financial_data')) {
+              // Доступ разрешен
+          }
+          ```
   - type: 'content-layout-block'
     textContent:
-      title: Легко начать!
+      title: Быстрый старт
       text: |
-        Поднять окружение и начать разработку очень просто, достаточно выполнить 3 простых шага:
+        1. Клонируйте официальный репозиторий:
+            ```bash
+            git clone https://github.com/bitrix-tools/env-docker.git my-project
+            cd my-project
+            ```
+        2. Настройте обязательные параметры. Укажите в .env:
+            - Пароль для БД
+            - Ключ для Push-сервера
+        3. Запустите контейнеры.
+            ```bash
+            docker compose up -d
+            ```
+        4. Чтобы установить продукт, скачайте bitrixsetup.php в папку www.
+            ```bash
+            тут несколько команд
+            ```
+        5. Откройте http://localhost:8588
+        6. Следуйте инструкциям мастера установки
 
-        1. Скачиваем тестовое окружение для Docker:
-        ```bash
-        git clone https://github.com/bitrix-tools/env-docker.git my-project
-        cd my-project
-        ```
+        Подробнее про установку:
+        - [Документация на GitHub](https://github.com/bitrix-tools/env-docker)
+        - [Инструкция по установке продуктов Битрикс](./pages/get-started/install-solution.html)
+        
 
-        2. Запускаем Docker Compose:
-        ```php
-        docker compose up
-        ```
-
-        3. Переходим в браузер по адресу [localhost:8588](http://localhost:8588) и любуемся стартовой страницей :)
-
-        Далее вам необходимо выполнить установку нужной для реализации вашего проекта редакцию.
-        Подробнее об этом можете узнать [в разделе "Установка продукта"](/pages/get-started/install-distr.html).
+        
