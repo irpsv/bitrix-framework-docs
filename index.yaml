@@ -8,17 +8,17 @@ blocks:
     description: 'Фреймворк для работы с «1С-Битрикс: Управление сайтом» и Битрикс24'
     background:
       light:
-        image:
-          mobile: '_images/cover.png'
-          desktop: '_images/cover.png'
-          disableCompress: true
+        # image:
+          # mobile: '_images/cover.png'
+          # desktop: '_images/cover.png'
+          # disableCompress: true
         color: '#E8E4FF'
         fullWidth: false
       dark:
-        image:
-          mobile: '_images/cover.png'
-          desktop: '_images/cover.png'
-          disableCompress: true
+        # image:
+          # mobile: '_images/cover.png'
+          # desktop: '_images/cover.png'
+          # disableCompress: true
         color: '#E8E4FF'
         fullWidth: false
     buttons:
@@ -34,9 +34,9 @@ blocks:
   - type: 'card-layout-block'
     title: Продукты
     description: | 
-      Bitrix Framework — основа для бизнес-решений на PHP. На ней работают «1C-Битрикс: Управление сайтом» и Битрикс24 — не нужно писать систему с нуля. Виртуальная машина BitrixVM ускоряет запуск продуктов.
+      Bitrix Framework — это PHP-фреймворк для бизнес-решений. На нем работают «1C-Битрикс: Управление сайтом» и Битрикс24 — вам не придется разрабатывать систему с нуля. Виртуальная машина BitrixVM ускоряет развертывание проектов.
     children:
-      - text: 'CMS для интернет-магазинов и корпоративных сайтов. Подходит для крупных проектов: многопоточная обработка заказов, API для интеграций и встроенное кеширование.'
+      - text: 'CMS для интернет-магазинов и корпоративных сайтов. Обрабатывает заказы в многопоточном режиме, поддерживает API для интеграций и встроенное кеширование.'
         title: Управление сайтом
         type: 'image-card'
         image: {
@@ -49,7 +49,7 @@ blocks:
             theme: 'normal'
             arrow: true
             color: #54BA7E
-      - text: 'Платформа для автоматизации бизнеса и командной работы. Включает CRM, задачи, документы и видеозвонки в одном месте.'
+      - text: 'Платформа для автоматизации бизнеса и командной работы. Объединяет CRM, управление задачами, документы и видеозвонки в едином интерфейсе.'
         title: 'Битрикс24'
         type: 'image-card'
         media:
@@ -63,7 +63,7 @@ blocks:
             theme: 'normal'
             arrow: true
             color: #54BA7E
-      - text: 'Готовая виртуальная машина для быстрого развертывания проектов. Упрощает настройку сервера и снижает риски ошибок при установке.'
+      - text: 'Готовая виртуальная машина позволяет быстро развернуть проекты на Bitrix Framework. Содержит настроенный сервер с проверенной конфигурацией.'
         title: 'BitrixVM'
         type: 'image-card'
         image: {
@@ -77,25 +77,38 @@ blocks:
             arrow: true
             color: #54BA7E
 
-  - type: 'tabs-block'
-    title: Преимущества
-    description: Используйте проверенные инструменты для разработки, безопасности и масштабирования.
-    colSizes:
-      sm: 1
-      md: 2
-      lg: 3
-    items:
-      - tabName: CMS из коробки
-        text: Bitrix Framework включает готовую CMS. Редактируйте контент, настраивайте SEO и управляйте пользователями без разработки. Система подходит для магазинов и корпоративных сайтов.
+  - type: 'card-layout-block'
+    title: 'Преимущества'
+    children:
+      - type: 'basic-card'
+        title: 'CMS из коробки'
+        text: |
+          Bitrix Framework включает CMS с полным набором функций:
+            - Управление структурой и содержимым
+            - SEO-инструменты
+            - Система прав доступа
+            - Готовая база для e-commerce и корпоративных решений
+        icon: '_images/img_restapi_icon_01.svg'
         links:
           - text: 'О продукте на официальном сайте 1С-Битрикс'
             url: 'https://www.1c-bitrix.ru/products/cms/'
             theme: 'normal'
             arrow: true
             color: #54BA7E
-
-      - tabName: Маркетплейс решений
-        text: Более 5000 готовых решений для типовых задач. Внедряйте функционал в 1 клик — от платежных систем до интеграции с соцсетями. Все решения проверены на безопасность.
+      - type: 'basic-card'
+        title: Интеграции
+        text: REST API и вебхуки для подключения сервисов. Обменивайтесь данными с 1С, почтой и CRM.
+        icon: '_images/img_restapi_icon_02.svg'
+        links:
+          - text: 'Документация REST API'
+            url: 'https://apidocs.bitrix24.ru/'
+            theme: 'normal'
+            arrow: true
+            color: #54BA7E
+      - type: 'basic-card'
+        title: Модульность
+        text: Расширяйте функционал без правки ядра. Добавляйте решения из Маркетплейса или создавайте свои. Более 5000 готовых решений для типовых задач. Внедряйте функционал в 1 клик — от платежных систем до интеграции с соцсетями. Все решения проверены на безопасность.
+        icon: '_images/img_restapi_icon_03.svg'
         links:
           - text: 'Маркетплейс'
             url: 'https://marketplace.1c-bitrix.ru/'
@@ -107,27 +120,20 @@ blocks:
             theme: 'normal'
             arrow: true
             color: #54BA7E
-
-      - tabName: Стандарты PSR
-        text: Работайте по PSR-1, PSR-4 и PSR-7. Подключайте библиотеки через Composer. Знакомые стандарты ускоряют разработку.
-
-      - tabName: Безопасность
+      - type: 'basic-card'
+        title: 'Стандарты PSR'
+        text: 'Работайте по PSR-1, PSR-4 и PSR-7. Подключайте библиотеки через Composer. Знакомые стандарты ускоряют разработку.'
+        icon: '_images/img_restapi_icon_01.svg'
+ 
+      - type: 'basic-card'
+        title: Безопасность
         text: Защита от XSS, SQL-инъекций и CSRF-атак. Регулярные обновления закрывают уязвимости.
+        icon: '_images/img_restapi_icon_02.svg'
 
-      - tabName: Модульность
-        text: Расширяйте функционал без правки ядра. Добавляйте решения из Маркетплейса или создавайте свои. Ядро системы остается неизменным.
-
-      - tabName: Интеграции
-        text: REST API и вебхуки для подключения сервисов. Обменивайтесь данными с 1С, почтой и CRM.
-        links:
-          - text: 'Документация REST API'
-            url: 'https://apidocs.bitrix24.ru/'
-            theme: 'normal'
-            arrow: true
-            color: #54BA7E
-
-      - tabName: Масштабируемость
+      - type: 'basic-card'
+        title: Масштабируемость
         text: Проекты работают под высокой нагрузкой благодаря кешированию и кластеризации. Готовые инструменты для распределенных систем и облачных хранилищ.
+        icon: '_images/img_restapi_icon_03.svg'
 
   - type: 'tabs-block'
     title: Полный стек технологий для разработки
@@ -164,11 +170,11 @@ blocks:
                   #[ActionFilter\Parameter\Cast("int")]
                   int $pageId
               ): AjaxJson {
-                  $content = $this->pageService->getContent($pageId);
+                  $text = $this->pageService->gettext($pageId);
                   
                   return AjaxJson::createSuccess([
                       'html' => $this->renderPartial('demo:main.page', [
-                          'content' => $content
+                          'text' => $text
                       ])
                   ]);
               }
@@ -354,12 +360,12 @@ blocks:
           });
           ``` 
 
-  - type: 'tabs-block'
+  - type: 'questions-block'
     title: Встроенные инструменты безопасности
-    description: |
+    text: |
       Контролируйте доступ к данным и функциям системы. Предотвращайте утечки и нарушения законов.
     items:
-      - tabName: Работа с пользователями
+      - title: Работа с пользователями
         text: | 
           Регистрируйте сотрудников с подтверждением email или через корпоративный портал. Настраивайте двухфакторную аутентификацию для доступа к критичным разделам.
           Просматривайте историю входов и подозрительную активность. 
@@ -370,7 +376,7 @@ blocks:
           $user->Update($USER->GetID(), ["SECURE_AUTH" => "Y"]);
           ```
 
-      - tabName: Группы пользователей и политики безопасности
+      - title: Группы пользователей и политики безопасности
         text: |
           Создавайте отдельные группы для отделов (бухгалтерия, маркетинг, IT). Ограничивайте доступ к финансовым данным и персональной информации.
 
@@ -384,7 +390,7 @@ blocks:
           ```
           Настраивайте политики паролей для разных групп.
 
-      - tabName: Ролевая модель (ABAC)
+      - title: Ролевая модель (ABAC)
         text: |
           Назначайте права по принципу «минимальных привилегий». Контролируйте доступ к модулям через атрибуты (отдел, должность, локация). Аудит всех изменений прав доступа.
 
@@ -394,14 +400,22 @@ blocks:
               // Доступ разрешен
           }
           ```
+
   - type: 'content-layout-block'
+    background:
+      dark:
+        style:
+          backgroundColor: '#262626'
+      light:
+        style:
+          backgroundColor: '#E8E4FF'
     textContent:
       title: Быстрый старт
       text: |
         1. Клонируйте официальный репозиторий:
             ```bash
-            git clone https://github.com/bitrix-tools/env-docker.git my-project
             cd my-project
+            git clone https://github.com/bitrix-tools/env-docker.git
             ```
         2. Настройте обязательные параметры. Укажите в .env:
             - Пароль для БД
