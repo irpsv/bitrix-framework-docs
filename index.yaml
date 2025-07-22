@@ -88,7 +88,7 @@ blocks:
             - SEO-инструменты
             - Система прав доступа
             - Готовая база для e-commerce и корпоративных решений
-        icon: '_images/img_restapi_icon_01.svg'
+        # icon: '_images/img_restapi_icon_01.svg'
         links:
           - text: 'О продукте на официальном сайте 1С-Битрикс'
             url: 'https://www.1c-bitrix.ru/products/cms/'
@@ -96,19 +96,12 @@ blocks:
             arrow: true
             color: #54BA7E
       - type: 'basic-card'
-        title: Интеграции
-        text: REST API и вебхуки для подключения сервисов. Обменивайтесь данными с 1С, почтой и CRM.
-        icon: '_images/img_restapi_icon_02.svg'
-        links:
-          - text: 'Документация REST API'
-            url: 'https://apidocs.bitrix24.ru/'
-            theme: 'normal'
-            arrow: true
-            color: #54BA7E
-      - type: 'basic-card'
         title: Модульность
-        text: Расширяйте функционал без правки ядра. Добавляйте решения из Маркетплейса или создавайте свои. Более 5000 готовых решений для типовых задач. Внедряйте функционал в 1 клик — от платежных систем до интеграции с соцсетями. Все решения проверены на безопасность.
-        icon: '_images/img_restapi_icon_03.svg'
+        text: |
+          Система позволяет расширять функционал без изменения ядра. Доступны:
+            - API для разработки кастомных решений
+            - Каталог готовых решений в Маркетплейсе.         
+        # icon: '_images/img_restapi_icon_03.svg'
         links:
           - text: 'Маркетплейс'
             url: 'https://marketplace.1c-bitrix.ru/'
@@ -121,23 +114,51 @@ blocks:
             arrow: true
             color: #54BA7E
       - type: 'basic-card'
-        title: 'Стандарты PSR'
-        text: 'Работайте по PSR-1, PSR-4 и PSR-7. Подключайте библиотеки через Composer. Знакомые стандарты ускоряют разработку.'
-        icon: '_images/img_restapi_icon_01.svg'
+        title: Интеграции
+        text: |
+          Bitrix Framework поддерживает
+            - REST API для двустороннего обмена данными
+            - Вебхуки для событийной модели
+            - Стандартные коннекторы для 1С, email-сервисов и CRM
+        # icon: '_images/img_restapi_icon_02.svg'
+        links:
+          - text: 'Документация REST API'
+            url: 'https://apidocs.bitrix24.ru/'
+            theme: 'normal'
+            arrow: true
+            color: #54BA7E
+
+      - type: 'basic-card'
+        title: 'Стандарты разработки'
+        text: |
+          Bitrix Framework поддерживает основные стандарты PHP для обеспечения совместимости
+          - Базовые стандарты написания кода PSR-1
+          - Автозагрузка классов через PSR-4
+          - Работа с HTTP через PSR-7 интерфейсы
+          - Поддержка Composer для пакетного менеджмента
+        # icon: '_images/img_restapi_icon_01.svg'
  
       - type: 'basic-card'
         title: Безопасность
-        text: Защита от XSS, SQL-инъекций и CSRF-атак. Регулярные обновления закрывают уязвимости.
-        icon: '_images/img_restapi_icon_02.svg'
+        text: |
+          Встроенные механизмы защиты:
+          - Фильтрация входных данных от XSS и SQL-инъекций
+          - Защита от CSRF-атак
+          - Регулярные обновления безопасности
+        # icon: '_images/img_restapi_icon_02.svg'
 
       - type: 'basic-card'
         title: Масштабируемость
-        text: Проекты работают под высокой нагрузкой благодаря кешированию и кластеризации. Готовые инструменты для распределенных систем и облачных хранилищ.
-        icon: '_images/img_restapi_icon_03.svg'
+        text: |
+          Поддержку высоких нагрузок обеспечивают:
+          - Многоуровневое кеширование данных
+          - Встроенные механизмы кластеризации
+          - Интеграция с облачными хранилищами
+        # icon: '_images/img_restapi_icon_03.svg'
 
   - type: 'tabs-block'
-    title: Полный стек технологий для разработки
-    description: Получайте готовые решения для всех слоёв приложения — от работы с базой до фоновых задач. Пишите меньше кода, запускайте проекты быстрее.
+    title: Инструменты разработки в Bitrix Framework
+    description: Фреймворк включает готовые компоненты для разработки — от работы с базой до фоновых задач.
     items:
       - tabName: Контроллеры
         text: |
@@ -183,7 +204,7 @@ blocks:
 
       - tabName: Роутинг
         text: |
-          Гибкая система маршрутизации с именованными маршрутами.
+          Система маршрутизации с именованными маршрутами.
           
           ```php
           use Bitrix\Main\Routing\RoutingConfigurator;
@@ -232,48 +253,47 @@ blocks:
 
       - tabName: ActionFilters
         text: |
-          Удобная и гибкая работа с запросами на уровне контроллеров. Фильтры для обработки входящих и исходящих данных:
+          Гибкая работа с запросами на уровне контроллеров. Фильтры для обработки входящих и исходящих данных:
           
           ```php
-          use Bitrix\Main\Engine\Controller;
-          use Bitrix\Main\Engine\ActionFilter;
+          use \Bitrix\Main\Engine\Controller;
+          use \Bitrix\Main\Engine\ActionFilter;
 
-          class ApiController extends Controller
+          class ExampleController extends Controller
           {
               public function configureActions()
               {
                   return [
-                      'saveData' => [
-                          // Префильтры
-                          'prefilters' => [
-                              new ActionFilter\Authentication(), // Проверка авторизации
-                              new ActionFilter\HttpMethod(['POST']) // Разрешаем только POST
+                      'exampleAction' => [ // Название экшена
+                          'prefilters' => [ // Фильтры, которые выполнятся до вызова экшена
+                    // Разрешаем только POST-запросы
+                              new ActionFilter\HttpMethod([ActionFilter\HttpMethod::METHOD_POST]),
+                    // Требуем авторизацию + редирект на страницу входа
+                              new ActionFilter\Authentication(true),
                           ],
-                          
-                          // Постфильтры
-                          'postfilters' => [
-                              new ActionFilter\Cors() // Добавляем CORS-заголовки
-                          ]
-                      ]
+                          'postfilters' => [ // Фильтры, выполняемые после экшена
+                    // Проверка CSRF-токена, параметры по умолчанию
+                              new ActionFilter\Csrf(),
+                          ],
+                      ],
                   ];
               }
-              
-              public function saveDataAction()
+
+              public function exampleAction()
               {
-                  $this->setJsonResponse(); // Форсируем JSON-ответ
-                  return ['status' => 'success'];
+                  // Логика действия
+                  return ['result' => 'success'];
               }
-          }
           ```
       - tabName: ORM
         text: |
-          Полноценная ORM с поддержкой связей и событий:
+          ORM с поддержкой связей и событий:
 
           ```php
           // Создание объекта
           $user = UserTable::createObject();
           $user->setName('Иван');
-          $user->setEmail('ivan@example.com');
+          $user->setEmail('ivan@example.ru');
           $user->save(); // Автоматическая валидация
 
           // Работа со связями
@@ -284,7 +304,7 @@ blocks:
 
           Генерация классов по структуре БД: 
           
-          ```php
+          ```bash
           php vendor/bin/bitrix entity:generate --module=main --table=b_user
           ```
 
@@ -302,13 +322,6 @@ blocks:
                   'CONFIRM_LINK' => $confirmUrl
               ],
           ]);
-
-          // SMS через шлюз
-          \Bitrix\Main\Sms\Sender::send([
-              'to' => '+79001234567',
-              'text' => 'Ваш код: 1234',
-              'provider' => 'sms.ru'
-          ]);
           ```
 
       - tabName: Файлы и S3
@@ -316,8 +329,9 @@ blocks:
           Храните файлы в облаке:
 
           ```php
-          $file = new \Bitrix\Main\IO\File("/path/to/file");
-          $file->copyTo("s3://bucket-name/path/");
+          здесь нужен пример кода?
+          если нужен, то в документации нет
+          ИИ выдает чушь
           ```
 
       - tabName: Очереди
@@ -325,9 +339,9 @@ blocks:
           Обрабатывайте задачи в фоне:
 
           ```php
-          \Bitrix\Main\Application::getInstance()->getQueue()->push(
-              new \Bitrix\Main\Queue\Message(['task_id' => 42])
-          );
+          здесь нужен пример кода?
+          если нужен, то в документации нет
+          ИИ выдает чушь
           ```
 
       - tabName: Агенты
@@ -361,24 +375,28 @@ blocks:
           ``` 
 
   - type: 'questions-block'
-    title: Встроенные инструменты безопасности
+    title: 'Инструменты безопасности'
     text: |
       Контролируйте доступ к данным и функциям системы. Предотвращайте утечки и нарушения законов.
     items:
       - title: Работа с пользователями
         text: | 
-          Регистрируйте сотрудников с подтверждением email или через корпоративный портал. Настраивайте двухфакторную аутентификацию для доступа к критичным разделам.
-          Просматривайте историю входов и подозрительную активность. 
+          - Регистрируйте сотрудников с подтверждением email или через корпоративный портал.
+          - Настраивайте двухфакторную аутентификацию для доступа к критичным разделам. 
+          - Просматривайте историю входов и подозрительную активность. 
 
           ```php
           // Включить 2FA для пользователя
           $user = new CUser;
           $user->Update($USER->GetID(), ["SECURE_AUTH" => "Y"]);
           ```
-
+        listStyle: 'disk'
+ 
       - title: Группы пользователей и политики безопасности
         text: |
-          Создавайте отдельные группы для отделов (бухгалтерия, маркетинг, IT). Ограничивайте доступ к финансовым данным и персональной информации.
+          - Создавайте отдельные группы для отделов (бухгалтерия, маркетинг, IT).
+          - Ограничивайте доступ к финансовым данным и персональной информации.
+          - Настраивайте политики паролей для разных групп.
 
           ```php
           // Создание группы с ограниченными правами
@@ -387,12 +405,14 @@ blocks:
               "NAME" => "Финансовый отдел",
               "SECURITY_POLICY" => ["PASSWORD_LENGTH" => 12]
           ]);
-          ```
-          Настраивайте политики паролей для разных групп.
+          ```      
+        listStyle: 'disk'
 
-      - title: Ролевая модель (ABAC)
+      - title: Ролевая модель 
         text: |
-          Назначайте права по принципу «минимальных привилегий». Контролируйте доступ к модулям через атрибуты (отдел, должность, локация). Аудит всех изменений прав доступа.
+          - Назначайте права по принципу минимальных привилегий (ABAC).
+          - Контролируйте доступ к модулям через атрибуты: отдел, должность, локация.
+          - Аудит всех изменений прав доступа.
 
           ```php
           // Проверка доступа через AccessController
@@ -400,6 +420,7 @@ blocks:
               // Доступ разрешен
           }
           ```
+        listStyle: 'disk'
 
   - type: 'content-layout-block'
     background:
@@ -410,30 +431,39 @@ blocks:
         style:
           backgroundColor: '#E8E4FF'
     textContent:
-      title: Быстрый старт
+      title: Быстрый старт с Docker образом
       text: |
-        1. Клонируйте официальный репозиторий:
+        1. Склонируйте официальный репозиторий
             ```bash
             cd my-project
             git clone https://github.com/bitrix-tools/env-docker.git
             ```
-        2. Настройте обязательные параметры. Укажите в .env:
-            - Пароль для БД
-            - Ключ для Push-сервера
-        3. Запустите контейнеры.
+        2. Настройте обязательные параметры. Укажите:
+          
+            - пароли баз данных MySQL и Postgres в `.env_sql`
+            - секретный ключ для Push-сервера в `.env_push`
+        3. Запустите контейнеры
             ```bash
             docker compose up -d
             ```
-        4. Чтобы установить продукт, скачайте bitrixsetup.php в папку www.
+        4. Скачайте скрипт `bitrixsetup.php` в папку `www`
             ```bash
-            тут несколько команд
+            docker compose exec --user=bitrix php sh
+            cd /opt/www/
+            wget https://www.1c-bitrix.ru/download/scripts/bitrixsetup.php
             ```
-        5. Откройте http://localhost:8588
-        6. Следуйте инструкциям мастера установки
-
-        Подробнее про установку:
-        - [Документация на GitHub](https://github.com/bitrix-tools/env-docker)
-        - [Инструкция по установке продуктов Битрикс](pages/get-started/install-solution.html)
-        
+        5. Откройте в браузере [http://localhost:8588](http://localhost:8588)
+        6. Следуйте инструкциям мастера
+      links:
+        - text: 'Контейнерное окружение для Битрикс (README)'
+          url: 'https://github.com/bitrix-tools/env-docker'
+          theme: 'normal'
+          arrow: true
+          color: #54BA7E
+        - text: 'Инструкция по установке продуктов Битрикс'
+          url: 'pages/get-started/install-solution.html'
+          theme: 'normal'
+          arrow: true
+          color: #54BA7E
 
         
