@@ -7,6 +7,9 @@
     font-weight: 500;
 }
 
+.yfm img {
+    height:auto;
+}
 @media screen and (min-width: 1280px){
     .dc-doc-layout__toc {
       width: 320px !important;

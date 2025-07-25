@@ -39,11 +39,9 @@ var_dump($localStorage->get('productIds'));
 
 Ядро автоматически сохраняет все `SessionLocalStorage` в конце хита.
 
-{% note info %}
- 
+{% note info "" %}
 
 `SessionLocalStorage` работает на кеше, описанном в настройках файла `.settings.php`. Описание конфигурации смотрите ниже[.](#settings)
-
 
 {% endnote %}
 
@@ -63,11 +61,9 @@ define('BX_SECURITY_SESSION_READONLY', true);
 
 После этого сессия читается из memcached или базы данных без ожидания блокировки. Внутри продукта эта функциональность используется, например, при отдаче файлов.
 
-{% note info %}
- 
+{% note info "" %}
 
 При использовании этой константы сессия не будет записана по завершении хита. Это может привести к потере данных, сохраненных в рамках хита в сессии.
-
 
 {% endnote %}
 
@@ -79,11 +75,9 @@ define('BX_SECURITY_SESSION_READONLY', true);
 define('BX_SECURITY_SESSION_VIRTUAL', true);
 ```
 
-{% note info %}
- 
+{% note info "" %}
 
 Этот тип сессии не сохраняется. Он используется при обработке REST-запросов в продукте.
-
 
 {% endnote %}
 

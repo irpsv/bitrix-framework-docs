@@ -44,4 +44,4 @@ Bitrix Framework состоит из независимых модулей, ко
 
 ## Схема структуры и связей модулей
 
-[drawio:./arkhitektura.svg::1021px:341px]
+<iframe src="/pages/framework/arkhitektura.svg" width="100%" height="341px" style="border:none;"></iframe>

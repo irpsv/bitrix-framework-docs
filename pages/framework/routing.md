@@ -6,11 +6,9 @@ title: Роутинг
 
 Роутинг в Bitrix Framework управляет маршрутизацией запросов, направляя их на соответствующие обработчики. Это ключевой элемент для создания гибких и масштабируемых веб-приложений, так как он определяет, как URL-адреса соответствуют определенным функциям или контроллерам.
 
-{% note info %}
- 
+{% note info "" %}
 
 Доступно в модуле main начиная с версии 21.400.0.
-
 
 {% endnote %}
 
@@ -25,11 +23,9 @@ RewriteCond %{REQUEST_FILENAME} !/bitrix/routing_index.php$
 RewriteRule ^(.*)$ /bitrix/routing_index.php [L]
 ```
 
-{% note info %}
- 
+{% note info "" %}
 
 С версии 23.500.0 роутер доступен через метод `\Bitrix\Main\Application::getRouter()`
-
 
 {% endnote %}
 

@@ -256,11 +256,9 @@ class ExampleClass
 }
 ```
 
-{% note info %}
- 
+{% note info "" %}
 
 При использовании фильтра UserType убедитесь, что модуль intranet подключен.
-
 
 {% endnote %}
 
@@ -285,11 +283,9 @@ class ExampleClass
 }
 ```
 
-{% note info %}
- 
+{% note info "" %}
 
 При использовании фильтра IntranetUser убедитесь, что модуль intranet подключен.
-
 
 {% endnote %}
 

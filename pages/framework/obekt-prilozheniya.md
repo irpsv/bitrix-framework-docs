@@ -52,10 +52,8 @@ $value = $request->get("some_name");
 $value = $request["some_name"];
 ```
 
-{% note info %}
- 
+{% note info "" %}
 
 Запрос `$value = $request["some_name"];` возвращает строку, прошедшую фильтры безопасности. Однако ее безопасность зависит от дальнейших действий.
-
 
 {% endnote %}

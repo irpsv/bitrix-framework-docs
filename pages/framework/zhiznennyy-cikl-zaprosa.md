@@ -40,7 +40,7 @@ AJAX-контроллер используется для обработки а�
 <?php require($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/epilog_after.php'); ?>
 ```
 
-[drawio:./zhiznennyy-cikl-zaprosa.svg:Схема жизненного цикла физической страницы:527px:361px]
+<iframe src="/pages/framework/zhiznennyy-cikl-zaprosa.svg" width="100%" height="361px" style="border:none;"></iframe>
 
 
 

@@ -39,11 +39,9 @@ title: Создание компонента
         └── messages.php    // Локализация
 ```
 
-{% note warning %}
- 
+{% note warning "" %}
 
 Каждый файл `*.php` содержит строку `if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();`. Это предотвращает прямой вызов файла из браузера.
-
 
 {% endnote %}
 
@@ -202,13 +200,11 @@ class UserCardComponent extends CBitrixComponent
 
 Используйте данные из `$arResult`, чтобы отобразить имя, email пользователя и аватар при наличии.
 
-{% note warning %}
- 
+{% note warning "" %}
 
 Вывод данных через `<?= $arResult['NAME'] ?>` безопасен и не приведет к XSS или HTML-инъекциям. Данные в массивах `$arParams` и `$arResult` экранированы и подготовлены для вывода.
 
 Есть ряд исключений для типов данных. Подробнее в статье [Компоненты](./../framework/komponenty).
-
 
 {% endnote %}
 
