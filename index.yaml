@@ -29,4 +29,4 @@ blocks:
       - text: 'GitHub'
         theme: 'outlined'
         size: 'promo'
-        url: 'https://github.com/bitrix24/framework-docs'
+        url: 'https://github.com/bitrix-tools/framework-docs'
