@@ -33,7 +33,7 @@ blocks:
 
   - type: 'card-layout-block'
     title: Продукты
-    description: | 
+    description: |
       Bitrix Framework — это PHP-фреймворк для бизнес-решений. На нем работают «1C-Битрикс: Управление сайтом» и Битрикс24 — вам не придется разрабатывать систему с нуля. Виртуальная машина BitrixVM ускоряет развертывание проектов.
     children:
       - text: 'CMS для интернет-магазинов и корпоративных сайтов. Обрабатывает заказы в многопоточном режиме, поддерживает API для интеграций и встроенное кеширование.'
@@ -48,7 +48,7 @@ blocks:
             url: 'pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
+            color: '#54BA7E'
       - text: 'Платформа для автоматизации бизнеса и командной работы. Объединяет CRM, управление задачами, документы и видеозвонки в едином интерфейсе.'
         title: 'Битрикс24'
         type: 'image-card'
@@ -62,7 +62,7 @@ blocks:
             url: 'pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
+            color: '#54BA7E'
       - text: 'Готовая виртуальная машина позволяет быстро развернуть проекты на Bitrix Framework. Содержит настроенный сервер с проверенной конфигурацией.'
         title: 'BitrixVM'
         type: 'image-card'
@@ -75,7 +75,7 @@ blocks:
             url: 'pages/get-started/install-env.html'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
+            color: '#54BA7E'
 
   - type: 'card-layout-block'
     title: 'Преимущества'
@@ -94,25 +94,25 @@ blocks:
             url: 'https://www.1c-bitrix.ru/products/cms/'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
+            color: '#54BA7E'
       - type: 'basic-card'
         title: Модульность
         text: |
           Система позволяет расширять функционал без изменения ядра. Доступны:
             - API для разработки кастомных решений
-            - Каталог готовых решений в Маркетплейсе.         
+            - Каталог готовых решений в Маркетплейсе.
         # icon: '_images/img_restapi_icon_03.svg'
         links:
           - text: 'Маркетплейс'
             url: 'https://marketplace.1c-bitrix.ru/'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
+            color: '#54BA7E'
           - text: 'Маркет Битрикс24'
             url: 'https://www.bitrix24.ru/apps/'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
+            color: '#54BA7E'
       - type: 'basic-card'
         title: Интеграции
         text: |
@@ -126,7 +126,7 @@ blocks:
             url: 'https://apidocs.bitrix24.ru/'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
+            color: '#54BA7E'
 
       - type: 'basic-card'
         title: 'Стандарты разработки'
@@ -137,7 +137,7 @@ blocks:
           - Работа с HTTP через PSR-7 интерфейсы
           - Поддержка Composer для пакетного менеджмента
         # icon: '_images/img_restapi_icon_01.svg'
- 
+
       - type: 'basic-card'
         title: Безопасность
         text: |
@@ -163,9 +163,8 @@ blocks:
       - tabName: Контроллеры
         text: |
           Контроллеры с автоматической валидацией и DI-инъекцией.
-          
+
           ```php
-          <?php
 
           namespace Bitrix\Demo\Controllers;
 
@@ -176,7 +175,7 @@ blocks:
 
           class MainController extends Controller
           {
-              public function __construct(private PageService $pageService) 
+              public function __construct(private PageService $pageService)
               {
                   parent::__construct();
               }
@@ -192,7 +191,7 @@ blocks:
                   int $pageId
               ): AjaxJson {
                   $text = $this->pageService->gettext($pageId);
-                  
+
                   return AjaxJson::createSuccess([
                       'html' => $this->renderPartial('demo:main.page', [
                           'text' => $text
@@ -205,7 +204,7 @@ blocks:
       - tabName: Роутинг
         text: |
           Система маршрутизации с именованными маршрутами.
-          
+
           ```php
           use Bitrix\Main\Routing\RoutingConfigurator;
 
@@ -216,7 +215,7 @@ blocks:
                       'controller' => 'Bitrix\\Shop\\Controllers\\CategoryController',
                       'action' => 'view'
                   ])->where('categoryId', '\d+'); // Ограничение: только цифры
-                  
+
                   // Страница товара с несколькими переменными
                   $routes->get('/product/{categoryId}/{productSlug}/', [
                       'controller' => 'Bitrix\\Shop\\Controllers\\ProductController',
@@ -236,7 +235,7 @@ blocks:
                   'controller' => 'Bitrix\\Main\\Controllers\\PageController',
                   'action' => 'contacts'
               ])->name('company.contacts');
-              
+
               // Именованный роут с параметрами
               $routes->get('/news/{newsSlug}/', [
                   'controller' => 'Bitrix\\News\\Controllers\\NewsController',
@@ -254,7 +253,7 @@ blocks:
       - tabName: ActionFilters
         text: |
           Гибкая работа с запросами на уровне контроллеров. Фильтры для обработки входящих и исходящих данных:
-          
+
           ```php
           use \Bitrix\Main\Engine\Controller;
           use \Bitrix\Main\Engine\ActionFilter;
@@ -302,14 +301,14 @@ blocks:
           $items = $order->getItems(); // Связь один-ко-многим
           ```
 
-          Генерация классов по структуре БД: 
-          
+          Генерация классов по структуре БД:
+
           ```bash
           php vendor/bin/bitrix entity:generate --module=main --table=b_user
           ```
 
       - tabName: Рассылки и SMS
-        text: | 
+        text: |
           Унифицированный API для коммуникаций
 
           ```php
@@ -349,9 +348,9 @@ blocks:
           Агенты и фоновые задачи помогают выполнять PHP-код автоматически.
           - Агенты — запускают код по расписанию.
           - Фоновые задачи — после отправки ответа пользователю.
-          
+
           Для сложных сценариев можно комбинировать оба подхода.
-          
+
           ```php
           // Фоновая задача запускает агента для поэтапной обработки
           $app->addBackgroundJob(function() {
@@ -367,23 +366,26 @@ blocks:
       - tabName: События
         text: |
           Реагируйте на системные изменения:
-          
+
           ```php
           AddEventHandler("main", "OnAfterUserAdd", function($userId) {
               // Отправка welcome-email
           });
-          ``` 
+          ```
+
+  - type: 'content-layout-block'
+    textContent:
+      title: 'Инструменты безопасности'
 
   - type: 'questions-block'
-    title: 'Инструменты безопасности'
     text: |
       Контролируйте доступ к данным и функциям системы. Предотвращайте утечки и нарушения законов.
     items:
       - title: Работа с пользователями
-        text: | 
+        text: |
           - Регистрируйте сотрудников с подтверждением email или через корпоративный портал.
-          - Настраивайте двухфакторную аутентификацию для доступа к критичным разделам. 
-          - Просматривайте историю входов и подозрительную активность. 
+          - Настраивайте двухфакторную аутентификацию для доступа к критичным разделам.
+          - Просматривайте историю входов и подозрительную активность.
 
           ```php
           // Включить 2FA для пользователя
@@ -391,7 +393,7 @@ blocks:
           $user->Update($USER->GetID(), ["SECURE_AUTH" => "Y"]);
           ```
         listStyle: 'disk'
- 
+
       - title: Группы пользователей и политики безопасности
         text: |
           - Создавайте отдельные группы для отделов (бухгалтерия, маркетинг, IT).
@@ -405,10 +407,10 @@ blocks:
               "NAME" => "Финансовый отдел",
               "SECURITY_POLICY" => ["PASSWORD_LENGTH" => 12]
           ]);
-          ```      
+          ```
         listStyle: 'disk'
 
-      - title: Ролевая модель 
+      - title: Ролевая модель
         text: |
           - Назначайте права по принципу минимальных привилегий (ABAC).
           - Контролируйте доступ к модулям через атрибуты: отдел, должность, локация.
@@ -438,32 +440,38 @@ blocks:
             cd my-project
             git clone https://github.com/bitrix-tools/env-docker.git
             ```
+
         2. Настройте обязательные параметры. Укажите:
-          
             - пароли баз данных MySQL и Postgres в `.env_sql`
             - секретный ключ для Push-сервера в `.env_push`
+
         3. Запустите контейнеры
             ```bash
             docker compose up -d
             ```
+
         4. Скачайте скрипт `bitrixsetup.php` в папку `www`
             ```bash
             docker compose exec --user=bitrix php sh
             cd /opt/www/
             wget https://www.1c-bitrix.ru/download/scripts/bitrixsetup.php
             ```
+
         5. Откройте в браузере [http://localhost:8588](http://localhost:8588)
+
         6. Следуйте инструкциям мастера
+
       links:
         - text: 'Контейнерное окружение для Битрикс (README)'
           url: 'https://github.com/bitrix-tools/env-docker'
           theme: 'normal'
           arrow: true
-          color: #54BA7E
+          color: '#54BA7E'
+
         - text: 'Инструкция по установке продуктов Битрикс'
           url: 'pages/get-started/install-solution.html'
           theme: 'normal'
           arrow: true
-          color: #54BA7E
+          color: '#54BA7E'
 
-        
+
