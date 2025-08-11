@@ -8,17 +8,17 @@ blocks:
     description: 'Фреймворк для работы с «1С-Битрикс: Управление сайтом» и Битрикс24'
     background:
       light:
-        # image:
-          # mobile: '_images/cover.png'
-          # desktop: '_images/cover.png'
-          # disableCompress: true
+        image:
+         mobile: '_images/img_framework_main.png'
+         desktop: '_images/img_framework_main.png'
+         disableCompress: true
         color: '#E8E4FF'
         fullWidth: false
       dark:
-        # image:
-          # mobile: '_images/cover.png'
-          # desktop: '_images/cover.png'
-          # disableCompress: true
+        image:
+         mobile: '_images/img_framework_main.png'
+         desktop: '_images/img_framework_main.png'
+         disableCompress: true
         color: '#E8E4FF'
         fullWidth: false
     buttons:
@@ -33,49 +33,49 @@ blocks:
 
   - type: 'card-layout-block'
     title: Продукты
-    description: |
+    description: | 
       Bitrix Framework — это PHP-фреймворк для бизнес-решений. На нем работают «1C-Битрикс: Управление сайтом» и Битрикс24 — вам не придется разрабатывать систему с нуля. Виртуальная машина BitrixVM ускоряет развертывание проектов.
     children:
       - text: 'CMS для интернет-магазинов и корпоративных сайтов. Обрабатывает заказы в многопоточном режиме, поддерживает API для интеграций и встроенное кеширование.'
         title: Управление сайтом
         type: 'image-card'
         image: {
-           dark : "_images/img_restapi_banner_s_01.png",
-           light : "_images/img_restapi_banner_s_01.png"
+           dark : "_images/img_framework_banner_s_01.png",
+           light : "_images/img_framework_banner_s_01.png"
         }
         links:
           - text: 'Установить продукт'
             url: 'pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
-            color: '#54BA7E'
+            color: #54BA7E
       - text: 'Платформа для автоматизации бизнеса и командной работы. Объединяет CRM, управление задачами, документы и видеозвонки в едином интерфейсе.'
         title: 'Битрикс24'
         type: 'image-card'
         media:
         image: {
-           dark : "_images/img_restapi_banner_s_02.png",
-           light : "_images/img_restapi_banner_s_02.png"
+           dark : "_images/img_framework_banner_s_02.png",
+           light : "_images/img_framework_banner_s_02.png"
         }
         links:
           - text: 'Установить продукт'
             url: 'pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
-            color: '#54BA7E'
+            color: #54BA7E
       - text: 'Готовая виртуальная машина позволяет быстро развернуть проекты на Bitrix Framework. Содержит настроенный сервер с проверенной конфигурацией.'
         title: 'BitrixVM'
         type: 'image-card'
         image: {
-           dark : "_images/img_restapi_banner_s_03.png",
-           light : "_images/img_restapi_banner_s_03.png"
+           dark : "_images/img_framework_banner_s_03.png",
+           light : "_images/img_framework_banner_s_03.png"
         }
         links:
           - text: 'Установить окружение'
             url: 'pages/get-started/install-env.html'
             theme: 'normal'
             arrow: true
-            color: '#54BA7E'
+            color: #54BA7E
 
   - type: 'card-layout-block'
     title: 'Преимущества'
