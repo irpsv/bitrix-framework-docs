@@ -13,14 +13,14 @@ blocks:
          mobile: '_images/img_framework_main.png'
          desktop: '_images/img_framework_main.png'
          disableCompress: true
-        color: '#E8E4FF'
+        color: '#3E1CFF'
         fullWidth: false
       dark:
         image:
          mobile: '_images/img_framework_main.png'
          desktop: '_images/img_framework_main.png'
          disableCompress: true
-        color: '#E8E4FF'
+        color: '#3E1CFF'
         fullWidth: false
     buttons:
       - text: 'Начать'
@@ -429,10 +429,10 @@ blocks:
     background:
       dark:
         style:
-          backgroundColor: '#262626'
+          backgroundColor: '#907CFF'
       light:
         style:
-          backgroundColor: '#E8E4FF'
+          backgroundColor: '#907CFF'
     textContent:
       title: Быстрый старт с Docker образом
       text: |
