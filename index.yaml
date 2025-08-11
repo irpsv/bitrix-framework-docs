@@ -24,11 +24,11 @@ blocks:
         fullWidth: false
     buttons:
       - text: 'Начать'
-        theme: 'outlined'
+        theme: 'raised'
         size: 'promo'
         url: 'pages/get-started/install-env.html'
       - text: 'GitHub'
-        theme: 'outlined'
+        theme: 'outlined-contrast'
         size: 'promo'
         url: 'https://github.com/bitrix-tools/framework-docs'
 
@@ -429,10 +429,10 @@ blocks:
     background:
       dark:
         style:
-          backgroundColor: '#907CFF'
+          backgroundColor: '#E8E4FF'
       light:
         style:
-          backgroundColor: '#907CFF'
+          backgroundColor: '#E8E4FF'
     textContent:
       title: Быстрый старт с Docker образом
       text: |
