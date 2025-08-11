@@ -10,15 +10,15 @@ blocks:
     background:
       light:
         image:
-         mobile: '_images/img_framework_main.png'
-         desktop: '_images/img_framework_main.png'
+         mobile: '_images/img_framework_main_v2.png'
+         desktop: '_images/img_framework_main_v2.png'
          disableCompress: true
         color: '#3E1CFF'
         fullWidth: false
       dark:
         image:
-         mobile: '_images/img_framework_main.png'
-         desktop: '_images/img_framework_main.png'
+         mobile: '_images/img_framework_main_v2.png'
+         desktop: '_images/img_framework_main_v2.png'
          disableCompress: true
         color: '#3E1CFF'
         fullWidth: false
@@ -55,8 +55,8 @@ blocks:
         type: 'image-card'
         media:
         image: {
-           dark : "_images/img_framework_banner_s_02.png",
-           light : "_images/img_framework_banner_s_02.png"
+           dark : "_images/img_framework_banner_s_02_v2.png",
+           light : "_images/img_framework_banner_s_02_v2.png"
         }
         links:
           - text: 'Установить продукт'
