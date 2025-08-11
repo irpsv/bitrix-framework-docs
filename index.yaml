@@ -24,7 +24,7 @@ blocks:
         fullWidth: false
     buttons:
       - text: 'Начать'
-        theme: 'raised'
+        theme: 'outlined-contrast'
         size: 'promo'
         url: 'pages/get-started/install-env.html'
       - text: 'GitHub'
