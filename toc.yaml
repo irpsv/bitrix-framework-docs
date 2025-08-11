@@ -5,7 +5,7 @@ navigation:
   logo:
     url: '/'
     dark:
-      icon: '/_images/img_framework_logo.png'
+      icon: '/_images/img_framework_logo_bus_w.png'
     light:
       icon: '/_images/img_framework_logo.png'
   header:
