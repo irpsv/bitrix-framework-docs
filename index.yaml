@@ -16,17 +16,17 @@ blocks:
         fullWidth: false
       dark:
         image:
-          mobile: '_images/img_restapi_main.png'
-          desktop: '_images/img_restapi_main.png'
+          mobile: '_images/cover.png'
+          desktop: '_images/cover.png'
           disableCompress: true
         color: '#E8E4FF'
         fullWidth: false
     buttons:
       - text: 'Начать'
-        theme: 'outlined'
+        theme: 'outlined-contrast'
         size: 'promo'
         url: '/pages/get-started/install-env.html'
       - text: 'GitHub'
-        theme: 'outlined'
+        theme: 'outlined-contrast'
         size: 'promo'
         url: 'https://github.com/bitrix-tools/framework-docs'

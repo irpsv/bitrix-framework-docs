@@ -5,9 +5,9 @@ navigation:
   logo:
     url: '/'
     dark:
-      icon: '/_images/bus-logo.png'
+      icon: '/_images/bus-logo-dark.png'
     light:
-      icon: '/_images/bus-logo.png'
+      icon: '/_images/bus-logo-light.png'
   header:
     leftItems:
       - text: 'С чего начать'
