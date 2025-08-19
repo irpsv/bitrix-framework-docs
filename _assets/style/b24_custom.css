@@ -103,5 +103,5 @@ blockquote:first-of-type {
 }
 
 .mobile .dc-doc-page__aside {
-    position: 0;
+    position: static;
 }
