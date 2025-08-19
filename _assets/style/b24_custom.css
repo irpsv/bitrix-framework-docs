@@ -101,3 +101,7 @@ blockquote:first-of-type {
 {
     height: 30px;
 }
+
+.mobile .dc-doc-page__aside {
+    position: 0;
+}
