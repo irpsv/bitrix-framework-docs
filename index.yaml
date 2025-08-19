@@ -34,7 +34,7 @@ blocks:
 
   - type: 'card-layout-block'
     title: Продукты
-    description: | 
+    description: |
       Bitrix Framework — это PHP-фреймворк для бизнес-решений. На нем работают «1C-Битрикс: Управление сайтом» и Битрикс24 — вам не придется разрабатывать систему с нуля. Виртуальная машина BitrixVM ускоряет развертывание проектов.
     children:
       - text: 'CMS для интернет-магазинов и корпоративных сайтов. Обрабатывает заказы в многопоточном режиме, поддерживает API для интеграций и встроенное кеширование.'
@@ -166,184 +166,198 @@ blocks:
           Контроллеры с автоматической валидацией и DI-инъекцией.
 
           ```php
-
-          namespace Bitrix\Demo\Controllers;
+          namespace Demo\Module\Controller;
 
           use Bitrix\Main\Engine\Controller;
-          use Bitrix\Main\Engine\ActionFilter;
-          use Bitrix\Main\Engine\Response\AjaxJson;
-          use Bitrix\Demo\Services\PageService;
+          use Bitrix\Main\Validation\Rule\NotEmpty;
 
-          class MainController extends Controller
+          class Post extends Controller
           {
-              public function __construct(private PageService $pageService)
+            public function getAction(
+              #[NotEmpty]
+              string $code,
+              PostService $service,
+            )
+            {
+              $entity = $service->getByCode($code);
+              if (!$entity)
               {
-                  parent::__construct();
+                return $this->renderComponent('demo:error', params: [
+                  'message' => Loc::getMessage('POST_NOT_FOUND'),
+                ]);
               }
 
-              protected function getDefaultPreFilters()
-              {
-                  return [new ActionFilter\Authentication()];
-              }
-
-              public function showAction(
-                  #[ActionFilter\Parameter\Required]
-                  #[ActionFilter\Parameter\Cast("int")]
-                  int $pageId
-              ): AjaxJson {
-                  $text = $this->pageService->gettext($pageId);
-
-                  return AjaxJson::createSuccess([
-                      'html' => $this->renderPartial('demo:main.page', [
-                          'text' => $text
-                      ])
-                  ]);
-              }
+              return $this->renderView('posts/view', [
+                'entity' => $entity,
+              ]);
+            }
           }
           ```
 
       - tabName: Роутинг
         text: |
-          Система маршрутизации с именованными маршрутами.
+          Система маршрутизации с именованными маршрутами и группами.
 
           ```php
           use Bitrix\Main\Routing\RoutingConfigurator;
 
-          return function (RoutingConfigurator $routes) {
-              $routes->group('/shop', function(RoutingConfigurator $routes) {
-                  // Страница категории с переменной {categoryId}
-                  $routes->get('/category/{categoryId}/', [
-                      'controller' => 'Bitrix\\Shop\\Controllers\\CategoryController',
-                      'action' => 'view'
-                  ])->where('categoryId', '\d+'); // Ограничение: только цифры
+          return function (RoutingConfigurator $routes)
+          {
+            $routes->any('/', [
+              \Demo\Module\Controller\Page::class,
+              'index',
+            ]);
 
-                  // Страница товара с несколькими переменными
-                  $routes->get('/product/{categoryId}/{productSlug}/', [
-                      'controller' => 'Bitrix\\Shop\\Controllers\\ProductController',
-                      'action' => 'detail'
-                  ]);
-              });
+            $routes
+              ->prefix('/post')
+              ->group(function(RoutingConfigurator $routes) {
+                $routes
+                  ->any('{code}', [
+                    \Demo\Module\Controller\Post::class,
+                    'get',
+                  ])
+                  ->where('code', '\w+')
+                  ->name('post-get')
+                ;
+              })
+            ;
           };
           ```
 
           Генерация URL по имени маршрута:
           ```php
-          use Bitrix\Main\Routing\RoutingConfigurator;
-
-          return function (RoutingConfigurator $routes) {
-              // Именованный роут для страницы контактов
-              $routes->get('/contacts/', [
-                  'controller' => 'Bitrix\\Main\\Controllers\\PageController',
-                  'action' => 'contacts'
-              ])->name('company.contacts');
-
-              // Именованный роут с параметрами
-              $routes->get('/news/{newsSlug}/', [
-                  'controller' => 'Bitrix\\News\\Controllers\\NewsController',
-                  'action' => 'detail'
-              ])->name('news.detail');
-          };
-
-          // Пример генерации URL в коде:
-          $url = \Bitrix\Main\Routing\Router::getInstance()->generate('news.detail', [
-              'newsSlug' => 'latest-updates'
+          $url = \Bitrix\Main\Application::getInstance()->getRouter()->route('post-view', [
+            'code' => 'my-post',
           ]);
-          // Вернет: /news/latest-updates/
           ```
 
       - tabName: ActionFilters
         text: |
-          Гибкая работа с запросами на уровне контроллеров. Фильтры для обработки входящих и исходящих данных:
+          Гибкая работа с запросами на уровне контроллеров. Фильтры для обработки запросов и ответов:
 
           ```php
-          use \Bitrix\Main\Engine\Controller;
-          use \Bitrix\Main\Engine\ActionFilter;
+          namespace Demo\Module\Controller;
 
-          class ExampleController extends Controller
+          use Bitrix\Main\Engine\ActionFilter\Attribute\Rule\Authentication;
+          use Bitrix\Main\Engine\ActionFilter\Attribute\Rule\Cors;
+          use Bitrix\Main\Engine\ActionFilter\Attribute\Rule\HttpMethod;
+          use Bitrix\Main\Engine\Controller;
+
+          class Post extends Controller
           {
-              public function configureActions()
-              {
-                  return [
-                      'exampleAction' => [ // Название экшена
-                          'prefilters' => [ // Фильтры, которые выполнятся до вызова экшена
-                    // Разрешаем только POST-запросы
-                              new ActionFilter\HttpMethod([ActionFilter\HttpMethod::METHOD_POST]),
-                    // Требуем авторизацию + редирект на страницу входа
-                              new ActionFilter\Authentication(true),
-                          ],
-                          'postfilters' => [ // Фильтры, выполняемые после экшена
-                    // Проверка CSRF-токена, параметры по умолчанию
-                              new ActionFilter\Csrf(),
-                          ],
-                      ],
-                  ];
-              }
+            #[Authentication]
+            #[HttpMethod(['POST'])]
+            public function updateAction(int $id, PostForm $form)
+            {
+              //...
+            }
 
-              public function exampleAction()
-              {
-                  // Логика действия
-                  return ['result' => 'success'];
-              }
+            #[Cors(
+              allowOrigin: '*',
+            )]
+            public function getAction(string $code)
+            {
+              // ...
+            }
+          }
           ```
       - tabName: ORM
         text: |
-          ORM с поддержкой связей и событий:
-
-          ```php
-          // Создание объекта
-          $user = UserTable::createObject();
-          $user->setName('Иван');
-          $user->setEmail('ivan@example.ru');
-          $user->save(); // Автоматическая валидация
-
-          // Работа со связями
-          $order = OrderTable::getById(1)->fetchObject();
-          $user = $order->getUser(); // Автоматическая загрузка связи
-          $items = $order->getItems(); // Связь один-ко-многим
-          ```
-
-          Генерация классов по структуре БД:
+          Генерация классов из базы данных:
 
           ```bash
-          php vendor/bin/bitrix entity:generate --module=main --table=b_user
+          php bitrix.php make:tablet my_table_name demo.module
+          ```
+
+          Работа с сущностями:
+
+          ```php
+          use Bitrix\Main\UserTable;
+
+          $user = UserTable::query()
+            ->where('LOGIN', '=', 'user@example.com')
+            ->where('ACTIVE', true)
+            ->fetchObject()
+          ;
+          $user->setActive(true);
+          $user->save();
+          ```
+
+          Работа с коллекциями:
+
+          ```php
+          use Bitrix\Main\Type\DateTime;
+          use Bitrix\Main\UserTable;
+
+          $users = UserTable::query()
+            ->addSelect('ID')
+            ->whereBetween(
+              'DATE_REGISTER',
+              DateTime::createFromText('last month'),
+              DateTime::createFromText('now')
+            )
+            ->fetchCollection()
+          ;
+          $usersIds = $users->getIdList();
           ```
 
       - tabName: Рассылки и SMS
         text: |
-          Унифицированный API для коммуникаций
+          Удобный API для отправки СМС и почты.
 
+          Отправка email-а по шаблону:
           ```php
-          // Email с шаблоном
           \Bitrix\Main\Mail\Event::send([
-              'EVENT_NAME' => 'WELCOME_EMAIL',
-              'LID' => SITE_ID,
-              'FIELDS' => [
-                  'NAME' => $userName,
-                  'CONFIRM_LINK' => $confirmUrl
-              ],
+            'LID' => SITE_ID,
+            'EVENT_NAME' => 'WELCOME_EMAIL',
+            'FIELDS' => [
+              'NAME' => $userName,
+              'CONFIRM_LINK' => $confirmUrl
+            ],
           ]);
+          ```
+
+          Отправка СМС по шаблону:
+          ```php
+          $event = new \Bitrix\Main\Sms\Event('WELCOME_SMS', [
+            'NAME' => $userName,
+            'CONFIRM_LINK' => $confirmUrl
+          ]);
+          $event->setSiteId(SITE_ID);
+          $event->send();
           ```
 
       - tabName: Файлы и S3
         text: |
-          Храните файлы в облаке:
+          Удобная и простая работа с файлами:
 
           ```php
-          здесь нужен пример кода?
-          если нужен, то в документации не нашла
-          ИИ выдает чушь
+          // сохранение
+          $fileId = CFile::SaveFile(
+            $_FILES['file'],
+            'path-to-file',
+          );
+
+          // получение
+          $fileInfo = CFile::GetByID($fileId);
           ```
+
+          Для того чтобы файлы стали храниться в S3 - просто смени настройки в CMS и подключите хранилище.
+          Вызовы API останутся без изменения!
 
       - tabName: Очереди
         text: |
-          Обрабатывайте задачи в фоне. Чтобы использовать очереди:
-          - создайте класс сообщения,
-          - создайте класс обработчика сообщения,
-          - добавьте информацию об очереди в конфигурацию .settings.php.
-          
-          Дополнительно можно настроить сложную логику сообщений, переключить обработку на консольный скрипт и использовать свою таблицу для хранения сообщений.
+          Обрабатывайте задачи в фоне через очередь.
 
-      - tabName: Агенты
+          Отправить сообщение в очередь:
+          ```php
+          ```
+
+          Обработчик сообщения из очереди:
+          ```php
+          ```
+
+      - tabName: Агенты и фоновые задачи
         text: |
           Агенты и фоновые задачи помогают выполнять PHP-код автоматически.
           - Агенты — запускают код по расписанию.
