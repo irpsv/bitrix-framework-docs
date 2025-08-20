@@ -347,45 +347,147 @@ blocks:
 
       - tabName: Очереди
         text: |
-          Обрабатывайте задачи в фоне через очередь.
+            Обрабатывайте задачи в фоне через очередь.
 
-          Отправить сообщение в очередь:
-          ```php
-          ```
+            Объект сообщения:
+            ```php
+            class MyMessage extends \Bitrix\Main\Messenger\Entity\AbstractMessage
+            {
+                public function __construct(
+                    public readonly int $id,
+                    public readonly string $content,
+                    public readonly \Bitrix\Main\Type\DateTime $created,
+                )
+                {}
+            }
+            ```
+            
+            Отправка сообщения:
+            ```
+            $message = new MyMessage(1, 'any text');
+            $message->send('queue_id');
+            ```
 
-          Обработчик сообщения из очереди:
-          ```php
-          ```
+            Обработчик сообщения из очереди:
+            ```php
+            use Bitrix\Main\Messenger\Entity\MessageInterface;
+            use Bitrix\Main\Messenger\Internals\Exception\Receiver\UnprocessableMessageException;
+
+            class MyMessageHandler extends \Bitrix\Main\Messenger\Receiver\AbstractReceiver
+            {
+                protected function process(MessageInterface $message): void
+                {
+                    if (($message instanceof MyMessage) === false)
+                    {
+                        throw new UnprocessableMessageException($message);
+                    }
+                    
+                    // process
+                }
+            }
+            ```
 
       - tabName: Агенты и фоновые задачи
         text: |
-          Агенты и фоновые задачи помогают выполнять PHP-код автоматически.
-          - Агенты — запускают код по расписанию.
-          - Фоновые задачи — после отправки ответа пользователю.
+            Для выполнения переодических задач и процессов, можно использовать функионал агентов.
+            Агент - это периодически запускаемый класс.
+            
+            Пример класса агента:
+            ```php
+            final class MyAgent
+            {
+                public static function runAgent(): string
+                {
+                    // логика работы агента
 
-          Для сложных сценариев можно комбинировать оба подхода.
-
-          ```php
-          // Фоновая задача запускает агента для поэтапной обработки
-          $app->addBackgroundJob(function() {
-              CAgent::AddAgent(
-                  "MyLongProcess::start();",
-                  "mymodule",
-                  "N",
-                  0
-              );
-          });
-          ```
+                    return __METHOD__ . "();";
+                }
+            }
+            ```
+            
+            Добавление агента в рассписание:
+            ```php
+            \CAgent::AddAgent(
+                name: '\MyAgent::runAgent();',
+                module: 'demo.module',
+                interval: 86_000, // раз в сутки
+            );
+            ```
+        
+            Для одгоразовых относительно тяжелых обработок, можно использовать фоновые задачи,
+            которые будут выполняться в конце хита уже после отдачи ответа пользователю.
+            Тем самым не замедляя отклик сайта.
+        
+            Пример добавления фоновой задачи:
+            ```php
+            \Bitrix\Main\Application::getInstance()->addBackgroundJob(function() {
+                
+                // моя логика обработки
+                
+            });
+            ```
 
       - tabName: События
         text: |
-          Реагируйте на системные изменения:
-
-          ```php
-          AddEventHandler("main", "OnAfterUserAdd", function($userId) {
-              // Отправка welcome-email
-          });
-          ```
+            Удобное API для работы с событиями!
+            
+            Класс кастомного события:
+            ```php
+            final class MyEvent extends \Bitrix\Main\Event
+            {
+                public function __construct(
+                    public readonly string $orderId,
+                    public readonly string $status,
+                )
+                {
+                    parent::__construct(
+                        'demo.module',
+                        __CLASS__,
+                    );
+                }
+            }
+            ```
+            
+            Класс кастомного обработчика:
+            ```php
+            final class MyEventHandler
+            {
+                public static function handle(MyEvent $event): \Bitrix\Main\EventResult
+                {
+                    // обработка события
+                    
+                    if ($hasErrors)
+                    {
+                        return new \Bitrix\Main\EventResult(
+                            \Bitrix\Main\EventResult::ERROR,
+                            $errors,
+                        );
+                    }
+                    
+                    return new \Bitrix\Main\EventResult(
+                        \Bitrix\Main\EventResult::SUCCESS,
+                    );
+                }
+            }
+            ```
+            
+            Пример вызова события:
+            ```php
+            $event = new MyEvent(1, 'created');
+            $event->send();
+            ```
+            
+            Работа через анонимное событие без отдельного класса:
+            ```php
+            $event = new \Bitrix\Main\Event(
+                'demo.module',
+                'OnEventName',
+                [
+                    'payload' => 123,
+                ],
+            );
+            $event->send();
+            ```
 
   - type: 'content-layout-block'
     textContent:
