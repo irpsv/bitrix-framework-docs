@@ -293,8 +293,8 @@ blocks:
             ->addSelect('ID')
             ->whereBetween(
               'DATE_REGISTER',
-              DateTime::createFromText('last month'),
-              DateTime::createFromText('now')
+              DateTime::createFromText('начало месяца'),
+              DateTime::createFromText('сегодня')
             )
             ->fetchCollection()
           ;
@@ -422,7 +422,7 @@ blocks:
             ```php
             \Bitrix\Main\Application::getInstance()->addBackgroundJob(function() {
                 
-                // моя логика обработки
+                // логика работы фоновой задачи
                 
             });
             ```
@@ -502,12 +502,35 @@ blocks:
           - Регистрируйте сотрудников с подтверждением email или через корпоративный портал.
           - Настраивайте двухфакторную аутентификацию для доступа к критичным разделам.
           - Просматривайте историю входов и подозрительную активность.
+          - Автоматические и ручные блокировки пользователей.
+          - Простое API для работы
+              
+            Примеры работы:
+            ```php
+            /**
+            * @var CUser $USER
+            */
 
-          ```php
-          // Включить 2FA для пользователя
-          $user = new CUser;
-          $user->Update($USER->GetID(), ["SECURE_AUTH" => "Y"]);
-          ```
+            // проверка прав на выполнение конкретных действий
+            if ($USER->CanDoOperation('edit_file'))
+            {
+              // доступ есть
+            }
+
+            // быстрая регистрация пользователя
+            $USER->SimpleRegister('user@example.com');
+
+            // блокировка пользователя
+            $USER->Update(234, [
+              'BLOCKED' => 'Y',
+            ]);
+
+            // требование смены пароля при следующей авторизации
+            $USER->Update(234, [
+              'PASSWORD_EXPIRED' => 'Y',
+            ]);
+            ```
+            
         listStyle: 'disk'
 
       - title: Группы пользователей и политики безопасности
@@ -515,29 +538,98 @@ blocks:
           - Создавайте отдельные группы для отделов (бухгалтерия, маркетинг, IT).
           - Ограничивайте доступ к финансовым данным и персональной информации.
           - Настраивайте политики паролей для разных групп.
-
-          ```php
-          // Создание группы с ограниченными правами
-          $group = new CGroup;
-          $group->Add([
-              "NAME" => "Финансовый отдел",
-              "SECURITY_POLICY" => ["PASSWORD_LENGTH" => 12]
-          ]);
+          - Простое API для работы
+              
+            Список групп пользователя:
+            ```php
+            $groups = CUser::GetUserGroup(234);
+            ```
+          
+            Удаление пользователя из группы:
+            ```php
+            CUser::RemoveUserGroup(234, [
+              // идентификаторы групп
+              3,
+              4,
+            ]);
+            ```
+            
+            Добавление пользователя в группы:
+            ```php
+            CUser::AppendUserGroup(234, [
+              // идентификатор группы
+              3,
+              
+              // указание сроков участия пользователя в группе
+              [
+                'GROUP_ID' => 3,
+                'DATE_ACTIVE_FROM' => '01.01.2025',
+                'DATE_ACTIVE_TO' => '01.12.2025',
+              ],
+            ]);
           ```
+          
         listStyle: 'disk'
 
       - title: Ролевая модель
         text: |
-          - Назначайте права по принципу минимальных привилегий (ABAC).
+          - Гибкая система прав на основе атрибутов и сущностей (ABAC).
           - Контролируйте доступ к модулям через атрибуты: отдел, должность, локация.
           - Аудит всех изменений прав доступа.
+          - Простое API для работы
+            
+            Создание контроллера прав доступа:
+            ```php
+            use Bitrix\Main\Access\AccessibleItem;
+            use Bitrix\Main\Access\BaseAccessController;
+            use Bitrix\Main\Access\User\AccessibleUser;
 
-          ```php
-          // Проверка доступа через AccessController
-          if (\Bitrix\Main\Engine\CurrentUser::get()->canDoOperation('edit_financial_data')) {
-              // Доступ разрешен
-          }
-          ```
+            final class PostAccessController extends BaseAccessController
+            {
+                protected function loadItem(int $itemId = null): ?AccessibleItem
+                {
+                    return $itemId ? MyPost::loadById($itemId) : null;
+                }
+
+                protected function loadUser(int $userId): AccessibleUser
+                {
+                    return MyUser::loadById($userId);
+                }
+            }
+            ```
+            
+            Использование на уровне контроллера:
+            ```php
+            use Bitrix\Main\Engine\CurrentUser;
+        
+            final class MyController
+            {
+                public function getAction(int $id, CurrentUser $user, PostAccessController $access)
+                {
+                    if ($access->can($user->getId(), 'view', $id))
+                    {
+                        // есть доступ
+                    }
+                }
+                
+                public function listAction(PostAccessController $access)
+                {
+                    $query = MyPost::query();
+                    
+                    $filter = $access->getEntityFilter(
+                        'view',
+                        $query->getEntity()->getObjectClassName()
+                    );
+                    if ($filter)
+                    {
+                        $query->addFilter($filter);
+                    }
+                    
+                    $rows = $query->fetchCollection();
+                }
+            }
+            ```
+          
         listStyle: 'disk'
 
   - type: 'content-layout-block'
