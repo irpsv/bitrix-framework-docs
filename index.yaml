@@ -153,11 +153,11 @@ blocks:
 
   - type: 'tabs-block'
     title: Инструменты разработки
-    description: Фреймворк включает готовые компоненты для разработки — от работы с базой до фоновых задач.
+    description: Фреймворк включает готовые компоненты для разработки.
     items:
       - tabName: Контроллеры
         text: |
-          Контроллеры с автоматической валидацией и DI-инъекцией.
+          Работайте с автоматической валидацией и DI-инъекцией.
 
           ```php
           namespace Demo\Module\Controller;
@@ -166,68 +166,66 @@ blocks:
           use Bitrix\Main\Validation\Rule\NotEmpty;
 
           class Post extends Controller
-          {
-            public function getAction(
-              #[NotEmpty]
-              string $code,
-              PostService $service,
-            )
-            {
-              $entity = $service->getByCode($code);
-              if (!$entity)
               {
-                return $this->renderComponent('demo:error', params: [
-                  'message' => Loc::getMessage('POST_NOT_FOUND'),
-                ]);
-              }
+              public function getAction(
+                  #[NotEmpty]
+                  string $code,
+                  PostService $service,
+              )
+              {
+                  $entity = $service->getByCode($code);
+                  if (!$entity)
+                  {
+                  return $this->renderComponent('demo:error', params: [
+                      'message' => Loc::getMessage('POST_NOT_FOUND'),
+                  ]);
+                  }
 
-              return $this->renderView('posts/view', [
-                'entity' => $entity,
-              ]);
-            }
+                  return $this->renderView('posts/view', [
+                  'entity' => $entity,
+                  ]);
+              }
           }
           ```
 
       - tabName: Роутинг
         text: |
-          Система маршрутизации с именованными маршрутами и группами.
+          Настраивайте маршруты с именами и группами. Объединяйте правила для связанных URL.
 
           ```php
           use Bitrix\Main\Routing\RoutingConfigurator;
 
           return function (RoutingConfigurator $routes)
           {
-            $routes->any('/', [
-              \Demo\Module\Controller\Page::class,
-              'index',
-            ]);
+              $routes->any('/', [
+                  \Demo\Module\Controller\Page::class,
+                  'index',
+              ]);
 
-            $routes
-              ->prefix('/post')
-              ->group(function(RoutingConfigurator $routes) {
-                $routes
-                  ->any('{code}', [
-                    \Demo\Module\Controller\Post::class,
-                    'get',
-                  ])
-                  ->where('code', '\w+')
-                  ->name('post-get')
-                ;
-              })
-            ;
+              $routes
+                  ->prefix('/post')
+                  ->group(function(RoutingConfigurator $routes) {
+                  $routes
+                      ->any('{code}', [
+                      \Demo\Module\Controller\Post::class,
+                      'get',
+                      ])
+                      ->where('code', '\w+')
+                      ->name('post-get');
+                  });
           };
           ```
 
-          Генерация URL по имени маршрута:
+          Сгенерировать URL по имени маршрута:
           ```php
           $url = \Bitrix\Main\Application::getInstance()->getRouter()->route('post-view', [
-            'code' => 'my-post',
+              'code' => 'my-post',
           ]);
           ```
 
       - tabName: ActionFilters
         text: |
-          Гибкая работа с запросами на уровне контроллеров. Фильтры для обработки запросов и ответов:
+          Работайте с запросами в контроллерах. Обрабатывайте входящие данные и ответы с помощью фильтров.
 
           ```php
           namespace Demo\Module\Controller;
@@ -239,83 +237,81 @@ blocks:
 
           class Post extends Controller
           {
-            #[Authentication]
-            #[HttpMethod(['POST'])]
-            public function updateAction(int $id, PostForm $form)
-            {
-              //...
-            }
+              #[Authentication]
+              #[HttpMethod(['POST'])]
+              public function updateAction(int $id, PostForm $form)
+              {
+                  //...
+              }
 
-            #[Cors(
-              allowOrigin: '*',
-            )]
-            public function getAction(string $code)
-            {
-              // ...
-            }
+              #[Cors(
+                  allowOrigin: '*',
+              )]
+              public function getAction(string $code)
+              {
+                  // ...
+              }
           }
           ```
       - tabName: ORM
         text: |
-          Генерация классов из базы данных:
+          Генерируйте классы сущностей из базы. Работайте с данными через объекты и коллекции.
 
           ```bash
           php bitrix.php make:tablet my_table_name demo.module
           ```
 
-          Работа с сущностями:
+          Найти и обновить сущность:
 
           ```php
           use Bitrix\Main\UserTable;
 
           $user = UserTable::query()
-            ->where('LOGIN', '=', 'user@example.com')
-            ->where('ACTIVE', true)
-            ->fetchObject()
-          ;
+              ->where('LOGIN', '=', 'user@example.com')
+              ->where('ACTIVE', true)
+              ->fetchObject();
           $user->setActive(true);
           $user->save();
           ```
 
-          Работа с коллекциями:
+          Получить коллекцию объектов:
 
           ```php
           use Bitrix\Main\Type\DateTime;
           use Bitrix\Main\UserTable;
 
           $users = UserTable::query()
-            ->addSelect('ID')
-            ->whereBetween(
-              'DATE_REGISTER',
-              DateTime::createFromText('начало месяца'),
-              DateTime::createFromText('сегодня')
-            )
-            ->fetchCollection()
-          ;
+              ->addSelect('ID')
+              ->whereBetween(
+                  'DATE_REGISTER',
+                  DateTime::createFromText('начало месяца'),
+                  DateTime::createFromText('сегодня')
+              )
+              ->fetchCollection();
           $usersIds = $users->getIdList();
           ```
 
       - tabName: Рассылки и SMS
         text: |
-          Удобный API для отправки СМС и почты.
+          Отправляйте email и SMS по шаблонам через API.
 
-          Отправка email-а по шаблону:
+          Отправить email:
           ```php
           \Bitrix\Main\Mail\Event::send([
-            'LID' => SITE_ID,
-            'EVENT_NAME' => 'WELCOME_EMAIL',
-            'FIELDS' => [
-              'NAME' => $userName,
-              'CONFIRM_LINK' => $confirmUrl
-            ],
+              'LID' => SITE_ID,
+              'EVENT_NAME' => 'WELCOME_EMAIL',
+              'FIELDS' => [
+                  'NAME' => $userName,
+                  'CONFIRM_LINK' => $confirmUrl
+              ],
           ]);
           ```
 
-          Отправка СМС по шаблону:
+          Отправить SMS:
           ```php
           $event = new \Bitrix\Main\Sms\Event('WELCOME_SMS', [
-            'NAME' => $userName,
-            'CONFIRM_LINK' => $confirmUrl
+              'NAME' => $userName,
+              'CONFIRM_LINK' => $confirmUrl
           ]);
           $event->setSiteId(SITE_ID);
           $event->send();
@@ -323,27 +319,27 @@ blocks:
 
       - tabName: Файлы и S3
         text: |
-          Удобная и простая работа с файлами:
+          Работайте с файлами через API. Сохраняйте и загружайте файлы — код останется неизменным при смене хранилища.
 
+          Сохранить и получить файл:
           ```php
-          // сохранение
+          // сохранить
           $fileId = CFile::SaveFile(
-            $_FILES['file'],
-            'path-to-file',
+              $_FILES['file'],
+              'path-to-file',
           );
 
-          // получение
+          // получить
           $fileInfo = CFile::GetByID($fileId);
           ```
 
-          Для того чтобы файлы стали храниться в S3 - просто смени настройки в CMS и подключите хранилище.
-          Вызовы API останутся без изменения!
+          Чтобы хранить файлы в S3, измените настройки в панели администрирования продукта и подключите хранилище.
 
       - tabName: Очереди
         text: |
             Обрабатывайте задачи в фоне через очередь.
 
-            Объект сообщения:
+            Создать сообщение:
             ```php
             class MyMessage extends \Bitrix\Main\Messenger\Entity\AbstractMessage
             {
@@ -356,13 +352,13 @@ blocks:
             }
             ```
             
-            Отправка сообщения:
+            Отправить сообщение в очередь:
             ```
             $message = new MyMessage(1, 'any text');
             $message->send('queue_id');
             ```
 
-            Обработчик сообщения из очереди:
+            Обработать сообщение:
             ```php
             use Bitrix\Main\Messenger\Entity\MessageInterface;
             use Bitrix\Main\Messenger\Internals\Exception\Receiver\UnprocessableMessageException;
@@ -383,10 +379,9 @@ blocks:
 
       - tabName: Агенты и фоновые задачи
         text: |
-            Для выполнения переодических задач и процессов, можно использовать функионал агентов.
-            Агент - это периодически запускаемый класс.
-            
-            Пример класса агента:
+            Запускайте код по расписанию или после ответа пользователю.
+
+            Агент — периодически запускаемый класс для выполнения переодических задач и процессов.
             ```php
             final class MyAgent
             {
@@ -399,7 +394,7 @@ blocks:
             }
             ```
             
-            Добавление агента в рассписание:
+            Добавить агент в расписание:
             ```php
             \CAgent::AddAgent(
                 name: '\MyAgent::runAgent();',
@@ -408,24 +403,20 @@ blocks:
             );
             ```
         
-            Для одгоразовых относительно тяжелых обработок, можно использовать фоновые задачи,
-            которые будут выполняться в конце хита уже после отдачи ответа пользователю.
-            Тем самым не замедляя отклик сайта.
-        
-            Пример добавления фоновой задачи:
+            Для тяжелых разовых обработок используйте фоновые задачи. Они выполняются после отправки ответа пользователю и не замедляют работу сайта.
             ```php
             \Bitrix\Main\Application::getInstance()->addBackgroundJob(function() {
                 
                 // логика работы фоновой задачи
-                
+
             });
             ```
 
       - tabName: События
         text: |
-            Удобное API для работы с событиями!
+            Создавайте кастомные события и обработчики для гибкой интеграции.
             
-            Класс кастомного события:
+            Создать класс события:
             ```php
             final class MyEvent extends \Bitrix\Main\Event
             {
@@ -442,7 +433,7 @@ blocks:
             }
             ```
             
-            Класс кастомного обработчика:
+            Создать обработчик:
             ```php
             final class MyEventHandler
             {
@@ -465,13 +456,13 @@ blocks:
             }
             ```
             
-            Пример вызова события:
+            Вызвать событие:
             ```php
             $event = new MyEvent(1, 'created');
             $event->send();
             ```
             
-            Работа через анонимное событие без отдельного класса:
+            Использовать анонимное событие без отдельного класса:
             ```php
             $event = new \Bitrix\Main\Event(
                 'demo.module',
@@ -496,10 +487,10 @@ blocks:
           - Регистрируйте сотрудников с подтверждением email или через корпоративный портал.
           - Настраивайте двухфакторную аутентификацию для доступа к критичным разделам.
           - Просматривайте историю входов и подозрительную активность.
-          - Автоматические и ручные блокировки пользователей.
-          - Простое API для работы
+          - Выполняйте автоматические и ручные блокировки пользователей.
+          - Используйте API для работы с пользователями.
               
-            Примеры работы:
+            Примеры:
             ```php
             /**
             * @var CUser $USER
@@ -508,7 +499,7 @@ blocks:
             // проверка прав на выполнение конкретных действий
             if ($USER->CanDoOperation('edit_file'))
             {
-              // доступ есть
+                // доступ есть
             }
 
             // быстрая регистрация пользователя
@@ -516,12 +507,12 @@ blocks:
 
             // блокировка пользователя
             $USER->Update(234, [
-              'BLOCKED' => 'Y',
+                'BLOCKED' => 'Y',
             ]);
 
             // требование смены пароля при следующей авторизации
             $USER->Update(234, [
-              'PASSWORD_EXPIRED' => 'Y',
+                'PASSWORD_EXPIRED' => 'Y',
             ]);
             ```
             
@@ -532,34 +523,33 @@ blocks:
           - Создавайте отдельные группы для отделов (бухгалтерия, маркетинг, IT).
           - Ограничивайте доступ к финансовым данным и персональной информации.
           - Настраивайте политики паролей для разных групп.
-          - Простое API для работы
+          - Используйте API для работы с группами.
               
-            Список групп пользователя:
+            Получить список групп пользователя:
             ```php
             $groups = CUser::GetUserGroup(234);
             ```
           
-            Удаление пользователя из группы:
+            Удалить пользователя из группы:
             ```php
             CUser::RemoveUserGroup(234, [
-              // идентификаторы групп
-              3,
-              4,
+                // идентификаторы групп
+                3,
+                4,
             ]);
             ```
             
-            Добавление пользователя в группы:
+            Добавить пользователя в группы:
             ```php
             CUser::AppendUserGroup(234, [
-              // идентификатор группы
-              3,
-              
-              // указание сроков участия пользователя в группе
-              [
-                'GROUP_ID' => 3,
-                'DATE_ACTIVE_FROM' => '01.01.2025',
-                'DATE_ACTIVE_TO' => '01.12.2025',
-              ],
+                // идентификатор группы
+                3,
+                // срок участия пользователя в группе
+                [ 
+                  'GROUP_ID' => 3,
+                  'DATE_ACTIVE_FROM' => '01.01.2025',
+                  'DATE_ACTIVE_TO' => '01.12.2025',
+                ],
             ]);
           	```
           
@@ -567,12 +557,12 @@ blocks:
 
       - title: Ролевая модель
         text: |
-          - Гибкая система прав на основе атрибутов и сущностей (ABAC).
-          - Контролируйте доступ к модулям через атрибуты: отдел, должность, локация.
-          - Аудит всех изменений прав доступа.
-          - Простое API для работы
+          - Настраивайте гибкую систему прав на основе атрибутов и сущностей (ABAC).
+          - Контролируйте доступ к модулям через атрибуты: отдел, должность, расположение.
+          - Проводите аудит всех изменений прав доступа.
+          - Используйте API для работы.
             
-            Создание контроллера прав доступа:
+            Создать контроллер прав доступа:
             ```php
             use Bitrix\Main\Access\AccessibleItem;
             use Bitrix\Main\Access\BaseAccessController;
@@ -592,7 +582,7 @@ blocks:
             }
             ```
             
-            Использование на уровне контроллера:
+            Внедрить контроль прав в методы контроллера:
             ```php
             use Bitrix\Main\Engine\CurrentUser;
         
@@ -644,8 +634,8 @@ blocks:
             ```
 
         2. Настройте обязательные параметры. Укажите:
-            - пароли баз данных MySQL и Postgres в `.env_sql`
-            - секретный ключ для Push-сервера в `.env_push`
+            - пароли баз данных MySQL и Postgres в файле `.env_sql`
+            - секретный ключ для Push-сервера в файле `.env_push`
 
         3. Запустите контейнеры
             ```bash
@@ -659,18 +649,18 @@ blocks:
             wget https://www.1c-bitrix.ru/download/scripts/bitrixsetup.php
             ```
 
-        5. Откройте в браузере [http://localhost:8588/bitrixsetup.php](http://localhost:8588/bitrixsetup.php)
+        5. Откройте в браузере адрес [http://localhost:8588/bitrixsetup.php](http://localhost:8588/bitrixsetup.php)
 
         6. Следуйте инструкциям мастера
 
       links:
-        - text: 'Контейнерное окружение для Битрикс (README)'
+        - text: 'Контейнерное окружение для продуктов Битрикс'
           url: 'https://github.com/bitrix-tools/env-docker'
           theme: 'normal'
           arrow: true
           color: '#54BA7E'
 
-        - text: 'Инструкция по установке продуктов Битрикс'
+        - text: 'Инструкция по установке продуктов'
           url: 'pages/get-started/install-solution.html'
           theme: 'normal'
           arrow: true
