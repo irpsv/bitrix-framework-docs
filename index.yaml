@@ -6,6 +6,7 @@ blocks:
     resetPaddings: false
     verticalOffset: 'l'
     description: 'Фреймворк для работы с «1С-Битрикс:Управление сайтом» и «Битрикс24»'
+    theme: 'dark'
     background:
       light:
         image:
