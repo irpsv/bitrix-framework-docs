@@ -13,14 +13,14 @@ blocks:
          mobile: '_images/img_framework_main_v2.png'
          desktop: '_images/img_framework_main_v2.png'
          disableCompress: true
-        color: #3E1CFF
+        color: '#3E1CFF'
         fullWidth: false
       dark:
         image:
          mobile: '_images/img_framework_main_v2.png'
          desktop: '_images/img_framework_main_v2.png'
          disableCompress: true
-        color: #3E1CFF
+        color: '#3E1CFF'
         fullWidth: false
     buttons:
       - text: 'Начать'
@@ -49,7 +49,6 @@ blocks:
             url: 'pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
       - text: 'Платформа для автоматизации бизнеса и командной работы. Объединяет CRM, управление задачами, документы и видеозвонки в едином интерфейсе.'
         title: 'Битрикс24'
         type: 'image-card'
@@ -63,7 +62,6 @@ blocks:
             url: 'pages/get-started/install-solution.html'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
       - text: 'Готовая виртуальная машина помогает быстро развернуть проекты на Bitrix Framework. Содержит сервер с настроенной и проверенной конфигурацией.'
         title: 'BitrixVM'
         type: 'image-card'
@@ -76,7 +74,6 @@ blocks:
             url: 'pages/get-started/install-env.html'
             theme: 'normal'
             arrow: true
-            color: #54BA7E
 
   - type: 'card-layout-block'
     title: 'Преимущества фреймворка'
@@ -94,7 +91,6 @@ blocks:
             url: 'https://www.1c-bitrix.ru/products/cms/'
             theme: 'normal'
             arrow: true
-            color: '#54BA7E'
       - type: 'basic-card'
         title: Модульность
         text: |
@@ -106,12 +102,10 @@ blocks:
             url: 'https://marketplace.1c-bitrix.ru/'
             theme: 'normal'
             arrow: true
-            color: '#54BA7E'
           - text: 'Маркет Битрикс24'
             url: 'https://www.bitrix24.ru/apps/'
             theme: 'normal'
             arrow: true
-            color: '#54BA7E'
       - type: 'basic-card'
         title: Интеграции
         text: |
@@ -124,7 +118,6 @@ blocks:
             url: 'https://apidocs.bitrix24.ru/'
             theme: 'normal'
             arrow: true
-            color: '#54BA7E'
 
       - type: 'basic-card'
         title: 'Стандарты разработки'
@@ -654,12 +647,10 @@ blocks:
           url: 'https://github.com/bitrix-tools/env-docker'
           theme: 'normal'
           arrow: true
-          color: #54BA7E
 
         - text: 'Инструкция по установке продуктов'
           url: 'pages/get-started/install-solution.html'
           theme: 'normal'
           arrow: true
-          color: #54BA7E
 
 
