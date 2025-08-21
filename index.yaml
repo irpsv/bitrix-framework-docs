@@ -654,14 +654,12 @@ blocks:
           url: 'https://github.com/bitrix-tools/env-docker'
           theme: 'normal'
           arrow: true
-          #color: '#54BA7E'
-          colorTheme: 'light'
+          color: '#54BA7E'
 
         - text: 'Инструкция по установке продуктов'
           url: 'pages/get-started/install-solution.html'
           theme: 'normal'
           arrow: true
-          #color: '#54BA7E'
-          colorTheme: 'light'
+          color: '#54BA7E'
 
 
