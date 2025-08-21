@@ -5,7 +5,9 @@ blocks:
     title: 'Bitrix Framework'
     resetPaddings: false
     verticalOffset: 'l'
-    description: 'Фреймворк для работы с Битрикс24 и 1С-Битрикс: Управление сайтом'
+    description: |
+      Фреймворк для работы с Битрикс24
+      и 1С-Битрикс: Управление сайтом
     theme: 'dark'
     background:
       light:
@@ -35,7 +37,7 @@ blocks:
   - type: 'card-layout-block'
     title: Продукты
     description: |
-      Bitrix Framework — это PHP-фреймворк для сложных веб-проектов. Собирайте сайты и приложения из готовых модулей и компонентов. Фреймворк лежит в основе 1C-Битрикс: Управление сайтом и Битрикс24. Виртуальная машина BitrixVM ускоряет развертывание проектов.
+      Bitrix Framework — это готовый набор инструментов и библиотек на PHP. Он ускоряет разработку сложных сайтов и приложений. Фреймворк служит основой для 1C-Битрикс: Управление сайтом и Битрикс24. Разворачивайте проекты на готовой виртуальной машине BitrixVM.
     children:
       - text: 'CMS для интернет-магазинов и сайтов. Поддерживает заказы в многопоточном режиме, API для интеграций и встроенное кеширование.'
         title: Управление сайтом
@@ -45,8 +47,8 @@ blocks:
            light : "_images/img_framework_banner_s_01.png"
         }
         links:
-          - text: 'Установить продукт'
-            url: 'pages/get-started/install-solution.html'
+          - text: 'Инструкция по установке'
+            url: 'pages/get-started/install-distr.html'
             theme: 'normal'
             arrow: true
       - text: 'Платформа для автоматизации бизнеса и командной работы. Объединяет CRM, управление задачами, документы и видеозвонки в едином интерфейсе.'
@@ -58,8 +60,8 @@ blocks:
            light : "_images/img_framework_banner_s_02_v2.png"
         }
         links:
-          - text: 'Установить продукт'
-            url: 'pages/get-started/install-solution.html'
+          - text: 'Инструкция по установке'
+            url: 'pages/get-started/install-distr.html'
             theme: 'normal'
             arrow: true
       - text: 'Готовая виртуальная машина помогает быстро развернуть проекты на Bitrix Framework. Содержит сервер с настроенной и проверенной конфигурацией.'
@@ -70,7 +72,7 @@ blocks:
            light : "_images/img_framework_banner_s_03.png"
         }
         links:
-          - text: 'Установить окружение'
+          - text: 'Инструкция по установке'
             url: 'pages/get-started/install-env.html'
             theme: 'normal'
             arrow: true
@@ -473,7 +475,7 @@ blocks:
 
   - type: 'questions-block'
     text: |
-      Настраивайте права доступа к данным и функциям. Защищайте систему от утечек и нарушений законодательства.
+      Гибко настраивайте права доступа к данным и функциям. Это защитит от утечек и поможет выполнить требования закона.
     items:
       - title: Работа с пользователями
         text: |
