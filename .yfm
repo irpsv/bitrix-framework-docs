@@ -4,7 +4,6 @@ resources:
   style:
     - _assets/style/b24_custom.css
     - _assets/style/highlight_custom.css
-	- "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/atom-one-light.min.css"
   script:
     - _assets/b24loc.js
     - _assets/b24addons.js
