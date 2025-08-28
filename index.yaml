@@ -5,29 +5,654 @@ blocks:
     title: 'Bitrix Framework'
     resetPaddings: false
     verticalOffset: 'l'
-    description: 'Фреймворк для работы с «1С-Битрикс:Управление сайтом» и «Битрикс24»'
+    description: |
+      Фреймворк для работы с Битрикс24
+      и 1С&#8209;Битрикс:&nbsp;Управление сайтом
     theme: 'dark'
     background:
       light:
         image:
-          mobile: '_images/cover.png'
-          desktop: '_images/cover.png'
-          disableCompress: true
-        color: '#E8E4FF'
+         mobile: '_images/img_framework_main_v2.png'
+         desktop: '_images/img_framework_main_v2.png'
+         disableCompress: true
+        color: '#3E1CFF'
         fullWidth: false
       dark:
         image:
-          mobile: '_images/cover.png'
-          desktop: '_images/cover.png'
-          disableCompress: true
-        color: '#E8E4FF'
+         mobile: '_images/img_framework_main_v2.png'
+         desktop: '_images/img_framework_main_v2.png'
+         disableCompress: true
+        color: '#3E1CFF'
         fullWidth: false
     buttons:
       - text: 'Начать'
         theme: 'outlined-contrast'
         size: 'promo'
-        url: '/pages/get-started/install-env.html'
+        url: 'pages/get-started/install-env.html'
       - text: 'GitHub'
         theme: 'outlined-contrast'
         size: 'promo'
         url: 'https://github.com/bitrix-tools/framework-docs'
+
+  - type: 'card-layout-block'
+    title: Продукты
+    description: |
+      Bitrix Framework — это готовый набор инструментов и библиотек на PHP. Он ускоряет разработку сложных сайтов и приложений. Фреймворк служит основой для 1C&#8209;Битрикс:&nbsp;Управление сайтом и Битрикс24. Проекты можно развернуть на готовой виртуальной машине BitrixVM.
+    children:
+      - text: 'CMS для интернет-магазинов и сайтов. Поддерживает заказы в многопоточном режиме, API для интеграций и встроенное кеширование.'
+        title: Управление сайтом
+        type: 'image-card'
+        image: {
+           dark : "_images/img_framework_banner_s_01.png",
+           light : "_images/img_framework_banner_s_01.png"
+        }
+        links:
+          - text: 'Инструкция по установке'
+            url: 'pages/get-started/install-distr.html'
+            theme: 'normal'
+            arrow: true
+      - text: 'Платформа для автоматизации бизнеса и командной работы. Объединяет CRM, управление задачами, документы и видеозвонки в едином интерфейсе.'
+        title: 'Битрикс24'
+        type: 'image-card'
+        media:
+        image: {
+           dark : "_images/img_framework_banner_s_02_v2.png",
+           light : "_images/img_framework_banner_s_02_v2.png"
+        }
+        links:
+          - text: 'Инструкция по установке'
+            url: 'pages/get-started/install-distr.html'
+            theme: 'normal'
+            arrow: true
+      - text: 'Готовая виртуальная машина помогает быстро развернуть проекты на Bitrix Framework. Содержит сервер с настроенной и проверенной конфигурацией.'
+        title: 'BitrixVM'
+        type: 'image-card'
+        image: {
+           dark : "_images/img_framework_banner_s_03.png",
+           light : "_images/img_framework_banner_s_03.png"
+        }
+        links:
+          - text: 'Инструкция по установке'
+            url: 'pages/get-started/install-env.html'
+            theme: 'normal'
+            arrow: true
+
+  - type: 'card-layout-block'
+    title: 'Преимущества фреймворка'
+    children:
+      - type: 'basic-card'
+        title: 'CMS из коробки'
+        text: |
+          Включает CMS с полным набором функций:
+            - управление структурой и содержимым
+            - SEO-инструменты
+            - система прав доступа
+            - готовая база для e-commerce и корпоративных решений
+        links:
+          - text: 'О продукте на сайте компании'
+            url: 'https://www.1c-bitrix.ru/products/cms/'
+            theme: 'normal'
+            arrow: true
+      - type: 'basic-card'
+        title: Модульность
+        text: |
+          Позволяет расширять функционал без изменения ядра с помощью:
+            - API для разработки кастомных решений
+            - каталога готовых решений в Маркетплейсе
+        links:
+          - text: 'Маркетплейс'
+            url: 'https://marketplace.1c-bitrix.ru/'
+            theme: 'normal'
+            arrow: true
+          - text: 'Маркет Битрикс24'
+            url: 'https://www.bitrix24.ru/apps/'
+            theme: 'normal'
+            arrow: true
+      - type: 'basic-card'
+        title: Интеграции
+        text: |
+          Поддерживает:
+            - REST API для двустороннего обмена данными
+            - вебхуки для событийной модели
+            - стандартные коннекторы для 1С, email-сервисов и CRM
+        links:
+          - text: 'Документация REST API'
+            url: 'https://apidocs.bitrix24.ru/'
+            theme: 'normal'
+            arrow: true
+
+      - type: 'basic-card'
+        title: 'Стандарты разработки'
+        text: |
+          Придерживается основных стандартов PHP:
+          - стиль кода PSR-1
+          - автозагрузка классов PSR-4
+          - интерфейсы HTTP PSR-7
+          - менеджер пакетов Composer
+
+      - type: 'basic-card'
+        title: Безопасность
+        text: |
+          Имеет встроенную защиту от основных угроз:
+          - фильтрация данных от XSS и SQL-инъекций
+          - защита от CSRF-атак
+          - регулярные обновления безопасности
+
+      - type: 'basic-card'
+        title: Масштабируемость
+        text: |
+          Обеспечивает высокую производительность под нагрузкой за счет:
+          - многоуровневого кеширования
+          - встроенных механизмов кластеризации
+          - интеграции с облачными хранилищами
+
+  - type: 'tabs-block'
+    title: Инструменты разработки
+    description: Фреймворк включает готовые компоненты для разработки.
+    items:
+      - tabName: Контроллеры
+        text: |
+          Работайте с автоматической валидацией и DI-инъекцией.
+
+          ```php
+          namespace Demo\Module\Controller;
+
+          use Bitrix\Main\Engine\Controller;
+          use Bitrix\Main\Validation\Rule\NotEmpty;
+
+          class Post extends Controller
+              {
+              public function getAction(
+                  #[NotEmpty]
+                  string $code,
+                  PostService $service,
+              )
+              {
+                  $entity = $service->getByCode($code);
+                  if (!$entity)
+                  {
+                  return $this->renderComponent('demo:error', params: [
+                      'message' => Loc::getMessage('POST_NOT_FOUND'),
+                  ]);
+                  }
+
+                  return $this->renderView('posts/view', [
+                  'entity' => $entity,
+                  ]);
+              }
+          }
+          ```
+
+      - tabName: Роутинг
+        text: |
+          Настраивайте маршруты с именами и группами. Объединяйте правила для связанных URL.
+
+          ```php
+          use Bitrix\Main\Routing\RoutingConfigurator;
+
+          return function (RoutingConfigurator $routes)
+          {
+              $routes->any('/', [
+                  \Demo\Module\Controller\Page::class,
+                  'index',
+              ]);
+
+              $routes
+                  ->prefix('/post')
+                  ->group(function(RoutingConfigurator $routes) {
+                  $routes
+                      ->any('{code}', [
+                      \Demo\Module\Controller\Post::class,
+                      'get',
+                      ])
+                      ->where('code', '\w+')
+                      ->name('post-get');
+                  });
+          };
+          ```
+
+          Сгенерировать URL по имени маршрута:
+          ```php
+          $url = \Bitrix\Main\Application::getInstance()->getRouter()->route('post-view', [
+              'code' => 'my-post',
+          ]);
+          ```
+
+      - tabName: ActionFilters
+        text: |
+          Работайте с запросами в контроллерах. Обрабатывайте входящие данные и ответы с помощью фильтров.
+
+          ```php
+          namespace Demo\Module\Controller;
+
+          use Bitrix\Main\Engine\ActionFilter\Attribute\Rule\Authentication;
+          use Bitrix\Main\Engine\ActionFilter\Attribute\Rule\Cors;
+          use Bitrix\Main\Engine\ActionFilter\Attribute\Rule\HttpMethod;
+          use Bitrix\Main\Engine\Controller;
+
+          class Post extends Controller
+          {
+              #[Authentication]
+              #[HttpMethod(['POST'])]
+              public function updateAction(int $id, PostForm $form)
+              {
+                  //...
+              }
+
+              #[Cors(
+                  allowOrigin: '*',
+              )]
+              public function getAction(string $code)
+              {
+                  // ...
+              }
+          }
+          ```
+      - tabName: ORM
+        text: |
+          Генерируйте классы сущностей из базы. Работайте с данными через объекты и коллекции.
+
+          ```bash
+          php bitrix.php make:tablet my_table_name demo.module
+          ```
+
+          Найти и обновить сущность:
+
+          ```php
+          use Bitrix\Main\UserTable;
+
+          $user = UserTable::query()
+              ->where('LOGIN', '=', 'user@example.com')
+              ->where('ACTIVE', true)
+              ->fetchObject();
+          $user->setActive(true);
+          $user->save();
+          ```
+
+          Получить коллекцию объектов:
+
+          ```php
+          use Bitrix\Main\Type\DateTime;
+          use Bitrix\Main\UserTable;
+
+          $users = UserTable::query()
+              ->addSelect('ID')
+              ->whereBetween(
+                  'DATE_REGISTER',
+                  DateTime::createFromText('начало месяца'),
+                  DateTime::createFromText('сегодня')
+              )
+              ->fetchCollection();
+          $usersIds = $users->getIdList();
+          ```
+
+      - tabName: Рассылки и SMS
+        text: |
+          Отправляйте email и SMS по шаблонам через API.
+
+          Отправить email:
+          ```php
+          \Bitrix\Main\Mail\Event::send([
+              'LID' => SITE_ID,
+              'EVENT_NAME' => 'WELCOME_EMAIL',
+              'FIELDS' => [
+                  'NAME' => $userName,
+                  'CONFIRM_LINK' => $confirmUrl
+              ],
+          ]);
+          ```
+
+          Отправить SMS:
+          ```php
+          $event = new \Bitrix\Main\Sms\Event('WELCOME_SMS', [
+              'NAME' => $userName,
+              'CONFIRM_LINK' => $confirmUrl
+          ]);
+          $event->setSiteId(SITE_ID);
+          $event->send();
+          ```
+
+      - tabName: Файлы и S3
+        text: |
+          Работайте с файлами через API. 
+
+          Сохранить и получить файл:
+          ```php
+          // сохранить
+          $fileId = CFile::SaveFile(
+              $_FILES['file'],
+              'path-to-file',
+          );
+
+          // получить
+          $fileInfo = CFile::GetByID($fileId);
+          ```
+
+          Чтобы хранить файлы в S3, измените настройки в панели администрирования продукта и подключите хранилище. Сохраняйте и загружайте файлы — код останется неизменным при смене хранилища.
+
+      - tabName: Очереди
+        text: |
+            Обрабатывайте задачи в фоне через очередь.
+
+            Создать сообщение:
+            ```php
+            class MyMessage extends \Bitrix\Main\Messenger\Entity\AbstractMessage
+            {
+                public function __construct(
+                    public readonly int $id,
+                    public readonly string $content,
+                    public readonly \Bitrix\Main\Type\DateTime $created,
+                )
+                {}
+            }
+            ```
+            
+            Отправить сообщение в очередь:
+            ```
+            $message = new MyMessage(1, 'any text');
+            $message->send('queue_id');
+            ```
+
+            Обработать сообщение:
+            ```php
+            use Bitrix\Main\Messenger\Entity\MessageInterface;
+            use Bitrix\Main\Messenger\Internals\Exception\Receiver\UnprocessableMessageException;
+
+            class MyMessageHandler extends \Bitrix\Main\Messenger\Receiver\AbstractReceiver
+            {
+                protected function process(MessageInterface $message): void
+                {
+                    if (($message instanceof MyMessage) === false)
+                    {
+                        throw new UnprocessableMessageException($message);
+                    }
+                    
+                    // process
+                }
+            }
+            ```
+
+      - tabName: Агенты и фоновые задачи
+        text: |
+            Запускайте код по расписанию или после ответа пользователю.
+
+            Агент — периодически запускаемый класс для выполнения переодических задач и процессов.
+            ```php
+            final class MyAgent
+            {
+                public static function runAgent(): string
+                {
+                    // логика работы агента
+
+                    return __METHOD__ . "();";
+                }
+            }
+            ```
+            
+            Добавить агент в расписание:
+            ```php
+            \CAgent::AddAgent(
+                name: '\MyAgent::runAgent();',
+                module: 'demo.module',
+                interval: 86_000, // раз в сутки
+            );
+            ```
+        
+            Для тяжелых разовых обработок используйте фоновые задачи. Они выполняются после отправки ответа пользователю и не замедляют работу сайта.
+            ```php
+            \Bitrix\Main\Application::getInstance()->addBackgroundJob(function() {
+                
+                // логика работы фоновой задачи
+
+            });
+            ```
+
+      - tabName: События
+        text: |
+            Создавайте кастомные события и обработчики для гибкой интеграции.
+            
+            Создать класс события:
+            ```php
+            final class MyEvent extends \Bitrix\Main\Event
+            {
+                public function __construct(
+                    public readonly string $orderId,
+                    public readonly string $status,
+                )
+                {
+                    parent::__construct(
+                        'demo.module',
+                        __CLASS__,
+                    );
+                }
+            }
+            ```
+            
+            Создать обработчик:
+            ```php
+            final class MyEventHandler
+            {
+                public static function handle(MyEvent $event): \Bitrix\Main\EventResult
+                {
+                    // обработка события
+                    
+                    if ($hasErrors)
+                    {
+                        return new \Bitrix\Main\EventResult(
+                            \Bitrix\Main\EventResult::ERROR,
+                            $errors,
+                        );
+                    }
+                    
+                    return new \Bitrix\Main\EventResult(
+                        \Bitrix\Main\EventResult::SUCCESS,
+                    );
+                }
+            }
+            ```
+            
+            Вызвать событие:
+            ```php
+            $event = new MyEvent(1, 'created');
+            $event->send();
+            ```
+            
+            Использовать анонимное событие без отдельного класса:
+            ```php
+            $event = new \Bitrix\Main\Event(
+                'demo.module',
+                'OnEventName',
+                [
+                    'payload' => 123,
+                ],
+            );
+            $event->send();
+            ```
+
+  - type: 'content-layout-block'
+    textContent:
+      title: 'Инструменты безопасности'
+
+  - type: 'questions-block'
+    text: |
+      Гибко настраивайте права доступа к данным и функциям. Это защитит от утечек и поможет выполнить требования закона.
+    items:
+      - title: Работа с пользователями
+        text: |
+          - Регистрируйте сотрудников с подтверждением email или через корпоративный портал
+          - Настраивайте двухфакторную аутентификацию для доступа к критичным разделам
+          - Просматривайте историю входов и подозрительную активность
+          - Выполняйте автоматические и ручные блокировки пользователей
+          - Используйте API для работы с пользователями
+            
+              ```php
+              /**
+              * @var CUser $USER
+              */
+
+              // Проверить права на выполнение действий
+              if ($USER->CanDoOperation('edit_file'))
+              {
+                  // доступ есть
+              }
+
+              // Зарегистрировать пользователя
+              $USER->SimpleRegister('user@example.com');
+
+              // Заблокировать пользователя
+              $USER->Update(234, [
+                  'BLOCKED' => 'Y',
+              ]);
+
+              // Потребовать сменить пароль при следующей авторизации
+              $USER->Update(234, [
+                  'PASSWORD_EXPIRED' => 'Y',
+              ]);
+              ```
+            
+        listStyle: 'disk'
+
+      - title: Группы пользователей и политики безопасности
+        text: |
+          - Создавайте отдельные группы для отделов: бухгалтерия, маркетинг, IT и так далее
+          - Ограничивайте доступ к финансовым данным и персональной информации
+          - Настраивайте политики паролей для разных групп
+          - Используйте API для работы с группами
+              
+              ```php
+              // Получить список групп пользователя
+              $groups = CUser::GetUserGroup(234);
+
+              // Добавить пользователя в группы
+              CUser::AppendUserGroup(234, [
+                  // идентификатор группы
+                  3,
+                  // срок участия пользователя в группе
+                  [ 
+                    'GROUP_ID' => 3,
+                    'DATE_ACTIVE_FROM' => '01.01.2025',
+                    'DATE_ACTIVE_TO' => '01.12.2025',
+                  ],
+              ]);
+
+              // Удалить пользователя из группы
+              CUser::RemoveUserGroup(234, [
+                  // идентификаторы групп
+                  3,
+                  4,
+              ]);
+              ```
+          
+        listStyle: 'disk'
+
+      - title: Ролевая модель
+        text: |
+          - Настраивайте гибкую систему прав ABAC на основе атрибутов и объектов
+          - Контролируйте доступ к модулям через атрибуты: отдел, должность, расположение
+          - Проводите аудит всех изменений прав доступа
+          - Используйте API для работы с ролями
+            
+              Создать контроллер прав доступа:
+              ```php
+              use Bitrix\Main\Access\AccessibleItem;
+              use Bitrix\Main\Access\BaseAccessController;
+              use Bitrix\Main\Access\User\AccessibleUser;
+
+              final class PostAccessController extends BaseAccessController
+              {
+                  protected function loadItem(int $itemId = null): ?AccessibleItem
+                  {
+                      return $itemId ? MyPost::loadById($itemId) : null;
+                  }
+
+                  protected function loadUser(int $userId): AccessibleUser
+                  {
+                      return MyUser::loadById($userId);
+                  }
+              }
+              ```
+              
+              Внедрить контроль прав в методы контроллера:
+              ```php
+              use Bitrix\Main\Engine\CurrentUser;
+          
+              final class MyController
+              {
+                  public function getAction(int $id, CurrentUser $user, PostAccessController $access)
+                  {
+                      if ($access->can($user->getId(), 'view', $id))
+                      {
+                          // есть доступ
+                      }
+                  }
+                  
+                  public function listAction(PostAccessController $access)
+                  {
+                      $query = MyPost::query();
+                      
+                      $filter = $access->getEntityFilter(
+                          'view',
+                          $query->getEntity()->getObjectClassName()
+                      );
+                      if ($filter)
+                      {
+                          $query->addFilter($filter);
+                      }
+                      
+                      $rows = $query->fetchCollection();
+                  }
+              }
+              ```
+          
+        listStyle: 'disk'
+
+  - type: 'content-layout-block'
+    theme: 'light'
+    background:
+      dark:
+        style:
+          backgroundColor: '#E8E4FF'
+      light:
+        style:
+          backgroundColor: '#E8E4FF'
+    textContent:
+      title: Быстрый старт с Docker-образом
+      text: |
+        1. Склонируйте официальный репозиторий
+            ```bash
+            cd my-project
+            git clone https://github.com/bitrix-tools/env-docker.git
+            ```
+
+        2. Настройте обязательные параметры. Укажите:
+            - пароли баз данных MySQL и Postgres в файле `.env_sql`
+            - секретный ключ для Push-сервера в файле `.env_push`
+
+        3. Запустите контейнеры
+            ```bash
+            docker compose up -d
+            ```
+
+        4. Скачайте скрипт `bitrixsetup.php` в папку `www`
+            ```bash
+            docker compose exec --user=bitrix php sh
+            cd /opt/www/
+            wget https://www.1c-bitrix.ru/download/scripts/bitrixsetup.php
+            ```
+
+        5. Откройте в браузере адрес [http://localhost:8588/bitrixsetup.php](http://localhost:8588/bitrixsetup.php)
+
+        6. Следуйте инструкциям мастера
+
+      links:
+        - text: 'Контейнерное окружение для продуктов Битрикс'
+          url: 'https://github.com/bitrix-tools/env-docker'
+          theme: 'normal'
+          arrow: true
+
+        - text: 'Инструкция по установке продуктов'
+          url: 'pages/get-started/install-solution.html'
+          theme: 'normal'
+          arrow: true
+
+
