@@ -105,3 +105,27 @@ blockquote:first-of-type {
 .mobile .dc-doc-page__aside {
     position: static;
 }
+
+.yfm_constructor.yfm_constructor li {
+    margin: 0 0 4px
+}
+
+.row .pc-links_size_s {
+    margin-top: auto
+}
+.row .pc-content__text {
+    margin-bottom: 16px;
+}
+
+.card-layout-block-full-width-text .col-sm-8 {
+    max-width: 100%;
+}
+
+.col.col-12.col-md-8.pc-tabs-block-text-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.content-layout-block-custom-link .pc-link-block__link.pc-link-block__link_theme_light.pc-link-block__link_has-arrow{
+    color: var(--g-color-text-link);
+}

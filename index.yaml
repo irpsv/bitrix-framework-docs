@@ -76,6 +76,7 @@ blocks:
             url: 'pages/get-started/install-env.html'
             theme: 'normal'
             arrow: true
+    className: 'card-layout-block-full-width-text'
 
   - type: 'card-layout-block'
     title: 'Преимущества фреймворка'
@@ -469,6 +470,8 @@ blocks:
             $event->send();
             ```
 
+    className: 'test-full-width'
+
   - type: 'content-layout-block'
     textContent:
       title: 'Инструменты безопасности'
@@ -608,6 +611,7 @@ blocks:
 
   - type: 'content-layout-block'
     theme: 'light'
+    textWidth: 'l'
     background:
       dark:
         style:
@@ -649,10 +653,12 @@ blocks:
           url: 'https://github.com/bitrix-tools/env-docker'
           theme: 'normal'
           arrow: true
+          className: 'content-layout-block-custom-link'
 
         - text: 'Инструкция по установке продуктов'
           url: 'pages/get-started/install-solution.html'
           theme: 'normal'
           arrow: true
+          className: 'content-layout-block-custom-link'
 
 
