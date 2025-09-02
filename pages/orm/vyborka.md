@@ -215,11 +215,9 @@ BookTable::getList([
 
 -  `'!==NAME' => null` -- NAME не равно NULL. В SQL -- `NAME IS NOT NULL`
 
-{% note warning %}
- 
+{% note warning "" %}
 
 Если не указан оператор `=`, по умолчанию используется LIKE -- поиск строки, которая содержит указанное значение в любом месте.
-
 
 {% endnote %}
 
@@ -816,11 +814,9 @@ public static function decompose(Query $query, $fairLimit = true, $separateRelat
 // WHERE `main_user`.`ID` > 1 AND `main_user`.`ACTIVE` = 'Y' AND `main_user`.`PERSONAL_BIRTHDAY` IS NOT NULL AND `main_user`.`NAME` LIKE 'A%'
 ```
 
-{% note info %}
- 
+{% note info "" %}
 
 Для boolean полей со значениями `Y/N`, `1/0` и так далее, можно использовать `true` и `false` в условиях.
-
 
 {% endnote %}
 
@@ -1016,11 +1012,9 @@ $filter = [
 ];
 ```
 
-{% note warning %}
- 
+{% note warning "" %}
 
 Будьте осторожны при использовании массивов. Не подставляйте сырые данные, переданные пользователем, в качестве фильтра -- они могут содержать опасные условия для раскрытия данных БД. Проверяйте все входящие условия через [белый список полей](./../bezopasnost/sql-injection).
-
 
 {% endnote %}
 

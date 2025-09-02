@@ -76,6 +76,7 @@ blocks:
             url: 'pages/get-started/install-env.html'
             theme: 'normal'
             arrow: true
+    className: 'card-layout-block-full-width-text'
 
   - type: 'card-layout-block'
     title: 'Преимущества фреймворка'
@@ -314,7 +315,7 @@ blocks:
 
       - tabName: Файлы и S3
         text: |
-          Работайте с файлами через API. 
+          Работайте с файлами через API.
 
           Сохранить и получить файл:
           ```php
@@ -346,7 +347,7 @@ blocks:
                 {}
             }
             ```
-            
+
             Отправить сообщение в очередь:
             ```
             $message = new MyMessage(1, 'any text');
@@ -366,7 +367,7 @@ blocks:
                     {
                         throw new UnprocessableMessageException($message);
                     }
-                    
+
                     // process
                 }
             }
@@ -388,7 +389,7 @@ blocks:
                 }
             }
             ```
-            
+
             Добавить агент в расписание:
             ```php
             \CAgent::AddAgent(
@@ -397,11 +398,11 @@ blocks:
                 interval: 86_000, // раз в сутки
             );
             ```
-        
+
             Для тяжелых разовых обработок используйте фоновые задачи. Они выполняются после отправки ответа пользователю и не замедляют работу сайта.
             ```php
             \Bitrix\Main\Application::getInstance()->addBackgroundJob(function() {
-                
+
                 // логика работы фоновой задачи
 
             });
@@ -410,7 +411,7 @@ blocks:
       - tabName: События
         text: |
             Создавайте кастомные события и обработчики для гибкой интеграции.
-            
+
             Создать класс события:
             ```php
             final class MyEvent extends \Bitrix\Main\Event
@@ -427,7 +428,7 @@ blocks:
                 }
             }
             ```
-            
+
             Создать обработчик:
             ```php
             final class MyEventHandler
@@ -435,7 +436,7 @@ blocks:
                 public static function handle(MyEvent $event): \Bitrix\Main\EventResult
                 {
                     // обработка события
-                    
+
                     if ($hasErrors)
                     {
                         return new \Bitrix\Main\EventResult(
@@ -443,20 +444,20 @@ blocks:
                             $errors,
                         );
                     }
-                    
+
                     return new \Bitrix\Main\EventResult(
                         \Bitrix\Main\EventResult::SUCCESS,
                     );
                 }
             }
             ```
-            
+
             Вызвать событие:
             ```php
             $event = new MyEvent(1, 'created');
             $event->send();
             ```
-            
+
             Использовать анонимное событие без отдельного класса:
             ```php
             $event = new \Bitrix\Main\Event(
@@ -468,6 +469,8 @@ blocks:
             );
             $event->send();
             ```
+
+    className: 'test-full-width'
 
   - type: 'content-layout-block'
     textContent:
@@ -484,7 +487,7 @@ blocks:
           - Просматривайте историю входов и подозрительную активность
           - Выполняйте автоматические и ручные блокировки пользователей
           - Используйте API для работы с пользователями
-            
+
               ```php
               /**
               * @var CUser $USER
@@ -509,7 +512,7 @@ blocks:
                   'PASSWORD_EXPIRED' => 'Y',
               ]);
               ```
-            
+
         listStyle: 'disk'
 
       - title: Группы пользователей и политики безопасности
@@ -518,7 +521,7 @@ blocks:
           - Ограничивайте доступ к финансовым данным и персональной информации
           - Настраивайте политики паролей для разных групп
           - Используйте API для работы с группами
-              
+
               ```php
               // Получить список групп пользователя
               $groups = CUser::GetUserGroup(234);
@@ -528,7 +531,7 @@ blocks:
                   // идентификатор группы
                   3,
                   // срок участия пользователя в группе
-                  [ 
+                  [
                     'GROUP_ID' => 3,
                     'DATE_ACTIVE_FROM' => '01.01.2025',
                     'DATE_ACTIVE_TO' => '01.12.2025',
@@ -542,7 +545,7 @@ blocks:
                   4,
               ]);
               ```
-          
+
         listStyle: 'disk'
 
       - title: Ролевая модель
@@ -551,7 +554,7 @@ blocks:
           - Контролируйте доступ к модулям через атрибуты: отдел, должность, расположение
           - Проводите аудит всех изменений прав доступа
           - Используйте API для работы с ролями
-            
+
               Создать контроллер прав доступа:
               ```php
               use Bitrix\Main\Access\AccessibleItem;
@@ -571,11 +574,11 @@ blocks:
                   }
               }
               ```
-              
+
               Внедрить контроль прав в методы контроллера:
               ```php
               use Bitrix\Main\Engine\CurrentUser;
-          
+
               final class MyController
               {
                   public function getAction(int $id, CurrentUser $user, PostAccessController $access)
@@ -585,11 +588,11 @@ blocks:
                           // есть доступ
                       }
                   }
-                  
+
                   public function listAction(PostAccessController $access)
                   {
                       $query = MyPost::query();
-                      
+
                       $filter = $access->getEntityFilter(
                           'view',
                           $query->getEntity()->getObjectClassName()
@@ -598,16 +601,17 @@ blocks:
                       {
                           $query->addFilter($filter);
                       }
-                      
+
                       $rows = $query->fetchCollection();
                   }
               }
               ```
-          
+
         listStyle: 'disk'
 
   - type: 'content-layout-block'
     theme: 'light'
+    textWidth: 'l'
     background:
       dark:
         style:
@@ -649,10 +653,12 @@ blocks:
           url: 'https://github.com/bitrix-tools/env-docker'
           theme: 'normal'
           arrow: true
+          className: 'content-layout-block-custom-link'
 
         - text: 'Инструкция по установке продуктов'
           url: 'pages/get-started/install-solution.html'
           theme: 'normal'
           arrow: true
+          className: 'content-layout-block-custom-link'
 
 
