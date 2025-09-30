@@ -18,6 +18,11 @@ navigation:
         type: 'link'
         url: '/pages/framework/architecture.html'
 
+      - text: 'Справочник API'
+        type: 'link'
+        url: '/api/'
+        target: '_blank'
+
       #- text: 'Основы CMS'
       #  type: 'link'
       #  url: '#'
@@ -26,13 +31,19 @@ navigation:
       #  type: 'link'
       #  url: '#'
 
-      #- text: 'Справочник API'
-      #  type: 'link'
-      #  url: '#'
     rightItems:
       - type: controls
 
 items:
+  - name: О фреймворке
+    items:
+      - name: Отличия от других CMS
+        href: /pages/about/cms-comparison.md
+      - name: Экосистема
+        href: /pages/about/ecosystem.md
+      - name: Отличия от других фреймворков
+        href: /pages/about/framework-comparison.md
+
   - name: С чего начать
     items:
       - name: Установка окружения
