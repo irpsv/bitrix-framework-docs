@@ -404,6 +404,235 @@ class Controller extends Engine\Controller
 }
 ```
 
+## Рендеринг
+
+Для работы с HTML-представлениями, компонентами и расширениями контроллеры предоставляют методы рендеринга. Это позволяет реализовать полноценные страницы в рамках MVC-архитектуры.
+
+{% note info "" %}
+
+Функционал рендеринга доступен с версии 25.700.0 главного модуля.
+
+{% endnote %}
+
+### Рендеринг файла
+
+Чтобы вывести страницу используйте метод `renderView()`. Система автоматически найдет файл в директориях модуля.
+
+```php
+class Entity extends Controller
+{
+    public function indexAction(): View
+    {
+        return $this->renderView('entity/index');
+    }
+}
+```
+
+Система будет искать файл по пути `[module-folder]/views/entity/index.php`, где `[module-folder]` -- это путь до модуля в директории `bitrix` или `local`.
+
+Если указать ведущий `/`, поиск будет осуществляться от корня сайта. Такой вызов подключит тот же самый файл:
+
+```php
+class Entity extends Controller
+{
+    public function indexAction(): View
+    {
+        return $this->renderView('/local/modules/my.module/views/entity/index.php');
+    }
+}
+```
+
+Если система не найдет путь к указанному файлу, она выбросит исключение `NotFoundPathToViewException`.
+
+Система автоматически подключает основной шаблон сайта -- добавлять header и footer вручную не нужно. Для представлений в директории модуля система обеспечивает защиту, поэтому проверка пролога не требуется.
+
+#### Передать параметры в представление
+
+Второй аргумент метода `renderView()` позволяет передавать данные в шаблон.
+
+```php
+class EntityController extends Controller
+{
+    public function indexAction(): View
+    {
+        return $this->renderView('entity/index', [
+            'param' => 'value',
+        ]);
+    }
+}
+```
+
+### Рендеринг компонентов
+
+Если страница содержит только один компонент, вы можете сразу вывести его с помощью `renderComponent()` и не создавать отдельное представление.
+
+```php
+class EntityController extends Controller
+{
+    public function indexAction(): Component
+    {
+        return $this->renderComponent('bitrix:component.name', 'template-name', [
+            'param' => 'value',
+        ]);
+    }
+}
+```
+
+Метод можно использовать без шаблона компонента.
+
+```php
+class EntityController extends Controller
+{
+    public function indexAction(): Component
+    {
+        return $this->renderComponent('bitrix:component.name', params: [
+            'param' => 'value',
+        ]);
+    }
+}
+```
+
+Можно вызвать без параметров.
+
+```php
+class EntityController extends FrontController
+{
+    public function indexAction(): Component
+    {
+        return $this->renderComponent('bitrix:component.name');
+    }
+}
+```
+
+### Рендеринг расширений
+
+Для компонентов и страниц, которые выводят только расширение, используйте прямой рендеринг расширения `renderExtension` без создания представлений или компонентов.
+
+```php
+class EntityController extends Controller
+{
+    public function indexAction(): Extension
+    {
+        return $this->renderExtension('mymodule.vue.widget', [
+            'option' => 'name',
+        ]);
+    }
+}
+```
+
+Можно использовать метод без параметров.
+
+```php
+class EntityController extends FrontController
+{
+    public function indexAction(): Extension
+    {
+        return $this->renderExtension('mymodule.vue.widget');
+    }
+}
+```
+
+#### Настроить расширение
+
+Чтобы включить функцию, добавьте в файл `config.php` расширения параметр `controllerEntrypoint`. Укажите в нем функцию или метод, который выполняет рендеринг расширения.
+
+```php
+return [
+    // ...
+    'controllerEntrypoint' => 'MyModule.Vue.Widget.render',
+];
+```
+
+Если вы не укажете параметр `controllerEntrypoint`, система выбросит исключение `Bitrix\Main\Engine\Response\Render\Exception\InvalidConfigExtensionException`.
+
+#### Как работает рендеринг расширений
+
+При вызове `renderExtension()` система генерирует HTML-страницу, которая автоматически инициализирует ваше расширение.
+
+```html
+<html>
+    <head>...</head>
+    <body>
+        <!-- header -->
+
+        <div id="render_container_hb2j34235"></div>
+        <script>
+        BX.ready(function(){
+            // После загрузки страницы запускается функция рендеринга
+            MyModule.Vue.Widget.render('#render_container_hb2j34235', {'option': 'name'});
+        });
+        </script>
+
+        <!-- footer -->
+    </body>
+</html>
+```
+
+Функцию рендеринга на стороне клиента можно реализовать двумя способами.
+
+1. Использовать готовое приложение.
+
+   ```javascript
+   export function renderExtension(selector, options)
+   {
+       const app = BitrixVue.createApp(App);
+       app.use(router);
+       app.use(pinia);
+   
+       const store = useAppStore();
+       store.$patch(options); // Применяем переданные параметры
+   
+       app.mount(selector); // Монтируем приложение в контейнер
+   }
+   ```
+
+2. Создать приложение напрямую.
+
+   ```javascript
+   import { BitrixVue } from 'ui.vue3';
+   
+   export class Widget {
+       static renderExtension(selector, options) {
+           const app = BitrixVue.createApp({
+               data() {
+                   return { ...options }; // Данные из параметров
+               },
+               template: `<div>Ваш шаблон</div>`,
+           });
+           app.mount(selector);
+       }
+   }
+   ```
+
+Для неадаптированных расширений создайте отдельное представление с прямым вызовом расширения.
+
+{% note info "" %}
+
+Этот подход не является Server-Side Rendering (SSR). Расширения рендерятся в браузере после загрузки страницы, что оптимально для интерфейсов без требований к SEO.
+
+{% endnote %}
+
+### **Отключить шаблон сайта**
+
+Все методы рендеринга по умолчанию используют основной шаблон сайта. Чтобы отключить шаблон сайта передайте параметр `withSiteTemplate` со значением `false`.
+
+```php
+// Файл
+return $this->renderView('entity/index', withSiteTemplate: false);
+
+// Компонент
+return $this->renderComponent('bitrix:component.name', withSiteTemplate: false);
+
+// Расширение
+return $this->renderExtension('mymodule.vue.widget', withSiteTemplate: false);
+```
+
+Отключение шаблона сайта не препятствует загрузке расширений и скриптов -- они остаются в выводе.
+
+### Обработка ошибок
+
+При ошибках рендеринга контроллер возвращает стандартный JSON-ответ с описанием ошибки, как в AJAX-действиях.
+
 ## Постраничная навигация
 
 Постраничная навигация позволяет управлять отображением данных, разбивая их на страницы. В Bitrix это реализуется с помощью `\Bitrix\Main\UI\PageNavigation`.
