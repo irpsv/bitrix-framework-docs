@@ -54,6 +54,8 @@ items:
         href: /pages/get-started/install-solution.md
       - name: Структура директорий
         href: /pages/get-started/directory-structure.md
+      - name: Composer
+        href: /pages/get-started/composer.md
       - name: Создание страницы
         href: /pages/get-started/create-page.md
       - name: Создание компонента
@@ -67,6 +69,8 @@ items:
 
   - name: Основы фреймворка
     items:
+      - name: Конфигурация ядра
+        href: /pages/framework/settings.md
       - name: Архитектура
         href: /pages/framework/architecture.md
       - name: Автозагрузка классов
@@ -101,6 +105,8 @@ items:
         href: /pages/framework/background-jobs.md
       - name: События
         href: /pages/framework/events.md
+      - name: Очереди сообщений
+        href: /pages/framework/messenger.md
 
   - name: База данных
     items:
