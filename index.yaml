@@ -36,7 +36,7 @@ blocks:
       - text: 'Docker'
         theme: 'outlined-contrast'
         size: 'promo'
-        url: 'pages/get-started/install-env.html#docker-obrazy'
+        url: 'https://docs.1c-bitrix.ru/pages/get-started/install-env.html#docker-obrazy'
 
   - type: 'card-layout-block'
     title: Продукты
