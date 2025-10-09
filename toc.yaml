@@ -23,6 +23,10 @@ navigation:
         url: '/api/'
         target: '_blank'
 
+      - text: 'Быстрый старт'
+        type: 'link'
+        url: '/pages/get-started/install-env.html#docker-obrazy'
+
       #- text: 'Основы CMS'
       #  type: 'link'
       #  url: '#'

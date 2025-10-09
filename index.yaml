@@ -33,6 +33,10 @@ blocks:
         theme: 'outlined-contrast'
         size: 'promo'
         url: 'https://github.com/bitrix-tools/framework-docs'
+      - text: 'Docker'
+        theme: 'outlined-contrast'
+        size: 'promo'
+        url: 'pages/get-started/install-env.html#docker-obrazy'
 
   - type: 'card-layout-block'
     title: Продукты
