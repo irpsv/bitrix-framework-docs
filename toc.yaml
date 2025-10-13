@@ -47,6 +47,9 @@ items:
         href: /pages/about/ecosystem.md
       - name: Отличия от других фреймворков
         href: /pages/about/framework-comparison.md
+      - name: Правки в документации
+        href: change-article.md
+        hidden: true
 
   - name: С чего начать
     items:
