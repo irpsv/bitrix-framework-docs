@@ -18,7 +18,7 @@ title: Транзакции
 
 {% endnote %}
 
-Используйте объект [`Bitrix\Main\DB\Connection`](https://dev.1c-bitrix.ru/api_d7/bitrix/main/db/connection/index.php). Внутри транзакции можно выполнять SQL-запросы или работать с ORM:
+Используйте объект [`Bitrix\Main\DB\Connection`](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-DB-Connection.html). Внутри транзакции можно выполнять SQL-запросы или работать с ORM:
 
 ```php
 $db = \Bitrix\Main\Application::getConnection();

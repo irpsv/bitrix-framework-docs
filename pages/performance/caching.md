@@ -14,7 +14,7 @@ title: Кеширование
 
 ## Класс для кеширования
 
-[Cache](https://dev.1c-bitrix.ru/api_d7/bitrix/main/data/cache/index.php) -- основной класс для кеширования PHP-переменных и HTML-результатов.
+[Cache](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Data-Cache.html) -- основной класс для кеширования PHP-переменных и HTML-результатов.
 
 ### Основные методы класса
 

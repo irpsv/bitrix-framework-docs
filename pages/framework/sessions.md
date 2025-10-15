@@ -17,7 +17,7 @@ if (!$session->has('foo'))
 echo $session['foo']; //bar
 ```
 
-Этот объект поддерживает интерфейсы `\ArrayAccess` и [\\Bitrix\\Main\\Session\\SessionInterface](https://dev.1c-bitrix.ru/api_d7/bitrix/main/session/sessionInterface/index.php).
+Этот объект поддерживает интерфейсы `\ArrayAccess` и [\\Bitrix\\Main\\Session\\SessionInterface](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Session-SessionInterface.html).
 
 ## Сессионный кеш
 
@@ -33,7 +33,7 @@ if (!isset($localStorage['productIds'])) {
 var_dump($localStorage->get('productIds'));
 ```
 
-При вызове `\Bitrix\Main\Application::getLocalSession($name)` возвращается экземпляр [\\Bitrix\\Main\\Data\\LocalStorage\\SessionLocalStorage](https://dev.1c-bitrix.ru/api_d7/bitrix/main/data/localstorage/sessionlocalstorage.php). Это элемент кеша, который использует `session_id()` для изоляции данных. Использование этого метода рекомендуется в случаях, когда необходимо временно хранить данные, специфичные для текущей сессии пользователя, такие как корзина покупок или временные настройки.
+При вызове `\Bitrix\Main\Application::getLocalSession($name)` возвращается экземпляр [\\Bitrix\\Main\\Data\\LocalStorage\\SessionLocalStorage](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Data-LocalStorage-SessionLocalStorage.html). Это элемент кеша, который использует `session_id()` для изоляции данных. Использование этого метода рекомендуется в случаях, когда необходимо временно хранить данные, специфичные для текущей сессии пользователя, такие как корзина покупок или временные настройки.
 
 Если это первое обращение и данных нет, создается пустой контейнер. Если в кеше есть данные по `$name`, контейнер наполняется ими.
 

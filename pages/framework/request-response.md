@@ -4,15 +4,15 @@ title: Request и Response
 
 ## Запрос (Request)
 
-Request -- это абстрактный класс, который предоставляет информацию о текущем запросе. Он позволяет узнать метод и протокол, запрошенный URL, переданные параметры и другие данные. Класс расширяет [\\Bitrix\\Main\\Type\\ParameterDictionary](https://dev.1c-bitrix.ru/api_d7/bitrix/main/type/parameterdictionary/index.php).
+Request -- это абстрактный класс, который предоставляет информацию о текущем запросе. Он позволяет узнать метод и протокол, запрошенный URL, переданные параметры и другие данные. Класс расширяет [\\Bitrix\\Main\\Type\\ParameterDictionary](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Type-ParameterDictionary.html).
 
 Класс обращается к пространствам имен:
 
--  [\\Main\\Type](https://dev.1c-bitrix.ru/api_d7/bitrix/main/type/index.php) -- работает с типами данных,
+-  [\\Main\\Type](https://docs.1c-bitrix.ru/api/namespaces/bitrix-main-type.html) -- работает с типами данных,
 
--  [\\Main\\IO](https://dev.1c-bitrix.ru/api_d7/bitrix/main/io/index.php) -- работает с файлами,
+-  [\\Main\\IO](https://docs.1c-bitrix.ru/api/namespaces/bitrix-main-io.html) -- работает с файлами,
 
--  [\\Main\\Text](https://dev.1c-bitrix.ru/api_d7/bitrix/main/text/index.php) -- работает с текстом.
+-  [\\Main\\Text](https://docs.1c-bitrix.ru/api/namespaces/bitrix-main-text.html) -- работает с текстом.
 
 Пример использования:
 
@@ -125,7 +125,7 @@ $email = htmlspecialchars($request->getQuery("email"));
 
 Класс \\Bitrix\\Main\\HttpResponse -- это базовый класс для работы с HTTP-ответами. Он служит контейнером для:
 
-**HTTP-заголовков** [`\Bitrix\Main\Web\HttpHeaders`](https://dev.1c-bitrix.ru/api_d7/bitrix/main/web/httpheaders/index.php)
+**HTTP-заголовков** [`\Bitrix\Main\Web\HttpHeaders`](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Web-HttpHeaders.html)
 
 -  Добавить заголовок
 
@@ -150,7 +150,7 @@ $email = htmlspecialchars($request->getQuery("email"));
    \Bitrix\Main\HttpResponse::getHeaders()
    ```
 
-**Cookies** [`\Bitrix\Main\Web\Cookie`](https://dev.1c-bitrix.ru/api_d7/bitrix/main/web/cookie/index.php)
+**Cookies** [`\Bitrix\Main\Web\Cookie`](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Web-Cookie.html)
 
 -  Добавить cookie
 
@@ -197,7 +197,7 @@ $response->setContent('Hello, world!'); // установить контент
 
 ### Классы
 
--  [**AjaxJson**](https://dev.1c-bitrix.ru/api_d7/bitrix/main/httpresponse/ajaxjson.php) -- методы для JSON-ответов. Все ответы от контроллеров \\Bitrix\\Main\\Engine\\Controller имеют структуру, понятную для JS API [BX.ajax.runAction](https://dev.1c-bitrix.ru/api_help/js_lib/ajax/bx_ajax_runaction.php), [BX.ajax.runComponentAction](https://dev.1c-bitrix.ru/api_help/js_lib/ajax/bx_ajax_runcomponentaction.php):
+-  [**AjaxJson**](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Engine-Response-AjaxJson.html) -- методы для JSON-ответов. Все ответы от контроллеров \\Bitrix\\Main\\Engine\\Controller имеют структуру, понятную для JS API [BX.ajax.runAction](https://dev.1c-bitrix.ru/api_help/js_lib/ajax/bx_ajax_runaction.php), [BX.ajax.runComponentAction](https://dev.1c-bitrix.ru/api_help/js_lib/ajax/bx_ajax_runcomponentaction.php):
 
    ```json
    {
@@ -207,7 +207,7 @@ $response->setContent('Hello, world!'); // установить контент
    }
    ```
 
--  [**Zip/Archive** ](https://dev.1c-bitrix.ru/api_d7/bitrix/main/httpresponse/archive.php)-- работает с архивом.
+-  [**Zip/Archive** ](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Engine-Response-Zip-Archive.html)-- работает с архивом.
 
    Для NGINX можно использовать расширение mod_zip для создания архивов без нагрузки на PHP.
 
@@ -217,11 +217,11 @@ $response->setContent('Hello, world!'); // установить контент
    $archive->addEntry(Response\Zip\ArchiveEntry::createFromFileId($fileId));
    ```
 
--  [**Zip/ArchiveEntry** ](https://dev.1c-bitrix.ru/api_d7/bitrix/main/httpresponse/archiveentry.php)-- описывает элемент zip-архива.
+-  [**Zip/ArchiveEntry** ](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Engine-Response-Zip-ArchiveEntry.html)-- описывает элемент zip-архива.
 
--  [**BFile** ](https://dev.1c-bitrix.ru/api_d7/bitrix/main/httpresponse/bfile.php)-- работает с файлами. Используется для скачивания файлов из таблицы `b_file`.
+-  [**BFile** ](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Engine-Response-BFile.html)-- работает с файлами. Используется для скачивания файлов из таблицы `b_file`.
 
--  [**Component** ](https://dev.1c-bitrix.ru/api_d7/bitrix/main/httpresponse/component.php)-- работает с компонентами. Для загрузки компонента через AJAX:
+-  [**Component** ](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Engine-Response-Component.html)-- работает с компонентами. Для загрузки компонента через AJAX:
 
    ```php
    new \Bitrix\Main\Engine\Response\Component(
@@ -251,7 +251,7 @@ $response->setContent('Hello, world!'); // установить контент
    }
    ```
 
--  [**Json**](https://dev.1c-bitrix.ru/api_d7/bitrix/main/httpresponse/json.php) -- формирует JSON-ответ. Преобразует данные в JSON, конвертирует в UTF-8 и устанавливает заголовок `application/json; charset=UTF-8`.
+-  [**Json**](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Engine-Response-Json.html) -- формирует JSON-ответ. Преобразует данные в JSON, конвертирует в UTF-8 и устанавливает заголовок `application/json; charset=UTF-8`.
 
    ```php
    new \Bitrix\Main\Engine\Response\Json('ping-pong');
@@ -270,7 +270,7 @@ $response->setContent('Hello, world!'); // установить контент
    **/
    ```
 
--  [**Redirect**](https://dev.1c-bitrix.ru/api_d7/bitrix/main/httpresponse/redirect.php) -- выполняет редирект. Автоматически делает проверки безопасности и редирект с 301 или 302 статусом.
+-  [**Redirect**](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Engine-Response-Redirect.html) -- выполняет редирект. Автоматически делает проверки безопасности и редирект с 301 или 302 статусом.
 
    ```php
    //сделать переадресацию с 302 статусом
@@ -281,4 +281,4 @@ $response->setContent('Hello, world!'); // установить контент
    $response->setStatus('301 Moved Permanently');
    ```
 
--  [**ResizedImage**](https://dev.1c-bitrix.ru/api_d7/bitrix/main/httpresponse/resizedimage.php) -- уменьшает изображения.
+-  [**ResizedImage**](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Engine-Response-ResizedImage.html) -- уменьшает изображения.

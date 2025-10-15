@@ -4,7 +4,7 @@ title: Service Locator
 
 Service Locator -- это шаблон проектирования для управления сервисами приложения. Вместо создания сервисов напрямую, используется специальный объект -- Service Locator. Он отвечает за создание и поиск сервисов, что упрощает их использование и замену.
 
-Класс [\\Bitrix\\Main\\DI\\ServiceLocator](https://dev.1c-bitrix.ru/api_d7/bitrix/main/di/servicelocator/index.php) реализует интерфейс PSR-11. Доступен с версии main 20.5.400.
+Класс [\\Bitrix\\Main\\DI\\ServiceLocator](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-DI-ServiceLocator.html) реализует интерфейс PSR-11. Доступен с версии main 20.5.400.
 
 Пример использования:
 
@@ -116,7 +116,7 @@ if ($serviceLocator->has('someService')) { // Проверяем наличие 
 
 3. **Через API**
 
-   Регистрация через API осуществляется методами класса [\\Bitrix\\Main\\DI\\ServiceLocator](https://dev.1c-bitrix.ru/api_d7/bitrix/main/di/servicelocator/index.php).
+   Регистрация через API осуществляется методами класса [\\Bitrix\\Main\\DI\\ServiceLocator](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-DI-ServiceLocator.html).
 
    -  `getInstance()` -- получить экземпляр локатора.
 
@@ -128,4 +128,4 @@ if ($serviceLocator->has('someService')) { // Проверяем наличие 
 
    -  `get(string $code)` -- получить сервис. Метод создает сервис при первом обращении. Если сервиса нет, выбрасывается исключение \\Psr\\Container\\NotFoundExceptionInterface.
 
-   Подробное описание методов -- в [справочнике API](https://dev.1c-bitrix.ru/api_d7/bitrix/main/di/servicelocator/index.php).
+   Подробное описание методов -- в [справочнике API](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-DI-ServiceLocator.html).

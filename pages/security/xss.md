@@ -12,7 +12,7 @@ XSS (Cross-Site Scripting) -- уязвимость, которая позвол�
 
 -  `htmlspecialcharsbx` -- функция преобразует спецсимволы `<`, `>`, `»`, `'`, `&` в HTML-сущности,
 
--  [`\Bitrix\Main\Text\HtmlFilter::encode`](https://dev.1c-bitrix.ru/api_d7/bitrix/main/text/htmlfilter/encode.php) -- работает аналогично, но поддерживает Unicode.
+-  [`\Bitrix\Main\Text\HtmlFilter::encode`](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Text-HtmlFilter.html#method_encode) -- работает аналогично, но поддерживает Unicode.
 
 {% note warning "" %}
 
@@ -83,7 +83,7 @@ $someData = htmlspecialcharsbx($someData);
 
 Неэкранированный JSON может содержать закрывающие теги `</script>`, уязвимости XSS и вредоносный JavaScript.
 
-Метод [`Json::encode`](https://dev.1c-bitrix.ru/api_d7/bitrix/main/web/json/encode.php):
+Метод [`Json::encode`](https://docs.1c-bitrix.ru/api/classes/Bitrix-Main-Web-Json.html#method_encode):
 
 -  преобразует данные в JSON,
 

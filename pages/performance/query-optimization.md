@@ -56,7 +56,7 @@ title: Как оптимизировать запросы к базе данны
 
 Универсальные методы подходят для широкого круга задач, но не учитывают их специфику. Это приводит к избыточному коду. Если есть специализированные методы для конкретных задач, используйте их. Специализированные методы уже содержат всю необходимую логику, что упрощает код и снижает вероятность ошибок.
 
-Например, для изменения статуса оплаты заказа в модуле Интернет-магазин лучше использовать метод [\\Bitrix\\Sale\\Payment::setPaid](https://dev.1c-bitrix.ru/api_d7/bitrix/sale/classes/payment/setpaid.php), а не универсальный метод [\\Bitrix\\Sale\\Internals\\Entity::setFields](https://dev.1c-bitrix.ru/api_d7/bitrix/sale/classes/internals/entity/setfields.php). Это гарантирует вызов всех необходимых обработчиков, связанных с оплатой.
+Например, для изменения статуса оплаты заказа в модуле Интернет-магазин лучше использовать метод [\\Bitrix\\Sale\\Controller\\Payment::setPaid](https://docs.1c-bitrix.ru/api/classes/Bitrix-Sale-Controller-Payment.html#method_setPaidAction), а не универсальный метод [\\Bitrix\\Sale\\Internals\\Entity::setFields](https://docs.1c-bitrix.ru/api/classes/Bitrix-Sale-Internals-Entity.html#method_setFields). Это гарантирует вызов всех необходимых обработчиков, связанных с оплатой.
 
 ## Оптимизировать выборку данных
 
