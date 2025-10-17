@@ -41,7 +41,7 @@ var_dump($localStorage->get('productIds'));
 
 {% note info "" %}
 
-`SessionLocalStorage` работает на кеше, описанном в настройках файла `.settings.php`. Описание конфигурации смотрите ниже[.](#settings)
+`SessionLocalStorage` работает на кеше, описанном в настройках файла `.settings.php`. Описание конфигурации смотрите [ниже](#konfiguraciya-hraneniya-dannyh).
 
 {% endnote %}
 
