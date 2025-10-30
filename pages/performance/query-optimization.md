@@ -169,7 +169,7 @@ while($ar = $rs->GetNext()) {
 
 3. Нажмите «Выполнить анализ собранных SQL-запросов».
 
-![](./optimizaciya-zaprosov-k-bd-5-2.png){width=1185px height=390px}
+![](./query-optimization-5.png){width=1185px height=390px}
 
 В результатах обратите внимание:
 
@@ -189,10 +189,10 @@ while($ar = $rs->GetNext()) {
 
 3. Перейдите во вкладку «Создание индекса» и нажмите «Создать индекс».
 
-![](./optimizaciya-zaprosov-k-bd-2.png){width=1185px height=720px}
+![](./query-optimization-2.png){width=1185px height=720px}
 
-![](./optimizaciya-zaprosov-k-bd-3-2.png){width=1181px height=892px}
+![](./query-optimization-3.png){width=1181px height=892px}
 
 Созданный индекс появится на странице *Настройки > Производительность > Индексы > Список индексов.* Проверьте его эффективность, выполнив повторный анализ запросов.
 
-![](./optimizaciya-zaprosov-k-bd-4-2.png){width=1186px height=301px}
+![](./query-optimization-4.png){width=1186px height=301px}
