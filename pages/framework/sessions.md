@@ -41,7 +41,7 @@ var_dump($localStorage->get('productIds'));
 
 {% note info "" %}
 
-`SessionLocalStorage` работает на кеше, описанном в настройках файла `.settings.php`. Описание конфигурации смотрите ниже[.](#settings)
+`SessionLocalStorage` работает на кеше, описанном в настройках файла `.settings.php`. Описание конфигурации смотрите [ниже](./sessions#конфигурация-хранения-данных)[.](#settings)
 
 {% endnote %}
 
@@ -288,8 +288,42 @@ return [
 
 -  `lifetime` -- задает время жизни сессии в секундах.
 
--  `mode` -- режим работы сессий: `default` -- стандартный, `separated` -- [разделенный](./../performance/hot-and-cold-session).
+-  `mode` -- режим работы сессий: `default` -- стандартный, `separated` -- [разделенный](./sessions#разделенный-режим-сессии).
 
 -  `regenerateIdAfterLogin` -- отвечает за перегенерацию `session_id()` после успешного входа пользователя. По умолчанию `false`.
 
 -  `ignoreSessionStartErrors` -- если установлено `true`, фатальные ошибки при старте сессии будут игнорироваться. Например, ошибка подключения к серверу хранения сессий. При этом хит продолжит работать без сессии, а ошибки будут записываться только в лог. По умолчанию `false`.
+
+## Разделенный режим сессии
+
+Чтобы включить разделенный режим сессии, внесите правки в конфигурационный файл `/bitrix/.settings.php`.
+
+1. Измените `session[mode]` на `separated`, чтобы включить разделенный режим сессии.
+
+2. Задайте время жизни сессии `lifetime` в секундах, например, `'lifetime' => 14400` -- 4 часа.
+
+3. Добавьте `'kernel' => 'encrypted_cookies'` в `handlers`, чтобы hot-данные хранились в зашифрованных cookies.
+
+```php
+return [
+    //...
+    'session' => [
+        'value' => [
+            'mode' => 'separated',
+            'lifetime' = 1440, 
+            'handlers' => [
+                'kernel' => 'encrypted_cookies',
+                'general' => [
+                    'type' => 'file',
+                ]
+            ],
+        ]
+    ]
+];
+```
+
+{% note tip "" %}
+
+Подробнее в статье [Сессия в разделенном режиме](./../performance/hot-and-cold-session).
+
+{% endnote %}

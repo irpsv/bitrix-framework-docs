@@ -34,11 +34,29 @@ title: Сессия в разделенном режиме
 
 2. Откройте файл `.settings.php`.
 
-3. Измените `session [mode]` на `separated`, чтобы включить разделенный режим сессии.
+3. Измените `session[mode]` на `separated`, чтобы включить разделенный режим сессии.
 
-4. Добавьте `'kernel' => 'encrypted_cookies'`, чтобы hot-данные хранились в зашифрованных cookies.
+4. Задайте время жизни сессии `lifetime` в секундах, например, `'lifetime' => 14400` -- 4 часа.
 
-5. Задайте время жизни сессии `lifetime` в секундах. Например, `'lifetime' => 14400,`то есть 4 часа.
+5. Добавьте `'kernel' => 'encrypted_cookies'` в `handler`, чтобы hot-данные хранились в зашифрованных cookies.
+
+```php
+return [
+    //...
+    'session' => [
+        'value' => [
+            'mode' => 'separated',
+            'lifetime' = 1440, 
+            'handlers' => [
+                'kernel' => 'encrypted_cookies',
+                'general' => [
+                    'type' => 'file',
+                ]
+            ],
+        ]
+    ]
+];
+```
 
 {% note warning "" %}
 
@@ -46,6 +64,4 @@ title: Сессия в разделенном режиме
 
 {% endnote %}
 
-Примеры настроек можно посмотреть в статье [Сессии](./../framework/sessions).
-
-
+Примеры конфигураций для хранения данных можно посмотреть в статье [Сессии](./../framework/sessions).
