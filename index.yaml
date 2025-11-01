@@ -41,7 +41,7 @@ blocks:
   - type: 'card-layout-block'
     title: Продукты
     description: |
-      Bitrix Framework — это основа для 1C&#8209;Битрикс:&nbsp;Управление сайтом и Битрикс24. Фреймворк включает готовый набор PHP-инструментов, которые помогают разрабатывать и расширять эти продукты. Проекты можно развернуть на готовой виртуальной машине BitrixVM.
+      Bitrix Framework — это основа для 1C&#8209;Битрикс:&nbsp;Управление сайтом и Битрикс24. Фреймворк включает готовый набор PHP&#8209;инструментов, которые помогают разрабатывать и расширять эти продукты. Проекты можно развернуть на готовой виртуальной машине BitrixVM.
     children:
       - text: 'CMS для интернет-магазинов и сайтов. Поддерживает заказы в многопоточном режиме, API для интеграций и встроенное кеширование.'
         title: Управление сайтом
@@ -166,23 +166,21 @@ blocks:
           use Bitrix\Main\Validation\Rule\NotEmpty;
 
           class Post extends Controller
-              {
+          {
               public function getAction(
                   #[NotEmpty]
                   string $code,
                   PostService $service,
-              )
-              {
+              ) {
                   $entity = $service->getByCode($code);
-                  if (!$entity)
-                  {
-                  return $this->renderComponent('demo:error', params: [
-                      'message' => Loc::getMessage('POST_NOT_FOUND'),
-                  ]);
+                  if (!$entity) {
+                      return $this->renderComponent('demo:error', params: [
+                          'message' => Loc::getMessage('POST_NOT_FOUND'),
+                      ]);
                   }
 
                   return $this->renderView('posts/view', [
-                  'entity' => $entity,
+                      'entity' => $entity,
                   ]);
               }
           }
@@ -195,8 +193,7 @@ blocks:
           ```php
           use Bitrix\Main\Routing\RoutingConfigurator;
 
-          return function (RoutingConfigurator $routes)
-          {
+          return function (RoutingConfigurator $routes) {
               $routes->any('/', [
                   \Demo\Module\Controller\Page::class,
                   'index',
@@ -204,23 +201,25 @@ blocks:
 
               $routes
                   ->prefix('/post')
-                  ->group(function(RoutingConfigurator $routes) {
-                  $routes
-                      ->any('{code}', [
-                      \Demo\Module\Controller\Post::class,
-                      'get',
-                      ])
-                      ->where('code', '\w+')
-                      ->name('post-get');
+                  ->group(function (RoutingConfigurator $routes) {
+                      $routes
+                          ->any('{code}', [
+                              \Demo\Module\Controller\Post::class,
+                              'get',
+                          ])
+                          ->where('code', '\w+')
+                          ->name('post-get');
                   });
           };
           ```
 
           Сгенерировать URL по имени маршрута:
           ```php
-          $url = \Bitrix\Main\Application::getInstance()->getRouter()->route('post-view', [
-              'code' => 'my-post',
-          ]);
+          $url = \Bitrix\Main\Application::getInstance()
+              ->getRouter()
+              ->route('post-view', [
+                  'code' => 'my-post',
+              ]);
           ```
 
       - tabName: ActionFilters
@@ -270,6 +269,7 @@ blocks:
               ->where('LOGIN', '=', 'user@example.com')
               ->where('ACTIVE', true)
               ->fetchObject();
+
           $user->setActive(true);
           $user->save();
           ```
@@ -288,6 +288,7 @@ blocks:
                   DateTime::createFromText('сегодня')
               )
               ->fetchCollection();
+
           $usersIds = $users->getIdList();
           ```
 
@@ -302,7 +303,7 @@ blocks:
               'EVENT_NAME' => 'WELCOME_EMAIL',
               'FIELDS' => [
                   'NAME' => $userName,
-                  'CONFIRM_LINK' => $confirmUrl
+                  'CONFIRM_LINK' => $confirmUrl,
               ],
           ]);
           ```
@@ -311,7 +312,7 @@ blocks:
           ```php
           $event = new \Bitrix\Main\Sms\Event('WELCOME_SMS', [
               'NAME' => $userName,
-              'CONFIRM_LINK' => $confirmUrl
+              'CONFIRM_LINK' => $confirmUrl,
           ]);
           $event->setSiteId(SITE_ID);
           $event->send();
@@ -347,8 +348,7 @@ blocks:
                     public readonly int $id,
                     public readonly string $content,
                     public readonly \Bitrix\Main\Type\DateTime $created,
-                )
-                {}
+                ) {}
             }
             ```
             
@@ -367,11 +367,10 @@ blocks:
             {
                 protected function process(MessageInterface $message): void
                 {
-                    if (($message instanceof MyMessage) === false)
-                    {
+                    if (($message instanceof MyMessage) === false) {
                         throw new UnprocessableMessageException($message);
                     }
-                    
+
                     // process
                 }
             }
@@ -405,10 +404,8 @@ blocks:
         
             Для тяжелых разовых обработок используйте фоновые задачи. Они выполняются после отправки ответа пользователю и не замедляют работу сайта.
             ```php
-            \Bitrix\Main\Application::getInstance()->addBackgroundJob(function() {
-                
+            \Bitrix\Main\Application::getInstance()->addBackgroundJob(function () {
                 // логика работы фоновой задачи
-
             });
             ```
 
@@ -423,8 +420,7 @@ blocks:
                 public function __construct(
                     public readonly string $orderId,
                     public readonly string $status,
-                )
-                {
+                ) {
                     parent::__construct(
                         'demo.module',
                         __CLASS__,
@@ -440,15 +436,14 @@ blocks:
                 public static function handle(MyEvent $event): \Bitrix\Main\EventResult
                 {
                     // обработка события
-                    
-                    if ($hasErrors)
-                    {
+
+                    if ($hasErrors) {
                         return new \Bitrix\Main\EventResult(
                             \Bitrix\Main\EventResult::ERROR,
                             $errors,
                         );
                     }
-                    
+
                     return new \Bitrix\Main\EventResult(
                         \Bitrix\Main\EventResult::SUCCESS,
                     );
@@ -498,8 +493,7 @@ blocks:
               */
 
               // Проверить права на выполнение действий
-              if ($USER->CanDoOperation('edit_file'))
-              {
+              if ($USER->CanDoOperation('edit_file')) {
                   // доступ есть
               }
 
@@ -535,10 +529,10 @@ blocks:
                   // идентификатор группы
                   3,
                   // срок участия пользователя в группе
-                  [ 
-                    'GROUP_ID' => 3,
-                    'DATE_ACTIVE_FROM' => '01.01.2025',
-                    'DATE_ACTIVE_TO' => '01.12.2025',
+                  [
+                      'GROUP_ID' => 3,
+                      'DATE_ACTIVE_FROM' => '01.01.2025',
+                      'DATE_ACTIVE_TO' => '01.12.2025',
                   ],
               ]);
 
@@ -582,30 +576,28 @@ blocks:
               Внедрить контроль прав в методы контроллера:
               ```php
               use Bitrix\Main\Engine\CurrentUser;
-          
+
               final class MyController
               {
                   public function getAction(int $id, CurrentUser $user, PostAccessController $access)
                   {
-                      if ($access->can($user->getId(), 'view', $id))
-                      {
+                      if ($access->can($user->getId(), 'view', $id)) {
                           // есть доступ
                       }
                   }
-                  
+
                   public function listAction(PostAccessController $access)
                   {
                       $query = MyPost::query();
-                      
+
                       $filter = $access->getEntityFilter(
                           'view',
                           $query->getEntity()->getObjectClassName()
                       );
-                      if ($filter)
-                      {
+                      if ($filter) {
                           $query->addFilter($filter);
                       }
-                      
+
                       $rows = $query->fetchCollection();
                   }
               }
