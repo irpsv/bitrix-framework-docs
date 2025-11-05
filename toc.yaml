@@ -50,6 +50,9 @@ items:
       - name: Правки в документации
         href: change-article.md
         hidden: true
+      - name: Опрос по документации
+        href: poll-bar.md
+        hidden: true
 
   - name: С чего начать
     items:
