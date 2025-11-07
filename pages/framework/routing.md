@@ -227,10 +227,10 @@ $country = $app->getCurrentRoute()->getParameterValue('country');
 Эти контроллеры позволяют использовать методы классов для обработки запросов. Например, если у вас есть контроллер `SomeController` с методом `viewAction`, вы можете настроить маршрут следующим образом:
 
 ```php
-   $routes->get('/countries', [SomeController::class, 'view']);
+   $routes->get('/countries', [SomeController::class, 'list']);
 ```
 
-В этом случае, при обращении к `/countries`, будет вызван метод `viewAction` контроллера `SomeController`.
+В этом случае, при обращении к `/countries`, будет вызван метод `listAction` контроллера `SomeController`.
 
 #### Отдельные действия
 
@@ -256,17 +256,22 @@ $country = $app->getCurrentRoute()->getParameterValue('country');
 
 #### Аргументы контроллеров
 
-В качестве аргументов в контроллерах можно использовать объекты запроса `HttpRequest`, объект текущего маршрута `Route`, а также именованные параметры маршрута:
+Если на маршруты назначаются контроллеры, то параметры запроса также передаются в метод контроллера.
 
+Допустим у нас есть маршрут:
 ```php
-   use Bitrix\Main\HttpRequest;
-   use Bitrix\Main\Routing\Route;
-   $routes->get('/countries/{country}', function ($country, HttpRequest $request) {
-       return "country {$country} response";
-   });
-   $routes->get('/countries/{country}', function (Route $route) {
-       return "country {$route->getParameterValue('country')} response";
-   });
+       $routes->get('/countries/{country}', [SomeController::class, 'view']);
+```
+
+В методе контроллера мы можем использовать аргумент `$country`:
+```php
+class SomeController
+{
+	public function viewAction(string $country)
+	{
+		# code ...
+	}
+}
 ```
 
 #### Обратная совместимость
