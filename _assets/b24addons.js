@@ -577,7 +577,6 @@ function showPollBanner()
         flex: '1 1 60%',
     });
 
-    // Стили кнопки и крестика
     const actions = banner.querySelector('.b24-banner__actions');
     Object.assign(actions.style, {
         display: 'flex',
@@ -623,6 +622,10 @@ function showPollBanner()
             if (root) root.style.paddingBottom = '';
         }
     });
+    const url = new URL(window.location.href);
+    if (url.pathname.endsWith('poll-bar.html')) {
+        banner.remove();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
